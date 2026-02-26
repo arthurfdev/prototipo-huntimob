@@ -35,7 +35,7 @@
 
     <!-- Modo Por Função -->
     <div v-if="modoVisualizacao === 'funcao'" class="space-y-6">
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between mb-6">
           <div>
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Permissões por Função</h2>
@@ -71,8 +71,8 @@
                     funcoesExpandidas[funcao.id] ? 'rotate-90' : ''
                   ]"
                 />
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-                  <UserGroupIcon class="w-5 h-5 text-white" />
+                <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+                  <UserGroupIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
                 </div>
                 <div class="text-left">
                   <h3 class="text-base font-semibold text-gray-900 dark:text-white">{{ funcao.nome }}</h3>
@@ -88,7 +88,7 @@
               <div
                 v-for="recurso in recursos"
                 :key="recurso.id"
-                class="bg-white dark:bg-brand-navy-dark rounded-lg p-4 border border-gray-200 dark:border-gray-700"
+                class="glass-card-light dark:glass-card rounded-lg p-4"
               >
                 <div class="flex items-center justify-between mb-3">
                   <div>
@@ -126,7 +126,7 @@
 
     <!-- Modo Por Colaborador -->
     <div v-if="modoVisualizacao === 'colaborador'" class="space-y-6">
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between mb-6">
           <div>
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Permissões por Colaborador</h2>
@@ -182,7 +182,7 @@
                     colaboradoresExpandidos[colaborador.id] ? 'rotate-90' : ''
                   ]"
                 />
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
                   <span class="text-white font-semibold text-lg">
                     {{ colaborador.nome ? colaborador.nome.charAt(0).toUpperCase() : '?' }}
                   </span>
@@ -216,7 +216,7 @@
               <div
                 v-for="recurso in recursos"
                 :key="recurso.id"
-                class="bg-white dark:bg-brand-navy-dark rounded-lg p-4 border border-gray-200 dark:border-gray-700"
+                class="glass-card-light dark:glass-card rounded-lg p-4"
               >
                 <div class="flex items-center justify-between mb-3">
                   <div>

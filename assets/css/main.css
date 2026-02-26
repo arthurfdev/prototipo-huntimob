@@ -117,6 +117,223 @@
     background: radial-gradient(circle at center, var(--tw-gradient-from), var(--tw-gradient-to));
   }
   
+  /* Glassmorphism / Liquid Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+  
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  }
+  
+  .glass-nav {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .glass-sidebar {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 0 24px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Icon Glass - Efeito liquid glass para ícones */
+  .icon-glass {
+    position: relative;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(255, 255, 255, 0.08) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.04),
+      0 6px 16px rgba(0, 0, 0, 0.1),
+      -2px -2px 6px rgba(255, 255, 255, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 2px 4px rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.25s ease-out;
+  }
+  
+  .icon-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    border-radius: inherit;
+    background: linear-gradient(
+      165deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  
+  .icon-glass::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 50%;
+    border-radius: inherit;
+    background: radial-gradient(
+      ellipse 90% 70% at 15% 15%,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  
+  /* Dark mode - Icon Glass com tom azul/verde */
+  html.dark .icon-glass {
+    background: linear-gradient(
+      145deg,
+      rgba(78, 211, 250, 0.12) 0%,
+      rgba(78, 211, 250, 0.06) 50%,
+      rgba(16, 185, 129, 0.04) 100%
+    );
+    border: 1px solid rgba(78, 211, 250, 0.25);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      0 6px 16px rgba(0, 0, 0, 0.3),
+      -2px -2px 6px rgba(78, 211, 250, 0.1),
+      inset 0 1px 0 rgba(78, 211, 250, 0.2),
+      inset 0 2px 4px rgba(78, 211, 250, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  html.dark .icon-glass::before {
+    background: linear-gradient(
+      165deg,
+      rgba(78, 211, 250, 0.25) 0%,
+      rgba(78, 211, 250, 0.1) 40%,
+      transparent 70%
+    );
+  }
+  
+  html.dark .icon-glass::after {
+    background: radial-gradient(
+      ellipse 90% 70% at 15% 15%,
+      rgba(78, 211, 250, 0.3) 0%,
+      rgba(78, 211, 250, 0.1) 50%,
+      transparent 70%
+    );
+  }
+  
+  /* Light mode - Icon Glass com tom verde/azul */
+  html:not(.dark) .icon-glass {
+    background: linear-gradient(
+      145deg,
+      rgba(13, 148, 136, 0.12) 0%,
+      rgba(13, 148, 136, 0.06) 50%,
+      rgba(6, 182, 212, 0.04) 100%
+    );
+    border: 1px solid rgba(13, 148, 136, 0.25);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.06),
+      0 6px 16px rgba(0, 0, 0, 0.08),
+      -2px -2px 6px rgba(13, 148, 136, 0.1),
+      inset 0 1px 0 rgba(13, 148, 136, 0.2),
+      inset 0 2px 4px rgba(13, 148, 136, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+  }
+  
+  html:not(.dark) .icon-glass::before {
+    background: linear-gradient(
+      165deg,
+      rgba(13, 148, 136, 0.2) 0%,
+      rgba(13, 148, 136, 0.08) 40%,
+      transparent 70%
+    );
+  }
+  
+  html:not(.dark) .icon-glass::after {
+    background: radial-gradient(
+      ellipse 90% 70% at 15% 15%,
+      rgba(13, 148, 136, 0.25) 0%,
+      rgba(13, 148, 136, 0.1) 50%,
+      transparent 70%
+    );
+  }
+  
+  .icon-glass:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      0 12px 24px rgba(0, 0, 0, 0.12),
+      -3px -3px 8px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 2px 6px rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  html.dark .icon-glass:hover {
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.25),
+      0 12px 24px rgba(0, 0, 0, 0.35),
+      -3px -3px 8px rgba(78, 211, 250, 0.15),
+      inset 0 1px 0 rgba(78, 211, 250, 0.25),
+      inset 0 2px 6px rgba(78, 211, 250, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+  }
+  
+  html:not(.dark) .icon-glass:hover {
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      0 12px 24px rgba(0, 0, 0, 0.1),
+      -3px -3px 8px rgba(13, 148, 136, 0.15),
+      inset 0 1px 0 rgba(13, 148, 136, 0.25),
+      inset 0 2px 6px rgba(13, 148, 136, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Background rico para modo escuro - apenas azul e verde */
+  .bg-glass-gradient-dark {
+    background: 
+      radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(6, 182, 212, 0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(20, 184, 166, 0.10) 0%, transparent 50%),
+      linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  }
+  
   /* Botões Premium */
   .btn-premium {
     position: relative;

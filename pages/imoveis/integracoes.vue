@@ -28,11 +28,11 @@
     <!-- Tab Integrações -->
     <div v-if="currentTab === 'integracoes'" class="space-y-6">
       <!-- Canal Pro -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-3">
-            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-              <LinkIcon class="w-6 h-6 text-white" />
+            <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+              <LinkIcon class="w-6 h-6 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
             </div>
             <div>
               <h2 class="text-lg font-bold text-gray-900 dark:text-white">Canal Pro</h2>
@@ -75,11 +75,11 @@
       </div>
 
       <!-- Site -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-3">
-            <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-              <GlobeAltIcon class="w-6 h-6 text-white" />
+            <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+              <GlobeAltIcon class="w-6 h-6 text-emerald-500 dark:text-emerald-400 relative z-10 stroke-2" />
             </div>
             <div>
               <h2 class="text-lg font-bold text-gray-900 dark:text-white">Site</h2>
@@ -103,7 +103,7 @@
 
     <!-- Tab Tutorial -->
     <div v-if="currentTab === 'tutorial'" class="space-y-6">
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
         <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Como fazer a integração</h2>
         
         <div class="space-y-6">

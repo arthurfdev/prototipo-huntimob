@@ -4,7 +4,7 @@
       <RelatorioGerador :tipo="tipo" />
     </div>
     <div v-else class="min-h-[calc(100vh-8rem)] flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-4">
-      <div class="bg-white dark:bg-brand-navy rounded-2xl shadow-sm p-8 text-center max-w-md border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-2xl shadow-sm p-8 text-center max-w-md">
         <ExclamationCircleIcon class="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
         <h2 class="text-lg font-bold text-gray-900 dark:text-white">Relatório não encontrado</h2>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">

@@ -8,8 +8,8 @@
     <!-- Card de Quase Lá -->
     <div class="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl shadow-sm p-6 mb-6 border border-amber-200/50 dark:border-amber-800/30">
       <div class="flex items-center gap-3 mb-4">
-        <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
-          <TrophyIcon class="w-5 h-5 text-white" />
+        <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+                    <TrophyIcon class="w-5 h-5 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
         </div>
         <div>
           <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Quase Lá! 🎯</h2>
@@ -25,11 +25,11 @@
         <div
           v-for="item in quaseLa"
           :key="item.id"
-          class="bg-white dark:bg-brand-navy rounded-lg p-4 border border-amber-200/50 dark:border-amber-800/30"
+            class="glass-card-light dark:glass-card rounded-lg p-4"
         >
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
-              <UserIcon class="w-5 h-5 text-white" />
+            <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <UserIcon class="w-5 h-5 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
             </div>
             <div class="flex-1 min-w-0">
               <p class="text-sm font-semibold text-gray-900 dark:text-white truncate">{{ item.nome }}</p>
@@ -56,7 +56,7 @@
     </div>
 
     <!-- Regras de Premiação -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 mb-6 border border-gray-100 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6 mb-6">
       <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Regras de Premiação</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg border border-blue-200/50 dark:border-blue-800/30">
@@ -87,7 +87,7 @@
     </div>
 
     <!-- Filtros -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-4 sm:p-6 mb-6 border border-gray-100 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Período</label>
@@ -130,7 +130,7 @@
     </div>
 
     <!-- Lista de Premiados -->
-    <div v-else-if="premiadosFiltrados.length === 0" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-12 border border-gray-100 dark:border-gray-800">
+    <div v-else-if="premiadosFiltrados.length === 0" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-12">
       <div class="text-center">
         <TrophyIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhum premiado encontrado</h3>
@@ -144,12 +144,12 @@
       <div
         v-for="premiado in premiadosFiltrados"
         :key="premiado.id"
-        class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200"
+        class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200"
       >
         <div class="flex items-start justify-between gap-4">
           <div class="flex items-start gap-4 flex-1">
-            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center flex-shrink-0">
-              <TrophyIcon class="w-6 h-6 text-white" />
+            <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+              <TrophyIcon class="w-6 h-6 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
             </div>
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-2 mb-2">

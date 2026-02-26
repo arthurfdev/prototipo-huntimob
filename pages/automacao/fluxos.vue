@@ -45,7 +45,7 @@
         <div
           v-for="f in flows"
           :key="f.id"
-          class="bg-white dark:bg-brand-navy rounded-2xl p-6 transition duration-200 hover:-translate-y-1 hover:shadow-lg border border-gray-200 dark:border-gray-800"
+          class="glass-card-light dark:glass-card rounded-2xl p-6 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
         >
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">

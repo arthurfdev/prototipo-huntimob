@@ -254,7 +254,7 @@
       </div>
 
       <!-- Lista Completa -->
-      <div class="bg-white dark:bg-brand-navy rounded-2xl shadow-lg p-6 sm:p-8 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-2xl shadow-lg p-6 sm:p-8">
         <div class="mb-6 pb-4 border-b border-gray-200 dark:border-gray-800">
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
             <TrophyIcon class="h-7 w-7 mr-3 text-blue-500" />
@@ -271,7 +271,7 @@
               'flex items-center p-4 sm:p-5 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02]',
               index < 3 
                 ? 'bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 border-2 shadow-md' 
-                : 'bg-white dark:bg-brand-navy border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700',
+                : 'glass-card-light dark:glass-card hover:border-emerald-500/50 dark:hover:border-emerald-500/50',
               index === 0 ? 'border-blue-400 shadow-blue-200 dark:shadow-blue-900/50' : '',
               index === 1 ? 'border-slate-400 shadow-slate-200 dark:shadow-slate-700' : '',
               index === 2 ? 'border-amber-400 shadow-amber-200 dark:shadow-amber-700' : ''

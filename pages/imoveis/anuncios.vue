@@ -30,7 +30,7 @@
 
     <!-- Tab Anunciar Imóvel -->
     <div v-if="currentTab === 'anunciar'" class="space-y-6">
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
         <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Anunciar Imóvel</h2>
         
         <!-- Seleção de Imóvel -->
@@ -246,7 +246,7 @@
 
     <!-- Tab Gerenciar Anúncios -->
     <div v-if="currentTab === 'gerenciar'" class="space-y-6">
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-lg font-bold text-gray-900 dark:text-white">Anúncios Publicados</h2>
           <div class="flex items-center gap-3">
@@ -279,7 +279,7 @@
           <div
             v-for="anuncio in anunciosAprovadosFiltrados"
             :key="anuncio.id"
-            class="bg-white dark:bg-brand-navy rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-all duration-300 group"
+            class="glass-card-light dark:glass-card rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group"
           >
             <!-- Imagem do Imóvel -->
             <div class="relative h-48 bg-gray-200 dark:bg-gray-800 overflow-hidden">
@@ -366,7 +366,7 @@
 
     <!-- Tab Aprovar Anúncios -->
     <div v-if="currentTab === 'aprovar'" class="space-y-6">
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-lg font-bold text-gray-900 dark:text-white">Anúncios Pendentes de Aprovação</h2>
           <div class="flex items-center gap-3">
@@ -404,7 +404,7 @@
           <div
             v-for="anuncio in anunciosPendentesFiltrados"
             :key="anuncio.id"
-            class="bg-white dark:bg-brand-navy rounded-xl shadow-sm border-2 border-amber-200 dark:border-amber-800 overflow-hidden hover:shadow-lg transition-all duration-300 group"
+            class="glass-card-light dark:glass-card rounded-xl shadow-sm border-2 border-amber-200/50 dark:border-amber-800/50 overflow-hidden hover:shadow-lg transition-all duration-300 group"
           >
             <!-- Imagem do Imóvel -->
             <div class="relative h-48 bg-gray-200 dark:bg-gray-800 overflow-hidden">

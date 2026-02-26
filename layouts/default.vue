@@ -1,8 +1,15 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300 overflow-x-hidden relative">
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:bg-glass-gradient-dark transition-colors duration-300 overflow-x-hidden relative">
     <!-- Background pattern para efeito glassmorphism -->
-    <div class="fixed inset-0 opacity-30 dark:opacity-20 pointer-events-none">
-      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="fixed inset-0 opacity-30 dark:opacity-30 pointer-events-none">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+    <!-- Gradientes animados para profundidade - apenas azul e verde -->
+    <div class="fixed inset-0 opacity-30 dark:opacity-40 pointer-events-none">
+      <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-500/15 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/15 dark:bg-emerald-500/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 dark:bg-cyan-500/15 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-teal-500/10 dark:bg-teal-500/15 rounded-full blur-3xl"></div>
     </div>
     <!-- Header -->
     <Header />
@@ -37,9 +44,9 @@
     <!-- Loading Overlay -->
     <div
       v-if="appStore.isLoading"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50"
     >
-      <div class="bg-white dark:bg-brand-navy rounded-lg p-6 flex items-center space-x-3 dark:border dark:border-brand-navy">
+      <div class="glass-card-light dark:glass-card rounded-lg p-6 flex items-center space-x-3">
         <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 dark:border-brand-gold"></div>
         <span class="text-gray-900 dark:text-white">Carregando...</span>
       </div>
@@ -50,7 +57,7 @@
       <div
         v-for="notification in appStore.notifications"
         :key="notification.id"
-        class="bg-white dark:bg-brand-navy rounded-lg shadow-lg p-4 border-l-4 max-w-sm transition-all"
+        class="glass-card-light dark:glass-card rounded-lg shadow-lg p-4 border-l-4 max-w-sm transition-all"
         :class="{
           'border-green-500': notification.type === 'success',
           'border-red-500': notification.type === 'error',

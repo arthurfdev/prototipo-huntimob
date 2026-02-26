@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white dark:bg-brand-navy flex flex-col rounded-xl min-w-[300px] max-w-[300px] h-full shadow-sm border border-gray-200 dark:border-gray-800"
+    class="glass-card-light dark:glass-card flex flex-col rounded-xl min-w-[300px] max-w-[300px] h-full shadow-sm"
   >
     <!-- Header da Coluna -->
     <div
@@ -38,7 +38,7 @@
         
         <div
           v-if="showMenu"
-          class="absolute right-0 mt-1 w-40 bg-white dark:bg-brand-navy rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 py-1 z-50"
+          class="absolute right-0 mt-1 w-40 glass-card-light dark:glass-card rounded-xl shadow-lg py-1 z-50"
           @click.stop
         >
           <button

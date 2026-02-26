@@ -2,7 +2,7 @@
   <ClientOnly>
     <Relatorios />
     <template #fallback>
-      <div class="flex min-h-[320px] items-center justify-center bg-white dark:bg-brand-navy rounded-xl shadow-sm p-8 border border-gray-100 dark:border-gray-800">
+      <div class="flex min-h-[320px] items-center justify-center glass-card-light dark:glass-card rounded-xl shadow-sm p-8">
         <div class="text-center">
           <div class="animate-spin h-8 w-8 border-2 border-gray-300 dark:border-gray-600 border-t-blue-500 rounded-full mx-auto" />
           <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">Carregando relatórios...</p>

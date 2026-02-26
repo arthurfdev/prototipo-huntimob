@@ -28,7 +28,7 @@
           >
             <div
               v-if="modelValue"
-              class="relative w-full max-w-3xl bg-white dark:bg-brand-navy rounded-xl shadow-2xl border border-gray-200 dark:border-gray-800"
+              class="relative w-full max-w-3xl glass-card-light dark:glass-card rounded-xl shadow-2xl"
             >
               <!-- Header -->
               <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">

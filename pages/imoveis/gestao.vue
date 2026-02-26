@@ -7,54 +7,54 @@
 
     <!-- Dashboard de Métricas -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
         <div class="flex items-center justify-between">
           <div>
             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Total de Imóveis</p>
             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">{{ totalImoveis }}</p>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ imoveisDisponiveis }} disponíveis</p>
           </div>
-          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-            <BuildingOfficeIcon class="w-6 h-6 text-white" />
+          <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+            <BuildingOfficeIcon class="w-6 h-6 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
       </div>
 
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
         <div class="flex items-center justify-between">
           <div>
             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">VGV Total</p>
             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">{{ formatPrice(vgvTotal) }}</p>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Valor geral de vendas</p>
           </div>
-          <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-            <CurrencyDollarIcon class="w-6 h-6 text-white" />
+          <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+            <CurrencyDollarIcon class="w-6 h-6 text-emerald-500 dark:text-emerald-400 relative z-10 stroke-2" />
           </div>
         </div>
       </div>
 
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
         <div class="flex items-center justify-between">
           <div>
             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Taxa de Ocupação</p>
             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">{{ taxaOcupacao }}%</p>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ imoveisVendidos }} vendidos</p>
           </div>
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
-            <ChartBarIcon class="w-6 h-6 text-white" />
+          <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+            <ChartBarIcon class="w-6 h-6 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
           </div>
         </div>
       </div>
 
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
         <div class="flex items-center justify-between">
           <div>
             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Captações Ativas</p>
             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">{{ captacoesAtivas }}</p>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ captacoesPendentes }} pendentes</p>
           </div>
-          <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <HomeModernIcon class="w-6 h-6 text-white" />
+          <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+            <HomeModernIcon class="w-6 h-6 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@
       </div>
 
       <!-- Filtros -->
-      <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-brand-navy-dark">
+      <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buscar</label>
@@ -141,7 +141,7 @@
         <div 
           v-for="imovel in paginatedImoveis" 
           :key="imovel.id" 
-          class="bg-white dark:bg-brand-navy rounded-lg shadow border border-gray-200 dark:border-brand-navy-dark overflow-hidden hover:shadow-md cursor-pointer"
+          class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden hover:shadow-md cursor-pointer"
           @click="openEditImovel(imovel)"
         >
           <div class="h-48 bg-gray-200 dark:bg-brand-navy-dark overflow-hidden relative">
@@ -196,7 +196,7 @@
       </div>
 
       <!-- Paginação Lançamentos -->
-      <div v-if="totalPagesImoveis > 1" class="mt-6 bg-white dark:bg-brand-navy px-4 py-3 border-t border-gray-200 dark:border-brand-navy-dark sm:px-6">
+      <div v-if="totalPagesImoveis > 1" class="mt-6 glass-card-light dark:glass-card px-4 py-3 border-t border-white/10 sm:px-6">
         <div class="flex items-center justify-between">
           <div class="text-sm text-gray-700 dark:text-gray-300">
             Mostrando <span class="font-medium">{{ startIndexImoveis + 1 }}</span> até 
@@ -237,7 +237,7 @@
       </div>
 
       <!-- Filtros Captações Venda -->
-      <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-brand-navy-dark">
+      <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buscar</label>
@@ -270,7 +270,7 @@
         <div 
           v-for="captacao in paginatedCaptacoes" 
           :key="captacao.id" 
-          class="bg-white dark:bg-brand-navy rounded-lg shadow border border-gray-200 dark:border-brand-navy-dark overflow-hidden hover:shadow-md cursor-pointer"
+          class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden hover:shadow-md cursor-pointer"
           @click="openEditCaptacao(captacao)"
         >
           <div class="h-48 bg-gray-200 dark:bg-brand-navy-dark overflow-hidden relative">
@@ -303,7 +303,7 @@
       </div>
 
       <!-- Paginação Captações Venda -->
-      <div v-if="totalPagesCaptacoes > 1" class="mt-6 bg-white dark:bg-brand-navy px-4 py-3 border-t border-gray-200 dark:border-brand-navy-dark sm:px-6">
+      <div v-if="totalPagesCaptacoes > 1" class="mt-6 glass-card-light dark:glass-card px-4 py-3 border-t border-white/10 sm:px-6">
         <div class="flex items-center justify-between">
           <div class="text-sm text-gray-700 dark:text-gray-300">
             Mostrando <span class="font-medium">{{ startIndexCaptacoes + 1 }}</span> até 
@@ -344,7 +344,7 @@
       </div>
 
       <!-- Filtros Captações Aluguel -->
-      <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-brand-navy-dark">
+      <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buscar</label>
@@ -373,7 +373,7 @@
       </div>
 
       <!-- Grid de Captações Aluguel -->
-      <div v-if="paginatedCaptacoesAluguel.length === 0" class="bg-white dark:bg-brand-navy rounded-lg shadow p-12 border border-gray-200 dark:border-brand-navy-dark">
+      <div v-if="paginatedCaptacoesAluguel.length === 0" class="glass-card-light dark:glass-card rounded-lg shadow p-12">
         <div class="text-center">
           <BuildingOfficeIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhuma captação de aluguel encontrada</h3>
@@ -386,7 +386,7 @@
         <div 
           v-for="captacao in paginatedCaptacoesAluguel" 
           :key="captacao.id" 
-          class="bg-white dark:bg-brand-navy rounded-lg shadow border border-gray-200 dark:border-brand-navy-dark overflow-hidden hover:shadow-md cursor-pointer"
+          class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden hover:shadow-md cursor-pointer"
           @click="openEditCaptacao(captacao)"
         >
           <div class="h-48 bg-gray-200 dark:bg-brand-navy-dark overflow-hidden relative">

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm w-full border border-gray-100 dark:border-gray-800 overflow-hidden">
+  <div class="glass-card-light dark:glass-card rounded-xl shadow-sm w-full overflow-hidden">
     <div class="overflow-x-auto">
       <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
         <thead class="bg-gray-50 dark:bg-gray-800">

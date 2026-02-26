@@ -16,7 +16,7 @@
     </div>
 
     <!-- Filtros -->
-    <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buscar</label>
@@ -69,7 +69,7 @@
     </div>
 
     <!-- Tabela -->
-    <div class="bg-white dark:bg-brand-navy rounded-lg shadow border border-gray-200 dark:border-gray-800 overflow-hidden">
+    <div class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden">
       <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
           <thead class="bg-gray-50 dark:bg-gray-800">

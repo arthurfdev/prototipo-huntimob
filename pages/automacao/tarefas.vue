@@ -5,7 +5,7 @@
       <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Gerencie tarefas e atividades</p>
     </div>
     
-    <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-6 border border-gray-200 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-lg shadow p-6">
       <p class="text-gray-600 dark:text-gray-400">Página de Tarefas em desenvolvimento...</p>
     </div>
   </div>

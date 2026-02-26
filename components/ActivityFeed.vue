@@ -5,16 +5,16 @@
       'hidden lg:flex flex-col transition-all duration-300 ease-in-out flex-shrink-0',
       'relative h-screen',
       activitiesStore.isOpen ? 'w-80 xl:w-96' : 'w-0',
-      'bg-white dark:bg-brand-navy border-l border-gray-200 dark:border-brand-navy-dark shadow-xl',
+      'glass-card border-l border-white/10 shadow-xl',
       !activitiesStore.isOpen ? 'overflow-hidden' : '',
       'overflow-hidden'
     ]"
   >
     <!-- Header -->
-    <div v-if="activitiesStore.isOpen" class="flex items-center justify-between h-16 px-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-brand-navy flex-shrink-0">
+    <div v-if="activitiesStore.isOpen" class="flex items-center justify-between h-16 px-4 border-b border-white/10 glass-card flex-shrink-0">
       <div class="flex items-center space-x-3">
-        <div class="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg">
-          <BellIcon class="h-5 w-5 text-white" />
+        <div class="p-1.5 rounded-lg bg-blue-500/10 dark:bg-blue-500/20">
+          <BellIcon class="h-5 w-5 text-blue-500 dark:text-blue-400 stroke-2" />
         </div>
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
           Atividades
@@ -30,17 +30,17 @@
         <button
           v-if="activitiesStore.unreadCount > 0"
           @click="markAllAsRead"
-          class="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-brand-navy transition-colors"
+          class="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-white/10 transition-colors"
           title="Marcar todas como lidas"
         >
-          <CheckIcon class="h-4 w-4" />
+          <CheckIcon class="h-4 w-4 stroke-2" />
         </button>
         <button
           @click="activitiesStore.toggleFeed"
-          class="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-brand-navy transition-colors"
+          class="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-white/10 transition-colors"
           title="Fechar"
         >
-          <XMarkIcon class="h-5 w-5" />
+          <XMarkIcon class="h-5 w-5 stroke-2" />
         </button>
       </div>
     </div>
@@ -49,7 +49,7 @@
     <div v-if="activitiesStore.isOpen" class="flex-1 overflow-y-auto">
       <div v-if="activitiesStore.recentActivities.length === 0" class="p-8 text-center">
         <div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-          <BellIcon class="h-10 w-10 text-gray-400 dark:text-gray-500" />
+          <BellIcon class="h-10 w-10 text-gray-400 dark:text-gray-500 stroke-2" />
         </div>
         <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">
           Nenhuma atividade ainda
@@ -74,15 +74,13 @@
 
           <div class="flex items-start space-x-3">
             <!-- Icon -->
-            <div 
-              :class="[
-                'flex-shrink-0 p-2.5 rounded-xl shadow-sm',
-                getActivityColorClass(activity.color)
-              ]"
-            >
+            <div class="icon-glass flex-shrink-0 p-2 rounded-xl">
               <component 
                 :is="getActivityIcon(activity.icon || activity.type)" 
-                class="h-5 w-5"
+                :class="[
+                  'h-5 w-5 stroke-2 relative z-10',
+                  getActivityIconColor(activity.color)
+                ]"
               />
             </div>
 
@@ -115,10 +113,10 @@
     </div>
 
     <!-- Footer -->
-    <div v-if="activitiesStore.isOpen" class="p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-brand-navy flex-shrink-0">
+    <div v-if="activitiesStore.isOpen" class="p-4 border-t border-white/10 glass-card flex-shrink-0">
       <button
         @click="clearAll"
-        class="w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg transition-colors border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
+        class="w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-white/10 rounded-lg transition-colors border border-white/20 hover:border-white/30"
       >
         Limpar Todas
       </button>
@@ -133,16 +131,16 @@
         'lg:hidden flex flex-col transition-all duration-300 ease-in-out',
         'fixed right-0 top-16 bottom-0',
         'w-72 sm:w-80',
-        'bg-white dark:bg-brand-navy border-l border-gray-200 dark:border-brand-navy-dark shadow-xl',
+        'glass-card border-l border-white/10 shadow-xl',
         'max-h-[calc(100vh-4rem)] overflow-hidden'
       ]"
       style="z-index: 9999 !important;"
     >
       <!-- Header -->
-      <div class="flex items-center justify-between h-16 px-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-brand-navy flex-shrink-0">
+      <div class="flex items-center justify-between h-16 px-4 border-b border-white/10 glass-card flex-shrink-0">
         <div class="flex items-center space-x-3">
-          <div class="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg">
-            <BellIcon class="h-5 w-5 text-white" />
+          <div class="icon-glass p-1.5 rounded-lg">
+            <BellIcon class="h-5 w-5 text-blue-500 dark:text-blue-400 stroke-2 relative z-10" />
           </div>
           <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
             Atividades
@@ -158,17 +156,17 @@
           <button
             v-if="activitiesStore.unreadCount > 0"
             @click="markAllAsRead"
-            class="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-brand-navy transition-colors"
+            class="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-white/10 transition-colors"
             title="Marcar todas como lidas"
           >
-            <CheckIcon class="h-4 w-4" />
+            <CheckIcon class="h-4 w-4 stroke-2" />
           </button>
           <button
             @click="activitiesStore.toggleFeed"
-            class="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-brand-navy transition-colors"
+            class="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-white/10 transition-colors"
             title="Fechar"
           >
-            <XMarkIcon class="h-5 w-5" />
+            <XMarkIcon class="h-5 w-5 stroke-2" />
           </button>
         </div>
       </div>
@@ -176,20 +174,20 @@
       <!-- Activities List -->
       <div class="flex-1 overflow-y-auto">
         <div v-if="activitiesStore.recentActivities.length === 0" class="p-8 text-center">
-          <div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-            <BellIcon class="h-10 w-10 text-gray-400 dark:text-gray-500" />
+          <div class="p-4 glass-card rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+            <BellIcon class="h-10 w-10 text-gray-400 dark:text-gray-500 stroke-2" />
           </div>
           <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">
             Nenhuma atividade ainda
           </p>
         </div>
 
-        <div v-else class="divide-y divide-gray-200 dark:divide-brand-navy-dark">
+        <div v-else class="divide-y divide-white/10">
           <div
             v-for="activity in activitiesStore.recentActivities"
             :key="activity.id"
             :class="[
-              'p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer relative',
+              'p-4 hover:bg-white/10 transition-colors cursor-pointer relative',
               !activity.read ? 'bg-blue-50/30 dark:bg-blue-900/10' : ''
             ]"
             @click="handleActivityClick(activity)"
@@ -246,7 +244,7 @@
       <div class="p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-brand-navy flex-shrink-0">
         <button
           @click="clearAll"
-          class="w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg transition-colors border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
+          class="w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-white/10 rounded-lg transition-colors border border-white/20 hover:border-white/30"
         >
           Limpar Todas
         </button>
@@ -257,7 +255,7 @@
     <div 
       v-if="activitiesStore.isOpen"
       @click="activitiesStore.setFeedOpen(false)"
-      class="lg:hidden fixed inset-0 bg-black bg-opacity-50"
+      class="lg:hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
       style="z-index: 9998 !important;"
     ></div>
   </Teleport>
@@ -317,12 +315,25 @@ const getActivityIcon = (iconName) => {
 
 const getActivityColorClass = (color) => {
   const colors = {
-    green: 'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white',
-    blue: 'bg-gradient-to-br from-blue-500 to-blue-600 text-white',
-    yellow: 'bg-gradient-to-br from-amber-500 to-amber-600 text-white',
-    purple: 'bg-gradient-to-br from-violet-500 to-violet-600 text-white',
-    indigo: 'bg-gradient-to-br from-indigo-500 to-indigo-600 text-white',
-    red: 'bg-gradient-to-br from-red-500 to-red-600 text-white'
+    green: 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-500 dark:text-emerald-400',
+    blue: 'bg-blue-500/10 dark:bg-blue-500/20 text-blue-500 dark:text-blue-400',
+    cyan: 'bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-500 dark:text-cyan-400',
+    teal: 'bg-teal-500/10 dark:bg-teal-500/20 text-teal-500 dark:text-teal-400',
+    yellow: 'bg-amber-500/10 dark:bg-amber-500/20 text-amber-500 dark:text-amber-400',
+    red: 'bg-red-500/10 dark:bg-red-500/20 text-red-500 dark:text-red-400'
+  }
+  
+  return colors[color || 'blue'] || colors.blue
+}
+
+const getActivityIconColor = (color) => {
+  const colors = {
+    green: 'text-emerald-500 dark:text-emerald-400',
+    blue: 'text-blue-500 dark:text-blue-400',
+    cyan: 'text-cyan-500 dark:text-cyan-400',
+    teal: 'text-teal-500 dark:text-teal-400',
+    yellow: 'text-amber-500 dark:text-amber-400',
+    red: 'text-red-500 dark:text-red-400'
   }
   
   return colors[color || 'blue'] || colors.blue

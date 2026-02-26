@@ -8,7 +8,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <!-- Formulário de Entrada -->
       <div class="lg:col-span-1">
-        <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 sticky top-6">
+        <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6 sticky top-6">
           <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Dados do Financiamento</h2>
           
           <div class="space-y-5">
@@ -99,7 +99,7 @@
 
       <!-- Resultados -->
       <div class="lg:col-span-2">
-        <div v-if="!resultadoCalculado" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-12 border border-gray-100 dark:border-gray-800 text-center">
+        <div v-if="!resultadoCalculado" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-12 text-center">
           <CalculatorIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Preencha os dados para simular</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -109,7 +109,7 @@
 
         <div v-else class="space-y-6">
           <!-- Resumo -->
-          <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
             <div class="flex items-center justify-between mb-6">
               <h2 class="text-lg font-bold text-gray-900 dark:text-white">Resumo do Financiamento</h2>
               <button
@@ -165,7 +165,7 @@
           </div>
 
           <!-- Tabela de Amortização (Primeiras e Últimas Parcelas) -->
-          <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Tabela de Amortização</h3>
             
             <div class="overflow-x-auto">

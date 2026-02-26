@@ -28,7 +28,7 @@
     </header>
 
     <!-- Status atual -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl shadow p-5 sm:p-6 mb-6 border border-gray-200 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow p-5 sm:p-6 mb-6">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-4">
           <div :class="[

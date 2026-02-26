@@ -20,7 +20,7 @@
     </div>
 
     <!-- Lista de Metas -->
-    <div v-else-if="metas.length === 0" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-12 border border-gray-100 dark:border-gray-800">
+    <div v-else-if="metas.length === 0" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-12">
       <div class="text-center">
         <ChartBarIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhuma meta encontrada</h3>
@@ -34,22 +34,22 @@
       <div
         v-for="meta in metas"
         :key="meta.id"
-        class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200"
+        class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200"
       >
         <div class="flex items-start justify-between gap-4">
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-3 mb-3">
-              <div
-                :class="[
-                  'w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0',
-                  meta.tipo === 'corretor' 
-                    ? 'bg-gradient-to-br from-blue-500 to-indigo-600'
-                    : meta.tipo === 'gerente'
-                    ? 'bg-gradient-to-br from-purple-500 to-violet-600'
-                    : 'bg-gradient-to-br from-green-500 to-emerald-600'
-                ]"
-              >
-                <ChartBarIcon class="w-5 h-5 text-white" />
+              <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <ChartBarIcon 
+                  :class="[
+                    'w-5 h-5 relative z-10 stroke-2',
+                    meta.tipo === 'corretor' 
+                      ? 'text-cyan-500 dark:text-cyan-400'
+                      : meta.tipo === 'gerente'
+                      ? 'text-cyan-500 dark:text-cyan-400'
+                      : 'text-emerald-500 dark:text-emerald-400'
+                  ]"
+                />
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 flex-wrap">
@@ -124,7 +124,7 @@
       @click="showModalNovaMeta = false"
     >
       <div
-        class="relative bg-white dark:bg-brand-navy rounded-xl shadow-xl border border-gray-200 dark:border-gray-800 w-full max-w-2xl"
+        class="relative glass-card-light dark:glass-card rounded-xl shadow-xl w-full max-w-2xl"
         @click.stop
       >
         <div class="p-6">
@@ -211,7 +211,7 @@
       @click="showModalProximos = false"
     >
       <div
-        class="relative bg-white dark:bg-brand-navy rounded-xl shadow-xl border border-gray-200 dark:border-gray-800 w-full max-w-3xl"
+        class="relative glass-card-light dark:glass-card rounded-xl shadow-xl w-full max-w-3xl"
         @click.stop
       >
         <div class="p-6">
@@ -242,8 +242,8 @@
             >
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3 flex-1 min-w-0">
-                  <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <UserIcon class="w-5 h-5 text-white" />
+                  <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <UserIcon class="w-5 h-5 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
                   </div>
                   <div class="flex-1 min-w-0">
                     <p class="text-sm font-semibold text-gray-900 dark:text-white truncate">{{ colaborador.nome }}</p>

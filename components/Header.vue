@@ -1,7 +1,7 @@
 <template>
   <header 
     :class="[
-      'fixed top-0 left-0 h-16 bg-white/70 dark:bg-slate-800/60 backdrop-blur-xl border-b border-gray-200/30 dark:border-slate-700/30 transition-all duration-300',
+      'fixed top-0 left-0 h-16 glass-nav transition-all duration-300',
       'lg:right-0',
       activitiesStore.isOpen ? 'lg:right-80 xl:right-96' : ''
     ]"
@@ -29,10 +29,10 @@
         <!-- Ícone de Notificações -->
         <button
           @click="activitiesStore.toggleFeed"
-          class="relative p-2 text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+          class="relative p-2 text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors backdrop-blur-sm"
           title="Atividades"
         >
-          <BellIcon class="h-6 w-6" />
+          <BellIcon class="h-5 w-5 stroke-2" />
           <!-- Badge de contador -->
           <span 
             v-if="activitiesStore.unreadCount > 0"

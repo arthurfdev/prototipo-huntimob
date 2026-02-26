@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'bg-white dark:bg-brand-navy rounded-xl p-3 cursor-pointer transition duration-200 shadow-sm border border-gray-200 dark:border-gray-800',
+      'glass-card-light dark:glass-card rounded-xl p-3 cursor-pointer transition duration-200 shadow-sm',
       'hover:shadow-md hover:-translate-y-0.5',
       isDragging ? 'opacity-50 rotate-2 scale-105' : ''
     ]"
@@ -44,7 +44,7 @@
         <!-- Dropdown Menu -->
         <div
           v-if="showMenu"
-          class="absolute right-0 mt-1 w-40 bg-white dark:bg-brand-navy rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 py-1 z-50"
+          class="absolute right-0 mt-1 w-40 glass-card-light dark:glass-card rounded-xl shadow-lg py-1 z-50"
           @click.stop
         >
           <button

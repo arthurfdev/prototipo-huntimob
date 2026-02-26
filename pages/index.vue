@@ -12,7 +12,7 @@
           </p>
         </div>
         <div class="flex items-center space-x-3">
-          <div class="px-4 py-2 bg-white/60 dark:bg-slate-800/50 backdrop-blur-md rounded-lg border border-gray-200/30 dark:border-slate-700/30 shadow-sm">
+          <div class="px-4 py-2 glass-card-light dark:glass-card rounded-lg shadow-sm">
             <p class="text-xs text-emerald-600 dark:text-emerald-400 font-medium uppercase tracking-wide">Hoje</p>
             <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ currentDate }}</p>
           </div>
@@ -22,7 +22,7 @@
 
     <!-- Cards de Resumo -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 w-full">
-      <div class="bg-white/60 dark:bg-slate-800/50 backdrop-blur-md rounded-xl shadow-sm p-5 sm:p-6 border border-gray-200/30 dark:border-slate-700/30 min-w-0 hover:shadow-lg hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all group cursor-pointer">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 sm:p-6 min-w-0 hover:shadow-lg hover:border-emerald-500/50 transition-all group cursor-pointer">
         <div class="flex items-start justify-between mb-3">
           <div class="flex-1">
             <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-1">Total de Imóveis</p>
@@ -31,19 +31,19 @@
               <span class="text-xs text-gray-500 dark:text-slate-400">Disponíveis: {{ dashboardData.imoveisDisponiveis }}</span>
             </div>
           </div>
-          <div class="p-3.5 bg-gradient-to-br from-cyan-500 to-emerald-500 rounded-xl shadow-md group-hover:scale-110 transition-transform">
-            <BuildingOfficeIcon class="h-7 w-7 text-white" />
+          <div class="icon-glass p-2.5 rounded-xl">
+            <BuildingOfficeIcon class="h-6 w-6 text-cyan-500 dark:text-cyan-400 relative z-10" />
           </div>
         </div>
-        <div class="pt-3 border-t border-gray-200/30 dark:border-slate-700/30">
+        <div class="pt-3 border-t border-white/10">
           <NuxtLink to="/imoveis/cadastros" class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center">
             Ver todos
-            <ArrowRightIcon class="h-3 w-3 ml-1" />
+            <ArrowRightIcon class="h-3 w-3 ml-1 stroke-2" />
           </NuxtLink>
         </div>
       </div>
 
-      <div class="bg-slate-800 dark:bg-slate-800 rounded-xl shadow-sm p-5 sm:p-6 border border-slate-700 dark:border-slate-700 hover:shadow-lg hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all group cursor-pointer">
+      <div class="glass-card rounded-xl shadow-sm p-5 sm:p-6 hover:shadow-lg hover:border-emerald-500/50 transition-all group cursor-pointer">
         <div class="flex items-start justify-between mb-3">
           <div class="flex-1">
             <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-1">Leads Ativos</p>
@@ -52,19 +52,19 @@
               <span class="text-xs text-gray-500 dark:text-slate-400">Novos hoje: {{ dashboardData.leadsNovosHoje }}</span>
             </div>
           </div>
-          <div class="p-3.5 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl shadow-md group-hover:scale-110 transition-transform">
-            <UserPlusIcon class="h-7 w-7 text-white" />
+          <div class="icon-glass p-2.5 rounded-xl">
+            <UserPlusIcon class="h-6 w-6 text-emerald-500 dark:text-emerald-400 relative z-10" />
           </div>
         </div>
-        <div class="pt-3 border-t border-gray-200/30 dark:border-slate-700/30">
+        <div class="pt-3 border-t border-white/10">
           <NuxtLink to="/comercial/crm" class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center">
             Ver todos
-            <ArrowRightIcon class="h-3 w-3 ml-1" />
+            <ArrowRightIcon class="h-3 w-3 ml-1 stroke-2" />
           </NuxtLink>
         </div>
       </div>
 
-      <div class="bg-slate-800 dark:bg-slate-800 rounded-xl shadow-sm p-5 sm:p-6 border border-slate-700 dark:border-slate-700 hover:shadow-lg hover:border-cyan-500/50 dark:hover:border-cyan-500/50 transition-all group cursor-pointer">
+      <div class="glass-card rounded-xl shadow-sm p-5 sm:p-6 hover:shadow-lg hover:border-cyan-500/50 transition-all group cursor-pointer">
         <div class="flex items-start justify-between mb-3">
           <div class="flex-1">
             <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-1">Negociações</p>
@@ -73,19 +73,19 @@
               <span class="text-xs text-gray-500 dark:text-slate-400">Em andamento: {{ dashboardData.negociacoesEmAndamento }}</span>
             </div>
           </div>
-          <div class="p-3.5 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl shadow-md group-hover:scale-110 transition-transform">
-            <BriefcaseIcon class="h-7 w-7 text-white" />
+          <div class="icon-glass p-2.5 rounded-xl">
+            <BriefcaseIcon class="h-6 w-6 text-cyan-500 dark:text-cyan-400 relative z-10" />
           </div>
         </div>
-        <div class="pt-3 border-t border-gray-200/30 dark:border-slate-700/30">
+        <div class="pt-3 border-t border-white/10">
           <NuxtLink to="/comercial/negociacoes" class="text-xs font-medium text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 flex items-center">
             Ver todas
-            <ArrowRightIcon class="h-3 w-3 ml-1" />
+            <ArrowRightIcon class="h-3 w-3 ml-1 stroke-2" />
           </NuxtLink>
         </div>
       </div>
 
-      <div class="bg-slate-800 dark:bg-slate-800 rounded-xl shadow-sm p-5 sm:p-6 border border-slate-700 dark:border-slate-700 hover:shadow-lg hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all group cursor-pointer">
+      <div class="glass-card rounded-xl shadow-sm p-5 sm:p-6 hover:shadow-lg hover:border-emerald-500/50 transition-all group cursor-pointer">
         <div class="flex items-start justify-between mb-3">
           <div class="flex-1">
             <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-1">Receita Mensal</p>
@@ -94,14 +94,14 @@
               <span class="text-xs text-gray-500 dark:text-slate-400">Meta: {{ formatCurrency(dashboardData.metaMensal) }} ({{ percentualMeta }}%)</span>
             </div>
           </div>
-          <div class="p-3.5 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl shadow-md group-hover:scale-110 transition-transform">
-            <CurrencyDollarIcon class="h-7 w-7 text-white" />
+          <div class="icon-glass p-2.5 rounded-xl">
+            <CurrencyDollarIcon class="h-6 w-6 text-emerald-500 dark:text-emerald-400 relative z-10" />
           </div>
         </div>
-        <div class="pt-3 border-t border-gray-200/30 dark:border-slate-700/30">
+        <div class="pt-3 border-t border-white/10">
           <NuxtLink to="/financeiro" class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center">
             Ver relatório
-            <ArrowRightIcon class="h-3 w-3 ml-1" />
+            <ArrowRightIcon class="h-3 w-3 ml-1 stroke-2" />
           </NuxtLink>
         </div>
       </div>
@@ -110,7 +110,7 @@
     <!-- Grid de Conteúdo Principal -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
       <!-- Ações Rápidas -->
-      <div class="lg:col-span-2 bg-white/60 dark:bg-slate-800/50 backdrop-blur-md rounded-xl shadow-sm p-5 sm:p-6 border border-gray-200/30 dark:border-slate-700/30">
+      <div class="lg:col-span-2 glass-card-light dark:glass-card rounded-xl shadow-sm p-5 sm:p-6">
         <div class="flex items-center justify-between mb-5">
           <h2 class="text-xl font-bold text-gray-900 dark:text-white">Ações Rápidas</h2>
           <span class="text-xs text-gray-500 dark:text-slate-400">Acesso rápido</span>
@@ -118,26 +118,26 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
           <NuxtLink
             to="/imoveis/cadastros"
-            class="flex items-center justify-between p-4 border border-gray-200/30 dark:border-slate-700/30 rounded-xl bg-white/40 dark:bg-slate-700/20 hover:bg-white/60 dark:hover:bg-slate-700/40 hover:border-cyan-500/50 dark:hover:border-cyan-500/50 transition-all group backdrop-blur-sm"
+            class="flex items-center justify-between p-4 border border-white/20 rounded-xl glass-card hover:bg-white/10 hover:border-cyan-500/50 transition-all group"
           >
             <div class="flex items-center">
-              <div class="p-2.5 bg-gradient-to-br from-cyan-500 to-emerald-500 rounded-lg shadow-sm mr-3 group-hover:scale-110 transition-transform">
-                <BuildingOfficeIcon class="h-5 w-5 text-white" />
+              <div class="icon-glass p-2 rounded-xl mr-3">
+                <BuildingOfficeIcon class="h-5 w-5 text-cyan-500 dark:text-cyan-400 stroke-2 relative z-10" />
               </div>
               <div>
                 <span class="text-gray-900 dark:text-white font-semibold block">Cadastrar Imóvel</span>
                 <span class="text-xs text-gray-500 dark:text-slate-400">Novo lançamento</span>
               </div>
             </div>
-            <ArrowRightIcon class="h-5 w-5 text-gray-400 dark:text-slate-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors" />
+            <ArrowRightIcon class="h-4 w-4 text-gray-400 dark:text-slate-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors stroke-2" />
           </NuxtLink>
           <NuxtLink
             to="/comercial/crm"
-            class="flex items-center justify-between p-4 border border-slate-700 dark:border-slate-700 rounded-xl hover:bg-slate-700/50 dark:hover:bg-slate-700/50 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all group"
+            class="flex items-center justify-between p-4 border border-white/20 rounded-xl glass-card hover:bg-white/10 hover:border-emerald-500/50 transition-all group"
           >
             <div class="flex items-center">
-              <div class="p-2.5 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg shadow-sm mr-3 group-hover:scale-110 transition-transform">
-                <UserPlusIcon class="h-5 w-5 text-white" />
+              <div class="icon-glass p-2 rounded-xl mr-3">
+                <UserPlusIcon class="h-5 w-5 text-emerald-500 dark:text-emerald-400 stroke-2 relative z-10" />
               </div>
               <div>
                 <span class="text-gray-900 dark:text-white font-semibold block">Novo Lead</span>
@@ -148,26 +148,26 @@
           </NuxtLink>
           <NuxtLink
             to="/comercial/negociacoes"
-            class="flex items-center justify-between p-4 border border-gray-200/30 dark:border-slate-700/30 rounded-xl bg-white/40 dark:bg-slate-700/20 hover:bg-white/60 dark:hover:bg-slate-700/40 hover:border-cyan-500/50 dark:hover:border-cyan-500/50 transition-all group backdrop-blur-sm"
+            class="flex items-center justify-between p-4 border border-white/20 rounded-xl glass-card hover:bg-white/10 hover:border-cyan-500/50 transition-all group"
           >
             <div class="flex items-center">
-              <div class="p-2.5 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg shadow-sm mr-3 group-hover:scale-110 transition-transform">
-                <BriefcaseIcon class="h-5 w-5 text-white" />
+              <div class="icon-glass p-2 rounded-xl mr-3">
+                <BriefcaseIcon class="h-5 w-5 text-cyan-500 dark:text-cyan-400 stroke-2 relative z-10" />
               </div>
               <div>
                 <span class="text-gray-900 dark:text-white font-semibold block">Nova Negociação</span>
                 <span class="text-xs text-gray-500 dark:text-slate-400">Iniciar processo</span>
               </div>
             </div>
-            <ArrowRightIcon class="h-5 w-5 text-gray-400 dark:text-slate-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors" />
+            <ArrowRightIcon class="h-4 w-4 text-gray-400 dark:text-slate-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors stroke-2" />
           </NuxtLink>
           <NuxtLink
             to="/comercial/clientes"
-            class="flex items-center justify-between p-4 border border-slate-700 dark:border-slate-700 rounded-xl hover:bg-slate-700/50 dark:hover:bg-slate-700/50 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all group"
+            class="flex items-center justify-between p-4 border border-white/20 rounded-xl glass-card hover:bg-white/10 hover:border-emerald-500/50 transition-all group"
           >
             <div class="flex items-center">
-              <div class="p-2.5 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg shadow-sm mr-3 group-hover:scale-110 transition-transform">
-                <UserIcon class="h-5 w-5 text-white" />
+              <div class="icon-glass p-2 rounded-xl mr-3">
+                <UserIcon class="h-5 w-5 text-emerald-500 dark:text-emerald-400 stroke-2 relative z-10" />
               </div>
               <div>
                 <span class="text-gray-900 dark:text-white font-semibold block">Novo Cliente</span>
@@ -180,14 +180,14 @@
       </div>
 
       <!-- Atividades Recentes -->
-      <div class="bg-white/60 dark:bg-slate-800/50 backdrop-blur-md rounded-xl shadow-sm p-5 sm:p-6 border border-gray-200/30 dark:border-slate-700/30">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 sm:p-6">
         <div class="flex items-center justify-between mb-5">
           <h2 class="text-xl font-bold text-gray-900 dark:text-white">Atividades Recentes</h2>
           <NuxtLink to="#" class="text-xs text-emerald-600 dark:text-emerald-400 hover:underline">Ver todas</NuxtLink>
         </div>
         <div class="space-y-4">
           <div v-if="activitiesStore.recentActivities.length === 0" class="text-center py-8">
-            <div class="p-3 bg-gray-100 dark:bg-slate-700 rounded-full w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+            <div class="p-3 glass-card rounded-full w-16 h-16 mx-auto mb-3 flex items-center justify-center">
               <BellIcon class="h-8 w-8 text-gray-400 dark:text-slate-400" />
             </div>
             <p class="text-sm text-gray-500 dark:text-slate-400">Nenhuma atividade recente</p>
@@ -196,13 +196,13 @@
             <div
               v-for="activity in activitiesStore.recentActivities.slice(0, 5)"
               :key="activity.id"
-              class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer"
+              class="flex items-start space-x-3 p-3 rounded-lg glass-card hover:bg-white/10 transition-colors cursor-pointer"
               @click="handleActivityClick(activity)"
             >
-              <div class="p-2 bg-gradient-to-br from-cyan-500 to-emerald-500 rounded-lg flex-shrink-0">
+              <div class="icon-glass p-1.5 rounded-lg flex-shrink-0">
                 <component 
                   :is="getActivityIcon(activity.icon || activity.type)" 
-                  class="h-4 w-4 text-white"
+                  class="h-4 w-4 text-cyan-500 dark:text-cyan-400 stroke-2 relative z-10"
                 />
               </div>
               <div class="flex-1 min-w-0">
@@ -227,7 +227,7 @@ import {
   CurrencyDollarIcon,
   ArrowRightIcon,
   UserIcon
-} from '@heroicons/vue/24/solid'
+} from '@heroicons/vue/24/outline'
 import {
   UserPlusIcon as UserPlusIconOutline,
   CalendarIcon,

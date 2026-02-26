@@ -24,7 +24,7 @@
         >
           <div
             v-if="visible"
-            class="relative w-full bg-white dark:bg-brand-navy rounded-xl shadow-2xl overflow-hidden max-w-md flex flex-col"
+            class="relative w-full glass-card-light dark:glass-card rounded-xl shadow-2xl overflow-hidden max-w-md flex flex-col"
           >
             <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700 shrink-0">
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Configurar Condição</h3>

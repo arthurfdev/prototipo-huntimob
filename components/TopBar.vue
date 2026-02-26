@@ -1,12 +1,12 @@
 <template>
-  <div class="lg:hidden fixed top-16 left-0 right-0 h-14 bg-white dark:bg-brand-navy border-b border-gray-200 dark:border-brand-navy-dark z-30 flex items-center px-4">
+  <div class="lg:hidden fixed top-16 left-0 right-0 h-14 glass-nav border-b border-white/10 z-30 flex items-center px-4">
     <!-- Botão Hambúrguer -->
     <button 
       @click="openMenu" 
-      class="p-2 hover:bg-gray-100 dark:hover:bg-brand-navy-dark rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
+      class="p-2 hover:bg-white/10 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
       aria-label="Abrir menu"
     >
-      <Bars3Icon class="h-6 w-6 text-gray-600 dark:text-gray-100" />
+      <Bars3Icon class="h-5 w-5 text-gray-600 dark:text-gray-100 stroke-2" />
     </button>
     
     <!-- Título dinâmico -->

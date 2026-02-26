@@ -48,7 +48,7 @@
     <!-- Verificar se tem certificado configurado -->
     <div
       v-if="!configurado"
-      class="bg-white dark:bg-brand-navy rounded-xl shadow p-8 sm:p-12 text-center border border-gray-200 dark:border-gray-800"
+      class="glass-card-light dark:glass-card rounded-xl shadow p-8 sm:p-12 text-center"
     >
       <ShieldExclamationIcon class="w-16 h-16 mx-auto text-gray-400 dark:text-gray-600 mb-4" />
       <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
@@ -69,7 +69,7 @@
     <!-- Formulário de emissão -->
     <div
       v-else
-      class="bg-white dark:bg-brand-navy rounded-xl shadow p-6 border border-gray-200 dark:border-gray-800"
+      class="glass-card-light dark:glass-card rounded-xl shadow p-6"
     >
       <div class="text-center py-12">
         <DocumentTextIcon class="h-16 w-16 mx-auto text-gray-400 dark:text-gray-600 mb-4" />

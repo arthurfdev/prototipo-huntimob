@@ -25,7 +25,7 @@
       <div
         v-for="lead in leadsLivres"
         :key="lead.id"
-        class="bg-white dark:bg-brand-navy p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 hover:shadow-md transition-all cursor-pointer"
+        class="glass-card-light dark:glass-card p-6 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer"
         @click="selecionarLead(lead)"
       >
         <div class="flex justify-between items-start mb-4">
@@ -83,7 +83,7 @@
       @click="closeAtribuicaoModal"
     >
       <div
-        class="relative bg-white dark:bg-brand-navy p-6 rounded-xl shadow-xl border border-gray-200 dark:border-gray-800 w-full max-w-md"
+        class="relative glass-card-light dark:glass-card p-6 rounded-xl shadow-xl w-full max-w-md"
         @click.stop
       >
         <div class="mb-4">

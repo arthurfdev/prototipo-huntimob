@@ -6,7 +6,7 @@
     </div>
 
     <!-- Período de Análise -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-4 sm:p-5 mb-6 border border-gray-100 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-4 sm:p-5 mb-6">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Período de Análise</h3>
         <div class="flex gap-3">
@@ -34,23 +34,23 @@
 
     <!-- Cards de Resumo Principal -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
         <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Receita Bruta</p>
         <p class="text-xl font-bold text-gray-900 dark:text-white">{{ formatMoney(totais.receita_bruta) }}</p>
       </div>
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
         <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Comissões</p>
         <p class="text-xl font-bold text-red-600 dark:text-red-400">{{ formatMoney(totais.comissoes) }}</p>
       </div>
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
         <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Impostos</p>
         <p class="text-xl font-bold text-orange-600 dark:text-orange-400">{{ formatMoney(totais.impostos) }}</p>
       </div>
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
         <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Taxas de Cartão</p>
         <p class="text-xl font-bold text-amber-600 dark:text-amber-400">{{ formatMoney(totais.taxas_cartao) }}</p>
       </div>
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
         <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Valor Líquido</p>
         <p class="text-xl font-bold text-green-600 dark:text-green-400">{{ formatMoney(totais.valor_liquido) }}</p>
       </div>
@@ -59,10 +59,10 @@
     <!-- Grid de Cards de Acesso -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <!-- Contas a Receber -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-            <CurrencyDollarIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <CurrencyDollarIcon class="w-5 h-5 text-emerald-500 dark:text-emerald-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Contas a receber</h3>
@@ -71,10 +71,10 @@
       </div>
 
       <!-- Contas a Pagar -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-rose-600 rounded-lg flex items-center justify-center">
-            <BanknotesIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <BanknotesIcon class="w-5 h-5 text-red-500 dark:text-red-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Contas a pagar</h3>
@@ -83,10 +83,10 @@
       </div>
 
       <!-- Balanço -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-            <ChartBarIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <ChartBarIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Balanço</h3>
@@ -97,10 +97,10 @@
       </div>
 
       <!-- Categorias e Subcategorias -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg flex items-center justify-center">
-            <TagIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <TagIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Categorias e Subcategorias</h3>
@@ -109,10 +109,10 @@
       </div>
 
       <!-- Formas de Pagamento -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-            <CreditCardIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <CreditCardIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Formas de Pagamento</h3>
@@ -121,10 +121,10 @@
       </div>
 
       <!-- Bandeiras de Cartão -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-            <RectangleStackIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <RectangleStackIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Bandeiras de Cartão</h3>
@@ -133,10 +133,10 @@
       </div>
 
       <!-- Conta de Destino -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-            <ArrowRightCircleIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <ArrowRightCircleIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Conta de Destino</h3>
@@ -145,10 +145,10 @@
       </div>
 
       <!-- Bancos (contas) -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-            <BuildingOfficeIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <BuildingOfficeIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Bancos (contas)</h3>
@@ -157,10 +157,10 @@
       </div>
 
       <!-- Gastos Colaboradores -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg flex items-center justify-center">
-            <UserGroupIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <UserGroupIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Gastos Colaboradores</h3>
@@ -169,10 +169,10 @@
       </div>
 
       <!-- Planejamentos -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-            <ClipboardDocumentCheckIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <ClipboardDocumentCheckIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Planejamentos</h3>
@@ -181,10 +181,10 @@
       </div>
 
       <!-- Histórico de caixas -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-200 cursor-pointer group">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200 cursor-pointer group">
         <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
-            <ClockIcon class="w-5 h-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
+            <ClockIcon class="w-5 h-5 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
           </div>
         </div>
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Histórico de caixas</h3>

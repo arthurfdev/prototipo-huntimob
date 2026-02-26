@@ -18,7 +18,7 @@
 
         <!-- Modal Content -->
         <div
-          class="bg-white dark:bg-brand-navy relative w-full rounded-xl shadow-xl border border-gray-200 dark:border-gray-800 overflow-hidden"
+          class="glass-card-light dark:glass-card relative w-full rounded-xl shadow-xl overflow-hidden"
           :style="{ maxWidth: width }"
         >
           <!-- Header -->

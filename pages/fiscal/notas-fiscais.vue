@@ -44,7 +44,7 @@
     </header>
 
     <!-- Filtros -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <!-- Tipo -->
         <div class="space-y-2">
@@ -92,7 +92,7 @@
     </div>
 
     <!-- Loading -->
-    <div v-if="loading" class="bg-white dark:bg-brand-navy rounded-xl shadow p-12 text-center border border-gray-200 dark:border-gray-800">
+    <div v-if="loading" class="glass-card-light dark:glass-card rounded-xl shadow p-12 text-center">
       <div class="animate-spin h-8 w-8 border-2 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"></div>
       <p class="text-sm text-gray-500 dark:text-gray-400">Carregando notas...</p>
     </div>
@@ -100,7 +100,7 @@
     <!-- Lista vazia -->
     <div
       v-else-if="notas.length === 0"
-      class="bg-white dark:bg-brand-navy rounded-xl shadow p-12 text-center border border-gray-200 dark:border-gray-800"
+      class="glass-card-light dark:glass-card rounded-xl shadow p-12 text-center"
     >
       <DocumentTextIcon class="h-16 w-16 mx-auto text-gray-400 dark:text-gray-600 mb-4" />
       <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
@@ -156,7 +156,7 @@
         class="fixed inset-0 z-50 flex items-center justify-center p-4"
       >
         <div class="fixed inset-0 bg-black/50 dark:bg-black/75" @click="showCancelModal = false"></div>
-        <div class="relative bg-white dark:bg-brand-navy rounded-xl max-w-md w-full p-6 shadow-xl border border-gray-200 dark:border-gray-800">
+        <div class="relative glass-card-light dark:glass-card rounded-xl max-w-md w-full p-6 shadow-xl">
           <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
             Cancelar Nota Fiscal
           </h3>

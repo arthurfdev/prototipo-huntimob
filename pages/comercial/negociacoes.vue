@@ -15,7 +15,7 @@
     </div>
     
     <!-- Filtros -->
-    <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
         <!-- Tipo de Filtro -->
         <div>
@@ -81,7 +81,7 @@
     </div>
 
     <!-- Tabela de Vendas -->
-    <div class="bg-white dark:bg-brand-navy rounded-lg shadow overflow-hidden border border-gray-200 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden">
       <div v-if="loading" class="p-4">
         <div class="animate-pulse space-y-4">
           <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>

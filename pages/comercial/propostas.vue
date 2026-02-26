@@ -20,7 +20,7 @@
     </div>
 
     <!-- Filtros -->
-    <div v-if="!showForm" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-4 sm:p-6 mb-6 border border-gray-100 dark:border-gray-800">
+    <div v-if="!showForm" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <!-- Tipo de Filtro -->
         <div>

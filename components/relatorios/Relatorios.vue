@@ -42,7 +42,7 @@
       <div
         v-for="categoria in categoriasExibidas"
         :key="categoria.id"
-        class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800 transition duration-200 hover:shadow-md"
+        class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 transition duration-200 hover:shadow-md"
       >
         <div class="flex items-start gap-3 mb-4">
           <div class="p-2.5 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center flex-shrink-0">
@@ -79,7 +79,7 @@
     <!-- Estado vazio quando filtro não retorna nada -->
     <div
       v-if="categoriasExibidas.length === 0"
-      class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-12 text-center border border-gray-100 dark:border-gray-800"
+      class="glass-card-light dark:glass-card rounded-xl shadow-sm p-12 text-center"
     >
       <DocumentChartBarIcon class="h-12 w-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
       <p class="text-sm font-medium text-gray-500 dark:text-gray-400">

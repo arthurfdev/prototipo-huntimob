@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-brand-navy rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800/50 mb-6 overflow-hidden">
+  <div class="glass-card-light dark:glass-card rounded-2xl shadow-sm mb-6 overflow-hidden">
     <!-- Header sutil -->
     <div class="px-6 py-4 border-b border-gray-100 dark:border-gray-800/50 bg-gray-50/50 dark:bg-gray-900/30">
       <div>
@@ -35,14 +35,14 @@
       <!-- Loading state -->
       <div v-if="loading" class="text-center">
         <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-lg p-6 mb-4 border border-gray-200/50 dark:border-gray-800/50">
-          <div class="w-64 h-64 mx-auto bg-white dark:bg-brand-navy-dark p-6 rounded-lg shadow-sm border border-gray-200/50 dark:border-gray-800/50 mb-4 flex items-center justify-center">
+          <div class="w-64 h-64 mx-auto glass-card-light dark:glass-card p-6 rounded-lg shadow-sm mb-4 flex items-center justify-center">
             <div class="text-center">
               <div class="relative mb-6">
                 <div class="animate-spin rounded-full h-16 w-16 border-3 border-gray-200 dark:border-gray-700 mx-auto"></div>
                 <div class="absolute top-0 left-1/2 transform -translate-x-1/2 animate-spin rounded-full h-16 w-16 border-3 border-transparent border-t-blue-500 border-r-blue-600"></div>
                 <div class="absolute top-1.5 left-1/2 transform -translate-x-1/2 animate-pulse rounded-full h-12 w-12 bg-blue-500/20 border border-white dark:border-brand-navy"></div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                  <ChatBubbleLeftRightIcon class="w-3.5 h-3.5 text-white" />
+                <div class="icon-glass absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-lg flex items-center justify-center">
+                  <ChatBubbleLeftRightIcon class="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
                 </div>
               </div>
               <div class="space-y-3">
@@ -68,7 +68,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
             <!-- Instruções à esquerda -->
             <div class="order-2 lg:order-1">
-              <div class="bg-white dark:bg-brand-navy-dark rounded-lg p-4">
+              <div class="glass-card-light dark:glass-card rounded-lg p-4">
                 <h4 class="text-sm font-semibold text-gray-800 dark:text-white mb-4 text-center lg:text-left">Como conectar:</h4>
                 <div class="space-y-3">
                   <div class="flex items-center space-x-2.5">
@@ -95,7 +95,7 @@
             <div class="order-1 lg:order-2 flex justify-center">
               <div class="relative">
                 <div class="w-56 h-56 bg-gradient-to-br from-white to-blue-50 dark:from-brand-navy-dark dark:to-blue-900/20 p-1 rounded-lg shadow-sm flex items-center justify-center">
-                  <div class="bg-white dark:bg-brand-navy rounded-lg p-2">
+                  <div class="glass-card-light dark:glass-card rounded-lg p-2">
                     <img 
                       :src="qrCodeImageSrc"
                       alt="QR Code WhatsApp"
@@ -129,8 +129,8 @@
       <!-- Estado Conectado -->
       <div v-if="isConnected" class="text-center">
         <div class="bg-blue-50/50 dark:bg-blue-900/20 rounded-lg p-5 mb-4 shadow-sm border border-blue-200/50 dark:border-blue-800/30">
-          <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-sm">
-            <CheckCircleIcon class="w-6 h-6 text-white" />
+          <div class="icon-glass w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center shadow-sm">
+            <CheckCircleIcon class="w-6 h-6 text-emerald-500 dark:text-emerald-400 relative z-10 stroke-2" />
           </div>
           <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1.5">WhatsApp Conectado!</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">
@@ -138,7 +138,7 @@
             O assistente já pode atender seus clientes.
           </p>
           
-          <div class="bg-white dark:bg-brand-navy-dark rounded-lg p-3 mb-4">
+          <div class="glass-card-light dark:glass-card rounded-lg p-3 mb-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
               <div class="text-left">
                 <p class="text-gray-500 dark:text-gray-400 font-medium mb-0.5">Instância:</p>

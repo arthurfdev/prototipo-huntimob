@@ -39,7 +39,7 @@
       </div>
 
       <!-- Filtros -->
-      <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-brand-navy-dark">
+      <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buscar</label>
@@ -86,7 +86,7 @@
         <div 
           v-for="imovel in paginatedImoveis" 
           :key="imovel.id" 
-          class="bg-white dark:bg-brand-navy rounded-lg shadow border border-gray-200 dark:border-brand-navy-dark overflow-hidden hover:shadow-md cursor-pointer"
+          class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden hover:shadow-md cursor-pointer"
           @click="openEditImovel(imovel)"
         >
           <div class="h-48 bg-gray-200 dark:bg-brand-navy-dark overflow-hidden relative">
@@ -164,7 +164,7 @@
       </div>
 
       <!-- Filtros Captações Venda -->
-      <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-brand-navy-dark">
+      <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buscar</label>
@@ -197,7 +197,7 @@
         <div 
           v-for="captacao in paginatedCaptacoes" 
           :key="captacao.id" 
-          class="bg-white dark:bg-brand-navy rounded-lg shadow border border-gray-200 dark:border-brand-navy-dark overflow-hidden hover:shadow-md cursor-pointer"
+          class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden hover:shadow-md cursor-pointer"
           @click="openEditCaptacao(captacao)"
         >
           <div class="h-48 bg-gray-200 dark:bg-brand-navy-dark overflow-hidden relative">
@@ -271,7 +271,7 @@
       </div>
 
       <!-- Filtros Captações Aluguel -->
-      <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-brand-navy-dark">
+      <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buscar</label>
@@ -300,7 +300,7 @@
       </div>
 
       <!-- Grid de Captações Aluguel -->
-      <div v-if="paginatedCaptacoesAluguel.length === 0" class="bg-white dark:bg-brand-navy rounded-lg shadow p-12 border border-gray-200 dark:border-brand-navy-dark">
+      <div v-if="paginatedCaptacoesAluguel.length === 0" class="glass-card-light dark:glass-card rounded-lg shadow p-12">
         <div class="text-center">
           <BuildingOfficeIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhuma captação de aluguel encontrada</h3>
@@ -313,7 +313,7 @@
         <div 
           v-for="captacao in paginatedCaptacoesAluguel" 
           :key="captacao.id" 
-          class="bg-white dark:bg-brand-navy rounded-lg shadow border border-gray-200 dark:border-brand-navy-dark overflow-hidden hover:shadow-md cursor-pointer"
+          class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden hover:shadow-md cursor-pointer"
           @click="openEditCaptacao(captacao)"
         >
           <div class="h-48 bg-gray-200 dark:bg-brand-navy-dark overflow-hidden relative">

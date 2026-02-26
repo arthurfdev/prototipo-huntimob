@@ -6,11 +6,11 @@
     </div>
 
     <!-- Status da Integração -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-6">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6 mb-6">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <LinkIcon class="w-6 h-6 text-white" />
+          <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+            <LinkIcon class="w-6 h-6 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
           <div>
             <h2 class="text-lg font-bold text-gray-900 dark:text-white">ImobTech</h2>
@@ -86,57 +86,57 @@
     <div v-if="currentTab === 'atividades'" class="space-y-6">
       <!-- Estatísticas -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+        <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Colaboradores</p>
               <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">{{ estatisticas.colaboradores }}</p>
             </div>
-            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-              <UserGroupIcon class="w-6 h-6 text-white" />
+            <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+              <UserGroupIcon class="w-6 h-6 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
             </div>
           </div>
         </div>
 
-        <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+        <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Pagamentos</p>
               <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">{{ estatisticas.pagamentos }}</p>
             </div>
-            <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-              <BanknotesIcon class="w-6 h-6 text-white" />
+            <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+              <BanknotesIcon class="w-6 h-6 text-emerald-500 dark:text-emerald-400 relative z-10 stroke-2" />
             </div>
           </div>
         </div>
 
-        <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+        <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Este Mês</p>
               <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">{{ formatCurrency(estatisticas.totalMes) }}</p>
             </div>
-            <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
-              <CurrencyDollarIcon class="w-6 h-6 text-white" />
+            <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+              <CurrencyDollarIcon class="w-6 h-6 text-emerald-500 dark:text-emerald-400 relative z-10 stroke-2" />
             </div>
           </div>
         </div>
 
-        <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-800">
+        <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Pendentes</p>
               <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">{{ estatisticas.pendentes }}</p>
             </div>
-            <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <ClockIcon class="w-6 h-6 text-white" />
+            <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+              <ClockIcon class="w-6 h-6 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
             </div>
           </div>
         </div>
       </div>
 
       <!-- Atividades Recentes -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-lg font-bold text-gray-900 dark:text-white">Atividades Recentes</h2>
           <div class="flex items-center gap-3">
@@ -177,7 +177,7 @@
               class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
               :class="getAtividadeColorClass(atividade.tipo)"
             >
-              <component :is="getAtividadeIcon(atividade.tipo)" class="w-5 h-5 text-white" />
+              <component :is="getAtividadeIcon(atividade.tipo)" class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
             </div>
             
             <div class="flex-1 min-w-0">
@@ -249,7 +249,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Configuração -->
         <div class="lg:col-span-1">
-          <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 sticky top-6">
+          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6 sticky top-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Configuração da API</h2>
             
             <div class="space-y-5">
@@ -334,7 +334,7 @@
         <!-- Conteúdo Técnico -->
         <div class="lg:col-span-2 space-y-6">
           <!-- Sincronização Manual -->
-          <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
             <div class="flex items-center justify-between mb-4">
               <h2 class="text-lg font-bold text-gray-900 dark:text-white">Sincronização Manual</h2>
               <button
@@ -356,7 +356,7 @@
           </div>
 
           <!-- Histórico de Sincronizações -->
-          <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Histórico de Sincronizações</h2>
 
             <div v-if="historicoSincronizacoes.length === 0" class="text-center py-8">
@@ -407,7 +407,7 @@
           </div>
 
           <!-- Logs de Atividades -->
-          <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
             <div class="flex items-center justify-between mb-4">
               <h2 class="text-lg font-bold text-gray-900 dark:text-white">Logs Técnicos</h2>
               <button

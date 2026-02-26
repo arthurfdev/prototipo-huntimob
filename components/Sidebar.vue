@@ -6,18 +6,18 @@
       appStore.sidebarOpen ? 'translate-x-0' : '-translate-x-full',
       appStore.sidebarCollapsed ? 'w-16' : 'w-64'
     ]"
-    class="bg-white/70 dark:bg-slate-800/60 backdrop-blur-xl border-r border-gray-200/30 dark:border-slate-700/30"
+    class="glass-sidebar border-r border-white/10"
     style="top: 4rem; bottom: 0;"
   >
     <!-- Sidebar Header -->
-    <div class="flex items-center justify-between px-2 border-b border-gray-200/30 dark:border-slate-700/30" :class="appStore.sidebarCollapsed ? 'h-16' : 'h-auto py-3'">
+    <div class="flex items-center justify-between px-2 border-b border-white/10" :class="appStore.sidebarCollapsed ? 'h-16' : 'h-auto py-3'">
       <div v-if="appStore.sidebarCollapsed" class="flex items-center justify-center w-full">
         <button
           @click="appStore.toggleSidebarCollapse"
-          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+          class="p-2 rounded-lg hover:bg-white/10 transition-colors"
           title="Expandir sidebar"
         >
-          <ChevronRightIcon class="h-5 w-5 text-gray-600 dark:text-gray-100" />
+          <ChevronRightIcon class="h-5 w-5 text-gray-600 dark:text-gray-100 stroke-2" />
         </button>
       </div>
       
@@ -37,13 +37,13 @@
             <select
               v-model="filialSelecionada"
               @change="handleFilialChange"
-              class="w-full px-3 py-1.5 text-xs bg-white dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 appearance-none cursor-pointer"
+              class="w-full px-3 py-1.5 text-xs glass-card border border-white/20 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 appearance-none cursor-pointer"
             >
               <option v-for="filial in filiais" :key="filial.id" :value="filial.id">
                 {{ filial.nome }}
               </option>
             </select>
-            <ChevronDownIcon class="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 dark:text-slate-400 pointer-events-none" />
+            <ChevronDownIcon class="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 dark:text-slate-400 pointer-events-none stroke-2" />
           </div>
         </div>
         
@@ -52,17 +52,17 @@
           <!-- Collapse Button (Desktop) -->
           <button
             @click="appStore.toggleSidebarCollapse"
-            class="hidden lg:block p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+            class="hidden lg:block p-1.5 rounded-lg hover:bg-white/10 transition-colors"
           >
-            <ChevronLeftIcon class="h-5 w-5 text-gray-600 dark:text-slate-300" />
+            <ChevronLeftIcon class="h-5 w-5 text-gray-600 dark:text-slate-300 stroke-2" />
           </button>
           
           <!-- Close Button (Mobile) -->
           <button
             @click="closeSidebar"
-            class="lg:hidden p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+            class="lg:hidden p-1.5 rounded-lg hover:bg-white/10 transition-colors"
           >
-            <XMarkIcon class="h-5 w-5 text-gray-600 dark:text-slate-300" />
+            <XMarkIcon class="h-5 w-5 text-gray-600 dark:text-slate-300 stroke-2" />
           </button>
         </div>
       </template>
@@ -80,11 +80,11 @@
             'flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200',
             appStore.sidebarCollapsed ? 'justify-center' : '',
             $route.path === item.route
-              ? 'bg-emerald-500/20 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
-              : 'text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700'
+              ? 'bg-emerald-500/20 text-emerald-400'
+              : 'text-gray-700 dark:text-slate-300 hover:bg-white/10'
           ]"
         >
-          <component :is="item.icon" class="h-5 w-5 flex-shrink-0" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
+          <component :is="item.icon" class="h-5 w-5 flex-shrink-0 stroke-2" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
           <span v-if="!appStore.sidebarCollapsed">{{ item.label }}</span>
         </NuxtLink>
 
@@ -98,18 +98,18 @@
                 :class="[
                   'w-full flex items-center justify-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200',
                   isSubmenuActive(item)
-                    ? 'bg-blue-50 dark:bg-brand-gold/20 text-blue-700 dark:text-brand-gold'
-                    : 'text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-brand-navy-dark'
+                    ? 'bg-emerald-500/20 text-emerald-400'
+                    : 'text-gray-700 dark:text-gray-100 hover:bg-white/10'
                 ]"
                 :title="item.label"
               >
-                <component :is="item.icon" class="h-5 w-5 flex-shrink-0" />
+                <component :is="item.icon" class="h-5 w-5 flex-shrink-0 stroke-2" />
               </button>
               
               <!-- Submenu flutuante quando minimizado -->
               <div 
                 v-if="expandedMenus.includes(item.id)"
-                class="absolute left-full top-0 ml-2 w-48 bg-white dark:bg-brand-navy rounded-lg shadow-xl border border-gray-200 dark:border-brand-navy-dark py-1 z-[9999]"
+                class="absolute left-full top-0 ml-2 w-48 glass-card rounded-lg shadow-xl border border-white/20 py-1 z-[9999]"
                 @click.stop
               >
                 <NuxtLink
@@ -120,11 +120,11 @@
                   :class="[
                     'flex items-center px-4 py-2 text-sm font-medium transition-all duration-200',
                 isSubmenuItemActive(subItem)
-                    ? 'bg-emerald-500/20 dark:bg-emerald-500/20 text-emerald-400 dark:text-emerald-400'
-                    : 'text-slate-300 dark:text-slate-300 hover:bg-slate-700 dark:hover:bg-slate-700'
+                    ? 'bg-emerald-500/20 text-emerald-400'
+                    : 'text-slate-300 hover:bg-white/10'
                   ]"
                 >
-                  <component :is="subItem.icon" class="h-4 w-4 flex-shrink-0 mr-3" />
+                  <component :is="subItem.icon" class="h-4 w-4 flex-shrink-0 mr-3 stroke-2" />
                   <span>{{ subItem.label }}</span>
                 </NuxtLink>
               </div>
@@ -138,17 +138,17 @@
               :class="[
                 'w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 justify-between',
                 isSubmenuActive(item)
-                  ? 'bg-emerald-500/20 dark:bg-emerald-500/20 text-emerald-400 dark:text-emerald-400'
-                  : 'text-slate-300 dark:text-slate-300 hover:bg-slate-700 dark:hover:bg-slate-700'
+                  ? 'bg-emerald-500/20 text-emerald-400'
+                  : 'text-slate-300 hover:bg-white/10'
               ]"
             >
               <div class="flex items-center">
-                <component :is="item.icon" class="h-5 w-5 flex-shrink-0 mr-3" />
+                <component :is="item.icon" class="h-5 w-5 flex-shrink-0 mr-3 stroke-2" />
                 <span>{{ item.label }}</span>
               </div>
               <ChevronDownIcon 
                 :class="[
-                  'h-4 w-4 transition-transform duration-200',
+                  'h-4 w-4 transition-transform duration-200 stroke-2',
                   expandedMenus.includes(item.id) ? 'rotate-180' : ''
                 ]"
               />
@@ -157,18 +157,18 @@
             <!-- Submenu -->
             <div 
               v-if="expandedMenus.includes(item.id)"
-              class="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 dark:border-brand-navy-dark pl-2"
+              class="ml-4 mt-1 space-y-1 border-l-2 border-white/20 pl-2"
             >
               <NuxtLink
                 v-for="subItem in item.subItems"
                 :key="subItem.id"
                 :to="subItem.route"
                 @click="closeSidebar"
-                :class="[
+                  :class="[
                   'flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200',
                   isSubmenuItemActive(subItem)
-                  ? 'bg-emerald-500/20 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
-                  : 'text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-gray-900 dark:hover:text-slate-200'
+                  ? 'bg-emerald-500/20 text-emerald-400'
+                  : 'text-gray-600 dark:text-slate-400 hover:bg-white/10 hover:text-white'
                 ]"
               >
                 <component :is="subItem.icon" class="h-4 w-4 flex-shrink-0 mr-3" />
@@ -181,17 +181,17 @@
     </nav>
 
     <!-- Sidebar Footer -->
-    <div class="p-4 border-t border-gray-200/30 dark:border-slate-700/30 space-y-2">
+    <div class="p-4 border-t border-white/10 space-y-2">
       <!-- Theme Toggle -->
       <button
         @click="toggleTheme"
         :class="[
-          'w-full flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-colors',
+          'w-full flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-slate-300 hover:bg-white/10 rounded-lg transition-colors',
           appStore.sidebarCollapsed ? 'justify-center' : ''
         ]"
       >
-        <MoonIcon v-if="appStore.isDarkMode" class="h-5 w-5 flex-shrink-0" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
-        <SunIcon v-else class="h-5 w-5 flex-shrink-0" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
+        <MoonIcon v-if="appStore.isDarkMode" class="h-5 w-5 flex-shrink-0 stroke-2" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
+        <SunIcon v-else class="h-5 w-5 flex-shrink-0 stroke-2" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
         <span v-if="!appStore.sidebarCollapsed">{{ appStore.isDarkMode ? 'Modo Escuro' : 'Modo Claro' }}</span>
       </button>
       
@@ -199,11 +199,11 @@
       <button
         @click="handleLogout"
         :class="[
-          'w-full flex items-center px-3 py-2 text-sm font-medium text-red-400 dark:text-red-400 hover:bg-red-500/20 dark:hover:bg-red-500/20 rounded-lg transition-colors',
+          'w-full flex items-center px-3 py-2 text-sm font-medium text-red-400 hover:bg-red-500/20 rounded-lg transition-colors',
           appStore.sidebarCollapsed ? 'justify-center' : ''
         ]"
       >
-        <ArrowLeftEndOnRectangleIcon class="h-5 w-5 flex-shrink-0" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
+        <ArrowLeftEndOnRectangleIcon class="h-5 w-5 flex-shrink-0 stroke-2" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
         <span v-if="!appStore.sidebarCollapsed">Sair</span>
       </button>
     </div>
@@ -213,7 +213,7 @@
   <div 
     v-if="appStore.sidebarOpen" 
     @click="closeSidebar"
-    class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+    class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 lg:hidden"
   ></div>
 </template>
 

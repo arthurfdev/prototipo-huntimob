@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-brand-navy w-full rounded-xl shadow-lg border border-gray-200 dark:border-gray-800">
+  <div class="glass-card-light dark:glass-card w-full rounded-xl shadow-lg">
     <div class="p-6">
       <!-- Botão Voltar -->
       <div class="flex justify-between items-center mb-4">

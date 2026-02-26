@@ -6,7 +6,7 @@
     </div>
 
     <!-- Configuração de Distribuição -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 mb-6 border border-gray-100 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6 mb-6">
       <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Método de Distribuição</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <button
@@ -65,7 +65,7 @@
     </div>
 
     <!-- Lista de Colaboradores -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
       <div class="flex items-center justify-between mb-6">
         <div>
           <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Colaboradores</h2>
@@ -121,7 +121,7 @@
               <div class="flex items-center gap-3">
                 <div
                   v-if="colaborador.ordem"
-                  class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0 text-white font-bold text-sm"
+                  class="icon-glass w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-cyan-500 dark:text-cyan-400 font-bold text-sm relative z-10 stroke-2"
                 >
                   {{ colaborador.ordem }}
                 </div>
@@ -131,7 +131,7 @@
                 >
                   <span class="text-gray-400 dark:text-gray-500 text-xs">—</span>
                 </div>
-                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                   <span class="text-white font-semibold text-lg">
                     {{ colaborador.nome ? colaborador.nome.charAt(0).toUpperCase() : '?' }}
                   </span>

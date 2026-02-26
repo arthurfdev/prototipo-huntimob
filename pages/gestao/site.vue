@@ -26,7 +26,7 @@
     </div>
 
     <!-- Hero Section Editor -->
-    <div v-if="activeTab === 'hero'" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+    <div v-if="activeTab === 'hero'" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
       <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Seção Hero (Principal)</h2>
       <div class="space-y-4">
         <div>
@@ -72,7 +72,7 @@
     </div>
 
     <!-- Search Section Editor -->
-    <div v-if="activeTab === 'search'" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+    <div v-if="activeTab === 'search'" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
       <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Seção de Busca</h2>
       <div class="space-y-4">
         <div>
@@ -103,7 +103,7 @@
     </div>
 
     <!-- Featured Properties Editor -->
-    <div v-if="activeTab === 'properties'" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+    <div v-if="activeTab === 'properties'" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white">Imóveis em Destaque</h2>
         <button
@@ -189,7 +189,7 @@
     </div>
 
     <!-- Services Editor -->
-    <div v-if="activeTab === 'services'" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+    <div v-if="activeTab === 'services'" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white">Serviços Exclusivos</h2>
         <button
@@ -265,7 +265,7 @@
     </div>
 
     <!-- Footer Editor -->
-    <div v-if="activeTab === 'footer'" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800">
+    <div v-if="activeTab === 'footer'" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
       <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Rodapé</h2>
       <div class="space-y-4">
         <div>
