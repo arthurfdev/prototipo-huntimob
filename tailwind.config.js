@@ -36,11 +36,13 @@ export default {
           800: '#075985',
           900: '#0c4a6e',
         },
-        // Cores personalizadas do HuntImob
+        // Cores personalizadas do HuntImob - Estilo Beet Money
         brand: {
-          'navy-dark': '#061124',  // Azul escuro
-          'navy': '#091c3d',       // Azul médio
-          'gold': '#C3A54E',       // Dourado
+          'navy-dark': '#0f172a',  // Azul escuro estilo Beet Money
+          'navy': '#1e293b',       // Azul médio estilo Beet Money
+          'navy-light': '#334155',  // Azul claro para elementos
+          'gold': '#10b981',       // Verde-azulado para acentos (estilo Beet Money)
+          'accent': '#06b6d4',     // Ciano para elementos interativos
         },
         // Cores da Landing Page Beet Money
         beet: {

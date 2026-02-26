@@ -1,5 +1,9 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-brand-navy-dark transition-colors duration-300 overflow-x-hidden">
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300 overflow-x-hidden relative">
+    <!-- Background pattern para efeito glassmorphism -->
+    <div class="fixed inset-0 opacity-30 dark:opacity-20 pointer-events-none">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
     <!-- Header -->
     <Header />
     
@@ -20,7 +24,7 @@
       }"
     >
       <!-- Page Content -->
-      <main class="h-screen bg-gray-50 dark:bg-brand-navy-dark overflow-y-auto overflow-x-hidden flex-1 min-w-0 transition-all duration-300" style="max-width: 100%;">
+      <main class="h-screen overflow-y-auto overflow-x-hidden flex-1 min-w-0 transition-all duration-300 relative" style="max-width: 100%;">
         <div class="w-full h-full flex flex-col px-4 sm:px-6 lg:px-8 pt-20 lg:pt-20 pb-6">
           <slot />
         </div>

@@ -1,7 +1,7 @@
 <template>
   <header 
     :class="[
-      'fixed top-0 left-0 h-16 bg-white dark:bg-brand-navy border-b border-gray-200 dark:border-gray-800 transition-all duration-300',
+      'fixed top-0 left-0 h-16 bg-white/70 dark:bg-slate-800/60 backdrop-blur-xl border-b border-gray-200/30 dark:border-slate-700/30 transition-all duration-300',
       'lg:right-0',
       activitiesStore.isOpen ? 'lg:right-80 xl:right-96' : ''
     ]"
@@ -29,7 +29,7 @@
         <!-- Ícone de Notificações -->
         <button
           @click="activitiesStore.toggleFeed"
-          class="relative p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-brand-navy-dark rounded-lg transition-colors"
+          class="relative p-2 text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
           title="Atividades"
         >
           <BellIcon class="h-6 w-6" />
@@ -44,7 +44,7 @@
 
         <!-- Foto de Perfil do Usuário -->
         <button
-          class="relative flex items-center justify-center w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all hover:ring-2 hover:ring-blue-300 dark:hover:ring-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="relative flex items-center justify-center w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 transition-all hover:ring-2 hover:ring-emerald-400/50 dark:hover:ring-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
           title="Perfil"
         >
           <img

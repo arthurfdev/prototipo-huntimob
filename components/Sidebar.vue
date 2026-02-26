@@ -6,15 +6,15 @@
       appStore.sidebarOpen ? 'translate-x-0' : '-translate-x-full',
       appStore.sidebarCollapsed ? 'w-16' : 'w-64'
     ]"
-    class="bg-white dark:bg-brand-navy border-r border-gray-200 dark:border-brand-navy"
+    class="bg-white/70 dark:bg-slate-800/60 backdrop-blur-xl border-r border-gray-200/30 dark:border-slate-700/30"
     style="top: 4rem; bottom: 0;"
   >
     <!-- Sidebar Header -->
-    <div class="flex items-center justify-between px-2 border-b border-gray-200 dark:border-brand-navy-dark" :class="appStore.sidebarCollapsed ? 'h-16' : 'h-auto py-3'">
+    <div class="flex items-center justify-between px-2 border-b border-gray-200/30 dark:border-slate-700/30" :class="appStore.sidebarCollapsed ? 'h-16' : 'h-auto py-3'">
       <div v-if="appStore.sidebarCollapsed" class="flex items-center justify-center w-full">
         <button
           @click="appStore.toggleSidebarCollapse"
-          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-brand-navy-dark transition-colors"
+          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
           title="Expandir sidebar"
         >
           <ChevronRightIcon class="h-5 w-5 text-gray-600 dark:text-gray-100" />
@@ -37,13 +37,13 @@
             <select
               v-model="filialSelecionada"
               @change="handleFilialChange"
-              class="w-full px-3 py-1.5 text-xs bg-white dark:bg-brand-navy-dark border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none cursor-pointer"
+              class="w-full px-3 py-1.5 text-xs bg-white dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 appearance-none cursor-pointer"
             >
               <option v-for="filial in filiais" :key="filial.id" :value="filial.id">
                 {{ filial.nome }}
               </option>
             </select>
-            <ChevronDownIcon class="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 pointer-events-none" />
+            <ChevronDownIcon class="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 dark:text-slate-400 pointer-events-none" />
           </div>
         </div>
         
@@ -52,17 +52,17 @@
           <!-- Collapse Button (Desktop) -->
           <button
             @click="appStore.toggleSidebarCollapse"
-            class="hidden lg:block p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-brand-navy-dark transition-colors"
+            class="hidden lg:block p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
           >
-            <ChevronLeftIcon class="h-5 w-5 text-gray-600 dark:text-gray-100" />
+            <ChevronLeftIcon class="h-5 w-5 text-gray-600 dark:text-slate-300" />
           </button>
           
           <!-- Close Button (Mobile) -->
           <button
             @click="closeSidebar"
-            class="lg:hidden p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-brand-navy-dark transition-colors"
+            class="lg:hidden p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
           >
-            <XMarkIcon class="h-5 w-5 text-gray-600 dark:text-gray-100" />
+            <XMarkIcon class="h-5 w-5 text-gray-600 dark:text-slate-300" />
           </button>
         </div>
       </template>
@@ -80,8 +80,8 @@
             'flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200',
             appStore.sidebarCollapsed ? 'justify-center' : '',
             $route.path === item.route
-              ? 'bg-blue-50 dark:bg-brand-gold/20 text-blue-700 dark:text-brand-gold'
-              : 'text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-brand-navy-dark'
+              ? 'bg-emerald-500/20 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
+              : 'text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700'
           ]"
         >
           <component :is="item.icon" class="h-5 w-5 flex-shrink-0" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
@@ -119,9 +119,9 @@
                   @click="closeSidebar; expandedMenus = expandedMenus.filter(id => id !== item.id)"
                   :class="[
                     'flex items-center px-4 py-2 text-sm font-medium transition-all duration-200',
-                    isSubmenuItemActive(subItem)
-                      ? 'bg-blue-50 dark:bg-brand-gold/20 text-blue-700 dark:text-brand-gold'
-                      : 'text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-brand-navy-dark'
+                isSubmenuItemActive(subItem)
+                    ? 'bg-emerald-500/20 dark:bg-emerald-500/20 text-emerald-400 dark:text-emerald-400'
+                    : 'text-slate-300 dark:text-slate-300 hover:bg-slate-700 dark:hover:bg-slate-700'
                   ]"
                 >
                   <component :is="subItem.icon" class="h-4 w-4 flex-shrink-0 mr-3" />
@@ -138,8 +138,8 @@
               :class="[
                 'w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 justify-between',
                 isSubmenuActive(item)
-                  ? 'bg-blue-50 dark:bg-brand-gold/20 text-blue-700 dark:text-brand-gold'
-                  : 'text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-brand-navy-dark'
+                  ? 'bg-emerald-500/20 dark:bg-emerald-500/20 text-emerald-400 dark:text-emerald-400'
+                  : 'text-slate-300 dark:text-slate-300 hover:bg-slate-700 dark:hover:bg-slate-700'
               ]"
             >
               <div class="flex items-center">
@@ -167,8 +167,8 @@
                 :class="[
                   'flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200',
                   isSubmenuItemActive(subItem)
-                    ? 'bg-blue-50 dark:bg-brand-gold/20 text-blue-700 dark:text-brand-gold'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-brand-navy-dark hover:text-gray-900 dark:hover:text-white'
+                  ? 'bg-emerald-500/20 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400'
+                  : 'text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-gray-900 dark:hover:text-slate-200'
                 ]"
               >
                 <component :is="subItem.icon" class="h-4 w-4 flex-shrink-0 mr-3" />
@@ -181,12 +181,12 @@
     </nav>
 
     <!-- Sidebar Footer -->
-    <div class="p-4 border-t border-gray-200 dark:border-brand-navy-dark space-y-2">
+    <div class="p-4 border-t border-gray-200/30 dark:border-slate-700/30 space-y-2">
       <!-- Theme Toggle -->
       <button
         @click="toggleTheme"
         :class="[
-          'w-full flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-brand-navy-dark rounded-lg transition-colors',
+          'w-full flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-colors',
           appStore.sidebarCollapsed ? 'justify-center' : ''
         ]"
       >
@@ -199,7 +199,7 @@
       <button
         @click="handleLogout"
         :class="[
-          'w-full flex items-center px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors',
+          'w-full flex items-center px-3 py-2 text-sm font-medium text-red-400 dark:text-red-400 hover:bg-red-500/20 dark:hover:bg-red-500/20 rounded-lg transition-colors',
           appStore.sidebarCollapsed ? 'justify-center' : ''
         ]"
       >
