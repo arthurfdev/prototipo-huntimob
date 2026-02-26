@@ -1,14 +1,14 @@
 <template>
   <div class="w-full max-w-full overflow-x-hidden">
     <!-- Header com saudação -->
-    <div class="mb-8">
+    <div class="mb-6">
       <div class="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-            Bem-vindo de volta! 👋
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+            Bem-vindo de volta!
           </h1>
-          <p class="text-gray-600 dark:text-gray-400 text-lg">
-            Aqui está um resumo do que está acontecendo hoje
+          <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+            Aqui está um resumo do que está acontecendo hoje.
           </p>
         </div>
         <div class="flex items-center space-x-3">
