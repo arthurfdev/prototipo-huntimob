@@ -125,23 +125,6 @@
     </div>
   </div>
 
-  <!-- Toggle Button (quando fechado) -->
-  <button
-    v-if="!activitiesStore.isOpen"
-    @click="activitiesStore.setFeedOpen(true)"
-    class="fixed right-4 bottom-4 p-4 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full shadow-lg transition-all hover:scale-110 hover:shadow-xl"
-    style="z-index: 9999 !important;"
-    title="Abrir atividades"
-  >
-    <BellIcon class="h-6 w-6" />
-    <span 
-      v-if="activitiesStore.unreadCount > 0"
-      class="absolute -top-1 -right-1 flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-bold text-white bg-gradient-to-r from-red-500 to-red-600 rounded-full shadow-md"
-    >
-      {{ activitiesStore.unreadCount > 9 ? '9+' : activitiesStore.unreadCount }}
-    </span>
-  </button>
-
   <!-- Activity Feed Mobile (usando Teleport para garantir z-index correto) -->
   <Teleport to="body">
     <div 

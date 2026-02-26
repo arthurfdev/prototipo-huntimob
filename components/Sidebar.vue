@@ -247,6 +247,7 @@ import {
   RectangleStackIcon,
   ShieldCheckIcon,
   DocumentChartBarIcon,
+  GlobeAltIcon,
   // Imóveis
   BuildingOfficeIcon,
   HomeModernIcon,
@@ -370,7 +371,8 @@ const menuItems = computed(() => {
         { id: 'contratos', label: 'Contratos', route: '/alugueis/contratos', icon: DocumentDuplicateIcon }
       ]
     },
-    { id: 'rankings', label: 'Rankings', route: '/rankings', icon: TrophyIcon }
+    { id: 'rankings', label: 'Rankings', route: '/rankings', icon: TrophyIcon },
+    { id: 'site', label: 'Site', route: '/gestao/site', icon: GlobeAltIcon }
   ]
 })
 
