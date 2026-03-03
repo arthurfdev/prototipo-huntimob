@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full max-w-full overflow-x-hidden">
+  <div class="w-full">
     <div class="mb-6">
       <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Pagadoria</h1>
       <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Integração com ImobTech para gestão de folha de pagamento</p>
     </div>
 
     <!-- Status da Integração -->
-    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6 mb-6">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6 mb-6">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-3">
           <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div v-if="integracaoConectada" class="mt-4 p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg border border-indigo-200 dark:border-indigo-800">
+      <div v-if="integracaoConectada" class="mt-4 p-4 glass-card-light dark:glass-card rounded-lg border border-white/10">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <p class="text-xs text-indigo-700 dark:text-indigo-400 mb-1">Última Sincronização</p>
@@ -63,7 +63,7 @@
     </div>
 
     <!-- Tabs -->
-    <div class="border-b border-gray-200 dark:border-gray-800 mb-6">
+    <div class="border-b border-white/10 mb-6">
       <nav class="-mb-px flex space-x-8">
         <button
           v-for="tab in tabs"
@@ -71,12 +71,12 @@
           @click="currentTab = tab.id"
           :class="[
             currentTab === tab.id
-              ? 'border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-400'
-              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300',
+              ? 'border-cyan-500 text-cyan-600 dark:text-cyan-400 dark:border-cyan-400'
+              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-white/20',
             'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors'
           ]"
         >
-          <component :is="tab.icon" class="w-4 h-4 inline-block mr-2" />
+          <component :is="tab.icon" class="w-4 h-4 inline-block mr-2 stroke-2" />
           {{ tab.name }}
         </button>
       </nav>
@@ -86,7 +86,7 @@
     <div v-if="currentTab === 'atividades'" class="space-y-6">
       <!-- Estatísticas -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
+        <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Colaboradores</p>
@@ -98,7 +98,7 @@
           </div>
         </div>
 
-        <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
+        <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Pagamentos</p>
@@ -110,7 +110,7 @@
           </div>
         </div>
 
-        <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
+        <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Este Mês</p>
@@ -122,7 +122,7 @@
           </div>
         </div>
 
-        <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5">
+        <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Pendentes</p>
@@ -136,7 +136,7 @@
       </div>
 
       <!-- Atividades Recentes -->
-      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
+      <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6">
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-lg font-bold text-gray-900 dark:text-white">Atividades Recentes</h2>
           <div class="flex items-center gap-3">
@@ -144,11 +144,11 @@
               v-model="filtroAtividades"
               type="text"
               placeholder="Buscar atividade..."
-              class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white text-sm"
+              class="px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white text-sm"
             />
             <select
               v-model="filtroTipoAtividade"
-              class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white text-sm"
+              class="px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white text-sm"
             >
               <option value="">Todos os tipos</option>
               <option value="pagamento">Pagamento</option>
@@ -160,7 +160,7 @@
         </div>
 
         <div v-if="atividadesFiltradas.length === 0" class="text-center py-12">
-          <DocumentTextIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
+          <DocumentTextIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4 stroke-2" />
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhuma atividade encontrada</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             As atividades da pagadoria aparecerão aqui
@@ -171,12 +171,9 @@
           <div
             v-for="atividade in atividadesFiltradas"
             :key="atividade.id"
-            class="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
+            class="flex items-start gap-4 p-4 glass-card-light dark:glass-card rounded-lg border border-white/10 hover:shadow-md transition-shadow"
           >
-            <div 
-              class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-              :class="getAtividadeColorClass(atividade.tipo)"
-            >
+            <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
               <component :is="getAtividadeIcon(atividade.tipo)" class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
             </div>
             
@@ -191,11 +188,11 @@
                   </p>
                   <div class="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
                     <span class="flex items-center gap-1">
-                      <ClockIcon class="w-4 h-4" />
+                      <ClockIcon class="w-4 h-4 stroke-2" />
                       {{ formatDateTime(atividade.data) }}
                     </span>
                     <span v-if="atividade.colaborador" class="flex items-center gap-1">
-                      <UserIcon class="w-4 h-4" />
+                      <UserIcon class="w-4 h-4 stroke-2" />
                       {{ atividade.colaborador }}
                     </span>
                   </div>
@@ -225,7 +222,7 @@
             <button
               @click="paginaAtual = Math.max(1, paginaAtual - 1)"
               :disabled="paginaAtual === 1"
-              class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800"
+              class="px-3 py-1.5 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
             >
               Anterior
             </button>
@@ -235,7 +232,7 @@
             <button
               @click="paginaAtual = Math.min(totalPaginas, paginaAtual + 1)"
               :disabled="paginaAtual === totalPaginas"
-              class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800"
+              class="px-3 py-1.5 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
             >
               Próxima
             </button>
@@ -249,7 +246,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Configuração -->
         <div class="lg:col-span-1">
-          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6 sticky top-6">
+          <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6 sticky top-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Configuração da API</h2>
             
             <div class="space-y-5">
@@ -261,7 +258,7 @@
                   v-model="configuracao.apiUrl"
                   type="url"
                   placeholder="https://api.imobtech.com.br"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                   :disabled="integracaoConectada"
                 />
               </div>
@@ -297,7 +294,7 @@
                   v-model="configuracao.clientId"
                   type="text"
                   placeholder="Client ID"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                   :disabled="integracaoConectada"
                 />
               </div>
@@ -308,7 +305,7 @@
                 </label>
                 <select
                   v-model="configuracao.frequencia"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                   :disabled="integracaoConectada"
                 >
                   <option value="manual">Manual</option>
@@ -334,7 +331,7 @@
         <!-- Conteúdo Técnico -->
         <div class="lg:col-span-2 space-y-6">
           <!-- Sincronização Manual -->
-          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
+          <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6">
             <div class="flex items-center justify-between mb-4">
               <h2 class="text-lg font-bold text-gray-900 dark:text-white">Sincronização Manual</h2>
               <button
@@ -356,7 +353,7 @@
           </div>
 
           <!-- Histórico de Sincronizações -->
-          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
+          <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Histórico de Sincronizações</h2>
 
             <div v-if="historicoSincronizacoes.length === 0" class="text-center py-8">
@@ -370,7 +367,7 @@
               <div
                 v-for="sync in historicoSincronizacoes"
                 :key="sync.id"
-                class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700"
+                class="flex items-center justify-between p-4 glass-card-light dark:glass-card rounded-lg border border-white/10"
               >
                 <div class="flex items-center gap-4">
                   <div 
@@ -407,7 +404,7 @@
           </div>
 
           <!-- Logs de Atividades -->
-          <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
+          <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6">
             <div class="flex items-center justify-between mb-4">
               <h2 class="text-lg font-bold text-gray-900 dark:text-white">Logs Técnicos</h2>
               <button
@@ -422,7 +419,7 @@
               <div
                 v-for="(log, index) in logs"
                 :key="index"
-                class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700"
+                class="flex items-start gap-3 p-3 glass-card-light dark:glass-card rounded-lg border border-white/10"
               >
                 <div 
                   class="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"

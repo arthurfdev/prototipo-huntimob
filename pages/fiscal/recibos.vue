@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full max-w-full overflow-x-hidden">
+  <div class="w-full">
     <div class="mb-6">
       <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Recibos</h1>
       <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Visualize e gerencie os recibos de comissão recebidos</p>
     </div>
 
     <!-- Filtros -->
-    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-4 sm:p-6 mb-6">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div>
           <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Buscar</label>
@@ -14,14 +14,14 @@
             v-model="filters.search"
             type="text"
             placeholder="Número, descrição..."
-            class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           />
         </div>
         <div>
           <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Período</label>
           <select
             v-model="filters.periodo"
-            class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="">Todos</option>
             <option value="hoje">Hoje</option>
@@ -36,7 +36,7 @@
           <input
             v-model="filters.dataInicial"
             type="date"
-            class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           />
         </div>
         <div>
@@ -44,7 +44,7 @@
           <input
             v-model="filters.dataFinal"
             type="date"
-            class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           />
         </div>
       </div>
@@ -56,9 +56,9 @@
     </div>
 
     <!-- Estado Vazio -->
-    <div v-else-if="recibosFiltrados.length === 0" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-12">
+    <div v-else-if="recibosFiltrados.length === 0" class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-12">
       <div class="text-center">
-        <ReceiptRefundIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
+        <ReceiptRefundIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4 stroke-2" />
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhum recibo encontrado</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400">
           Os recibos aparecerão aqui quando você receber comissões pagas.
@@ -70,7 +70,7 @@
       <div
         v-for="recibo in recibosPaginados"
         :key="recibo.id"
-        class="glass-card-light dark:glass-card rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+        class="glass-card-light dark:glass-card rounded-lg border border-white/10 hover:shadow-md transition-all duration-200"
       >
         <div class="p-4 sm:p-6">
           <div class="flex items-start justify-between gap-4">
@@ -125,17 +125,17 @@
             <div class="flex items-center gap-2 flex-shrink-0">
               <button
                 @click="visualizarRecibo(recibo)"
-                class="p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
                 title="Visualizar"
               >
-                <EyeIcon class="w-5 h-5" />
+                <EyeIcon class="w-4 h-4 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
               </button>
               <button
                 @click="baixarRecibo(recibo)"
-                class="p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
                 title="Baixar PDF"
               >
-                <ArrowDownTrayIcon class="w-5 h-5" />
+                <ArrowDownTrayIcon class="w-4 h-4 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
               </button>
             </div>
           </div>
@@ -146,7 +146,7 @@
     <!-- Paginação -->
     <div
       v-if="recibosFiltrados.length > 0"
-      class="flex items-center justify-between mt-6 pt-4 border-t border-gray-200 dark:border-gray-800"
+      class="flex items-center justify-between mt-6 pt-4 border-t border-white/10"
     >
       <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">
         Mostrando {{ recibosFiltrados.length > 0 ? Math.min((pagina - 1) * itensPorPagina + 1, recibosFiltrados.length) : 0 }} - {{ Math.min(pagina * itensPorPagina, recibosFiltrados.length) }} de {{ recibosFiltrados.length }} recibo{{ recibosFiltrados.length !== 1 ? 's' : '' }}
@@ -155,14 +155,14 @@
         <button
           @click="pagina = Math.max(1, pagina - 1)"
           :disabled="pagina <= 1"
-          class="px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          class="px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 glass-card-light dark:glass-card border border-white/10 rounded-md hover:bg-white/10 dark:hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
           Anterior
         </button>
         <button
           @click="pagina = Math.min(totalPaginas, pagina + 1)"
           :disabled="pagina >= totalPaginas"
-          class="px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          class="px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 glass-card-light dark:glass-card border border-white/10 rounded-md hover:bg-white/10 dark:hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
           Próxima
         </button>
@@ -176,7 +176,7 @@
       @click="showModal = false"
     >
       <div
-        class="relative glass-card-light dark:glass-card rounded-xl shadow-xl w-full max-w-4xl"
+        class="relative glass-card-light dark:glass-card rounded-xl border border-white/10 shadow-xl w-full max-w-4xl"
         @click.stop
       >
         <div class="p-6">
@@ -186,7 +186,7 @@
             </h3>
             <button
               @click="showModal = false"
-              class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
             >
               <XMarkIcon class="w-5 h-5" />
             </button>
@@ -222,7 +222,7 @@
             </div>
 
             <!-- Informações da Comissão -->
-            <div v-if="reciboSelecionado.comissao_nome" class="border-t border-gray-200 dark:border-gray-800 pt-4">
+            <div v-if="reciboSelecionado.comissao_nome" class="border-t border-white/10 pt-4">
               <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Informações da Comissão</p>
               <div class="grid grid-cols-2 gap-4">
                 <div>
@@ -237,7 +237,7 @@
             </div>
 
             <!-- Ações -->
-            <div class="flex justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex justify-end gap-3 pt-4 border-t border-white/10">
               <button
                 @click="baixarRecibo(reciboSelecionado)"
                 class="btn-gradient px-4 py-2 flex items-center gap-2 text-sm font-semibold"

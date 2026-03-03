@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full max-w-full overflow-x-hidden">
+  <div class="w-full">
     <div class="mb-6">
       <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Prêmios</h1>
       <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Acompanhe premiações e incentivos dos colaboradores</p>
     </div>
 
     <!-- Card de Quase Lá -->
-    <div class="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl shadow-sm p-6 mb-6 border border-amber-200/50 dark:border-amber-800/30">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6 mb-6">
       <div class="flex items-center gap-3 mb-4">
         <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center">
                     <TrophyIcon class="w-5 h-5 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
@@ -25,7 +25,7 @@
         <div
           v-for="item in quaseLa"
           :key="item.id"
-            class="glass-card-light dark:glass-card rounded-lg p-4"
+          class="glass-card-light dark:glass-card rounded-lg border border-white/10 p-4"
         >
           <div class="flex items-center gap-3">
             <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -56,30 +56,34 @@
     </div>
 
     <!-- Regras de Premiação -->
-    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6 mb-6">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6 mb-6">
       <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Regras de Premiação</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg border border-blue-200/50 dark:border-blue-800/30">
+        <div class="p-4 glass-card-light dark:glass-card rounded-lg border border-white/10">
           <div class="flex items-center gap-2 mb-2">
-            <UserGroupIcon class="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            <div class="icon-glass w-8 h-8 rounded-lg flex items-center justify-center">
+              <UserGroupIcon class="w-4 h-4 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
+            </div>
             <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Corretores</h3>
           </div>
           <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">
-            Corretores que vendem <span class="font-bold text-blue-600 dark:text-blue-400">3 ou mais imóveis</span> no mês entram automaticamente na lista de premiados.
+            Corretores que vendem <span class="font-bold text-cyan-600 dark:text-cyan-400">3 ou mais imóveis</span> no mês entram automaticamente na lista de premiados.
           </p>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400">
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
             Prêmio: +10% em todas as comissões do mês
           </p>
         </div>
-        <div class="p-4 bg-purple-50/50 dark:bg-purple-900/20 rounded-lg border border-purple-200/50 dark:border-purple-800/30">
+        <div class="p-4 glass-card-light dark:glass-card rounded-lg border border-white/10">
           <div class="flex items-center gap-2 mb-2">
-            <BriefcaseIcon class="w-5 h-5 text-purple-600 dark:text-purple-400" />
+            <div class="icon-glass w-8 h-8 rounded-lg flex items-center justify-center">
+              <BriefcaseIcon class="w-4 h-4 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
+            </div>
             <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Gerentes</h3>
           </div>
           <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">
-            Gerentes que batem <span class="font-bold text-purple-600 dark:text-purple-400">R$ 1.500.000</span> de VGV no mês entram automaticamente na lista de premiados.
+            Gerentes que batem <span class="font-bold text-cyan-600 dark:text-cyan-400">R$ 1.500.000</span> de VGV no mês entram automaticamente na lista de premiados.
           </p>
-          <p class="text-xs font-semibold text-purple-600 dark:text-purple-400">
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
             Prêmio: +10% em todas as comissões do mês
           </p>
         </div>
@@ -87,13 +91,13 @@
     </div>
 
     <!-- Filtros -->
-    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-4 sm:p-6 mb-6">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Período</label>
           <select
             v-model="filters.periodo"
-            class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="mes_atual">Mês Atual</option>
             <option value="mes_anterior">Mês Anterior</option>
@@ -105,7 +109,7 @@
           <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Tipo</label>
           <select
             v-model="filters.tipo"
-            class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="">Todos</option>
             <option value="corretor">Corretores</option>
@@ -118,7 +122,7 @@
             v-model="filters.search"
             type="text"
             placeholder="Nome do colaborador..."
-            class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           />
         </div>
       </div>
@@ -130,9 +134,9 @@
     </div>
 
     <!-- Lista de Premiados -->
-    <div v-else-if="premiadosFiltrados.length === 0" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-12">
+    <div v-else-if="premiadosFiltrados.length === 0" class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-12">
       <div class="text-center">
-        <TrophyIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
+        <TrophyIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4 stroke-2" />
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhum premiado encontrado</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400">
           Os colaboradores que atingirem as metas aparecerão aqui automaticamente.
@@ -144,7 +148,7 @@
       <div
         v-for="premiado in premiadosFiltrados"
         :key="premiado.id"
-        class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200"
+        class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5 hover:shadow-md transition-all duration-200"
       >
         <div class="flex items-start justify-between gap-4">
           <div class="flex items-start gap-4 flex-1">
@@ -158,8 +162,8 @@
                   :class="[
                     'px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide rounded-md',
                     premiado.tipo === 'corretor' 
-                      ? 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200/50 dark:border-blue-800/30'
-                      : 'bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-200/50 dark:border-purple-800/30'
+                      ? 'glass-card-light dark:glass-card border border-white/10 text-cyan-700 dark:text-cyan-400'
+                      : 'glass-card-light dark:glass-card border border-white/10 text-cyan-700 dark:text-cyan-400'
                   ]"
                 >
                   {{ premiado.tipo === 'corretor' ? 'Corretor' : 'Gerente' }}
@@ -179,8 +183,8 @@
                   <p class="text-sm font-medium text-gray-900 dark:text-white">{{ formatPeriodo(premiado.periodo) }}</p>
                 </div>
               </div>
-              <div v-if="premiado.comissoes_bonus" class="mt-3 p-3 bg-green-50/50 dark:bg-green-900/20 rounded-lg border border-green-200/50 dark:border-green-800/30">
-                <p class="text-xs font-semibold text-green-700 dark:text-green-400">
+              <div v-if="premiado.comissoes_bonus" class="mt-3 p-3 glass-card-light dark:glass-card rounded-lg border border-white/10">
+                <p class="text-xs font-semibold text-emerald-700 dark:text-emerald-400">
                   Bônus calculado: {{ formatMoney(premiado.comissoes_bonus) }}
                 </p>
               </div>

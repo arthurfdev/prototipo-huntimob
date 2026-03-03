@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-full overflow-x-hidden">
+  <div class="w-full">
     <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
       <div>
         <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Comissões</h1>
@@ -8,7 +8,7 @@
     </div>
 
     <!-- Filtros -->
-    <div class="bg-white dark:bg-brand-navy rounded-lg shadow p-4 sm:p-6 mb-6 border border-gray-200 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <!-- Campo de Filtro -->
         <div>
@@ -16,7 +16,7 @@
           <select
             id="filtro-campo"
             v-model="filters.search_field"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="cliente">Cliente</option>
             <option value="produto">Produto</option>
@@ -32,7 +32,7 @@
             id="filtro-search"
             type="text"
             v-model="filters.search"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             placeholder="Digite para pesquisar..."
           >
         </div>
@@ -43,7 +43,7 @@
           <select
             id="filtro-status"
             v-model="filters.status"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="">Todos</option>
             <option value="pendente">Pendente</option>
@@ -55,7 +55,7 @@
     </div>
 
     <!-- Lista de Comissões -->
-    <div class="bg-white dark:bg-brand-navy rounded-lg shadow overflow-x-auto border border-gray-200 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 overflow-x-auto">
       <!-- Loading state -->
       <div v-if="loading" class="p-4">
         <div class="animate-pulse space-y-4">
@@ -66,8 +66,8 @@
       </div>
 
       <!-- Data loaded -->
-      <table v-else class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-        <thead class="bg-gray-50 dark:bg-gray-800">
+      <table v-else class="min-w-full divide-y divide-white/10">
+        <thead class="bg-white/5 backdrop-blur-sm">
           <tr>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Data</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cliente</th>
@@ -77,9 +77,9 @@
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Ações</th>
           </tr>
         </thead>
-        <tbody class="bg-white dark:bg-brand-navy divide-y divide-gray-200 dark:divide-gray-700">
-          <tr v-for="comissao in paginatedComissoes" :key="comissao.id" class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-            <td class="px-6 py-4 whitespace-nowrap">
+        <tbody class="divide-y divide-white/10">
+          <tr v-for="comissao in paginatedComissoes" :key="comissao.id" class="hover:bg-white/5 transition-colors">
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
               {{ formatarData(getDataRecebimento(comissao)) }}
             </td>
             <td class="px-6 py-4">
@@ -105,10 +105,10 @@
             <td class="px-6 py-4 whitespace-nowrap">
               <button
                 @click="verDetalhes(comissao)"
-                class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
                 title="Detalhar"
               >
-                <EyeIcon class="h-5 w-5" />
+                <EyeIcon class="h-4 w-4 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
               </button>
             </td>
           </tr>
@@ -116,19 +116,19 @@
       </table>
 
       <!-- Paginação -->
-      <div class="flex items-center justify-between border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy px-4 py-3 sm:px-6">
+      <div class="flex items-center justify-between border-t border-white/10 px-4 py-3 sm:px-6">
         <div class="flex flex-1 justify-between sm:hidden">
           <button
             @click="currentPage--"
             :disabled="currentPage === 1"
-            class="relative inline-flex items-center rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50"
+            class="relative inline-flex items-center rounded-md glass-card-light dark:glass-card border border-white/10 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-white/10 disabled:opacity-50"
           >
             Anterior
           </button>
           <button
             @click="currentPage++"
             :disabled="currentPage >= totalPages"
-            class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50"
+            class="relative ml-3 inline-flex items-center rounded-md glass-card-light dark:glass-card border border-white/10 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-white/10 disabled:opacity-50"
           >
             Próximo
           </button>
@@ -146,11 +146,11 @@
             </p>
           </div>
           <div>
-            <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+            <nav class="isolate inline-flex -space-x-px rounded-md" aria-label="Pagination">
               <button
                 @click="currentPage--"
                 :disabled="currentPage === 1"
-                class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
+                class="relative inline-flex items-center rounded-l-md glass-card-light dark:glass-card border border-white/10 px-2 py-2 text-gray-400 hover:bg-white/10 dark:hover:bg-white/10 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
               >
                 Anterior
               </button>
@@ -160,8 +160,8 @@
                 @click="currentPage = page"
                 :class="[
                   currentPage === page
-                    ? 'relative z-10 inline-flex items-center bg-blue-500 px-4 py-2 text-sm font-semibold text-white focus:z-20'
-                    : 'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0', 
+                    ? 'relative z-10 inline-flex items-center btn-gradient px-4 py-2 text-sm font-semibold text-white focus:z-20'
+                    : 'relative inline-flex items-center glass-card-light dark:glass-card border border-white/10 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-white hover:bg-white/10 dark:hover:bg-white/10 focus:z-20 focus:outline-offset-0', 
                 ]"
               >
                 {{ page }}
@@ -169,7 +169,7 @@
               <button
                 @click="currentPage++"
                 :disabled="currentPage >= totalPages"
-                class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
+                class="relative inline-flex items-center rounded-r-md glass-card-light dark:glass-card border border-white/10 px-2 py-2 text-gray-400 hover:bg-white/10 dark:hover:bg-white/10 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
               >
                 Próximo
               </button>

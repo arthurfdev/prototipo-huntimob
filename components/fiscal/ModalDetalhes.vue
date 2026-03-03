@@ -28,16 +28,13 @@
           >
             <div
               v-if="modelValue"
-              class="relative w-full max-w-3xl glass-card-light dark:glass-card rounded-xl shadow-2xl"
+              class="relative w-full max-w-3xl glass-card-light dark:glass-card rounded-xl border border-white/10 shadow-2xl"
             >
               <!-- Header -->
-              <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+              <div class="flex items-center justify-between p-6 border-b border-white/10 bg-white/5 backdrop-blur-sm">
                 <div class="flex items-center space-x-3">
-                  <div :class="[
-                    'w-12 h-12 rounded-lg flex items-center justify-center',
-                    statusConfig.bgClass
-                  ]">
-                    <component :is="statusConfig.icon" :class="['h-6 w-6', statusConfig.iconClass]" />
+                  <div class="icon-glass w-12 h-12 rounded-lg flex items-center justify-center">
+                    <component :is="statusConfig.icon" :class="['h-6 w-6 relative z-10 stroke-2', statusConfig.iconClass]" />
                   </div>
                   <div>
                     <h2 class="text-xl font-bold text-gray-900 dark:text-white">
@@ -51,22 +48,22 @@
 
                 <button
                   @click="close"
-                  class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                  class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
                 >
-                  <XMarkIcon class="h-6 w-6" />
+                  <XMarkIcon class="h-6 w-6 stroke-2" />
                 </button>
               </div>
 
               <!-- Loading -->
               <div v-if="loading" class="p-8 text-center">
-                <ArrowPathIcon class="h-8 w-8 animate-spin text-blue-500 mx-auto mb-4" />
+                <ArrowPathIcon class="h-8 w-8 animate-spin text-cyan-500 mx-auto mb-4 stroke-2" />
                 <p class="text-gray-500 dark:text-gray-400">Carregando detalhes...</p>
               </div>
 
               <!-- Conteúdo -->
               <div v-else-if="nota" class="p-6 space-y-6 max-h-[60vh] overflow-y-auto">
                 <!-- Status -->
-                <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-brand-navy-dark/50 rounded-lg">
+                <div class="flex items-center justify-between p-4 glass-card-light dark:glass-card rounded-lg border border-white/10">
                   <div class="flex items-center space-x-3">
                     <StatusBadge :status="nota.status" />
                     <span :class="[
@@ -86,10 +83,10 @@
                 <!-- Erro de rejeição -->
                 <div
                   v-if="nota.status === 'rejeitada' && nota.motivo_rejeicao"
-                  class="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800"
+                  class="p-4 glass-card-light dark:glass-card rounded-lg border border-red-200/50 dark:border-red-800/50"
                 >
                   <div class="flex items-start space-x-3">
-                    <ExclamationCircleIcon class="h-5 w-5 text-red-500 mt-0.5" />
+                    <ExclamationCircleIcon class="h-5 w-5 text-red-500 mt-0.5 stroke-2" />
                     <div>
                       <p class="font-medium text-red-800 dark:text-red-400">Nota Rejeitada</p>
                       <p class="text-sm text-red-700 dark:text-red-300 mt-1">{{ nota.motivo_rejeicao }}</p>
@@ -102,7 +99,7 @@
                   <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
                     Tomador
                   </h3>
-                  <div class="bg-gray-50 dark:bg-brand-navy-dark/50 rounded-lg p-4">
+                  <div class="glass-card-light dark:glass-card rounded-lg border border-white/10 p-4">
                     <p class="font-medium text-gray-900 dark:text-white">
                       {{ nota.tomador?.razao_social || 'Não informado' }}
                     </p>
@@ -154,7 +151,7 @@
                     Informações Técnicas
                   </h3>
                   <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-gray-50 dark:bg-brand-navy-dark/50 rounded-lg p-3">
+                    <div class="glass-card-light dark:glass-card rounded-lg border border-white/10 p-3">
                       <p class="text-xs text-gray-500 dark:text-gray-400">ID Interno</p>
                       <p class="text-sm font-mono text-gray-900 dark:text-white truncate">{{ nota.id }}</p>
                     </div>
@@ -175,7 +172,7 @@
               </div>
 
               <!-- Footer com ações -->
-              <div class="flex items-center justify-between p-6 border-t border-gray-200 dark:border-gray-700">
+              <div class="flex items-center justify-between p-6 border-t border-white/10 bg-white/5 backdrop-blur-sm">
                 <div class="flex space-x-3">
                   <button
                     v-if="nota?.status === 'autorizada'"

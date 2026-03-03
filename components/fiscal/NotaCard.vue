@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white dark:bg-brand-navy rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
+    class="glass-card-light dark:glass-card rounded-xl p-5 border border-white/10 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
     @click="$emit('click', nota)"
   >
     <div class="flex items-start justify-between">
@@ -8,8 +8,8 @@
       <div class="flex-1 min-w-0">
         <div class="flex items-center space-x-3 mb-2">
           <!-- Ícone do tipo -->
-          <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-            <DocumentTextIcon class="h-5 w-5 text-blue-500 dark:text-blue-400" />
+          <div class="icon-glass w-10 h-10 rounded-xl flex items-center justify-center">
+            <DocumentTextIcon class="h-5 w-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
 
           <div>
@@ -68,8 +68,8 @@
           Aguardando processamento...
         </span>
       </div>
-      <div class="mt-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1">
-        <div class="bg-blue-500 h-1 rounded-full animate-pulse" style="width: 60%"></div>
+      <div class="mt-2 w-full glass-card-light dark:glass-card rounded-full h-1 border border-white/10">
+        <div class="bg-cyan-500 h-1 rounded-full animate-pulse" style="width: 60%"></div>
       </div>
     </div>
   </div>

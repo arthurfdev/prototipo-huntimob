@@ -1,9 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit" class="space-y-6">
     <!-- Dados da Empresa -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl border border-gray-200 dark:border-gray-800 p-5 sm:p-6 shadow">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5 sm:p-6">
       <div class="flex items-center gap-2 mb-6">
-        <BuildingOfficeIcon class="w-6 h-6 text-blue-500" />
+        <div class="icon-glass w-8 h-8 rounded-lg flex items-center justify-center">
+          <BuildingOfficeIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
+        </div>
         <h3 class="text-lg font-bold text-gray-900 dark:text-white">
           Dados da Empresa
         </h3>
@@ -17,7 +19,7 @@
           </label>
           <select
             v-model="tipoDocumento"
-            class="w-full max-w-[420px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full max-w-[420px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="cnpj">CNPJ (MEI/Empresa)</option>
             <option value="cpf">CPF (Pessoa Física)</option>
@@ -34,7 +36,7 @@
             @input="form.cnpj = formatCnpj($event.target.value)"
             type="text"
             placeholder="00.000.000/0000-00"
-            class="w-full max-w-[420px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full max-w-[420px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             :class="{ 'border-red-500': errors.cnpj }"
           />
           <input
@@ -43,7 +45,7 @@
             @input="form.cpf = formatCpf($event.target.value)"
             type="text"
             placeholder="000.000.000-00"
-            class="w-full max-w-[420px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full max-w-[420px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             :class="{ 'border-red-500': errors.cpf }"
           />
           <p v-if="errors.cnpj || errors.cpf" class="text-sm text-red-500">{{ errors.cnpj || errors.cpf }}</p>
@@ -60,7 +62,7 @@
             v-model="form.razao_social"
             type="text"
             placeholder="Nome empresarial oficial"
-            class="w-full max-w-[420px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full max-w-[420px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             :class="{ 'border-red-500': errors.razao_social }"
           />
           <p v-if="errors.razao_social" class="text-sm text-red-500">{{ errors.razao_social }}</p>
@@ -74,7 +76,7 @@
             v-model="form.nome_fantasia"
             type="text"
             placeholder="Nome comercial (opcional)"
-            class="w-full max-w-[420px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full max-w-[420px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           />
         </div>
       </div>
@@ -89,7 +91,7 @@
             v-model="form.inscricao_municipal"
             type="text"
             placeholder="Número da IM"
-            class="w-full max-w-[280px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full max-w-[280px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           />
           <p class="text-xs text-gray-400 dark:text-gray-500">Necessária para emitir NFS-e</p>
         </div>
@@ -102,7 +104,7 @@
             v-model="form.inscricao_estadual"
             type="text"
             placeholder="Número da IE"
-            class="w-full max-w-[280px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full max-w-[280px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           />
           <p class="text-xs text-gray-400 dark:text-gray-500">MEI geralmente não possui</p>
         </div>
@@ -124,9 +126,11 @@
     </div>
 
     <!-- Endereço Fiscal -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl border border-gray-200 dark:border-gray-800 p-5 sm:p-6 shadow">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5 sm:p-6">
       <div class="flex items-center gap-2 mb-6">
-        <MapPinIcon class="w-6 h-6 text-blue-500" />
+        <div class="icon-glass w-8 h-8 rounded-lg flex items-center justify-center">
+          <MapPinIcon class="w-5 h-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
+        </div>
         <h3 class="text-lg font-bold text-gray-900 dark:text-white">
           Endereço Fiscal
         </h3>
@@ -169,15 +173,15 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
         <div class="space-y-2">
           <label class="block text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400">Número</label>
-          <input v-model="form.endereco_numero" type="text" placeholder="S/N" class="w-full max-w-[140px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <input v-model="form.endereco_numero" type="text" placeholder="S/N" class="w-full max-w-[140px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50" />
         </div>
         <div class="space-y-2">
           <label class="block text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400">Complemento</label>
-          <input v-model="form.endereco_complemento" type="text" placeholder="Sala, Andar..." class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <input v-model="form.endereco_complemento" type="text" placeholder="Sala, Andar..." class="w-full px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50" />
         </div>
         <div class="md:col-span-2 space-y-2">
           <label class="block text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400">Bairro *</label>
-          <input v-model="form.endereco_bairro" type="text" placeholder="Bairro" class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" :class="{ 'border-red-500': errors.endereco_bairro }" />
+          <input v-model="form.endereco_bairro" type="text" placeholder="Bairro" class="w-full px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50" :class="{ 'border-red-500': errors.endereco_bairro }" />
         </div>
       </div>
 
@@ -185,34 +189,36 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div class="md:col-span-2 space-y-2">
           <label class="block text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400">Cidade *</label>
-          <input v-model="form.endereco_cidade" type="text" placeholder="Nome da cidade" class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" :class="{ 'border-red-500': errors.endereco_cidade }" />
+          <input v-model="form.endereco_cidade" type="text" placeholder="Nome da cidade" class="w-full px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50" :class="{ 'border-red-500': errors.endereco_cidade }" />
         </div>
         <div class="space-y-2">
           <label class="block text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400">UF *</label>
-          <select v-model="form.endereco_uf" class="w-full max-w-[140px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" :class="{ 'border-red-500': errors.endereco_uf }">
+          <select v-model="form.endereco_uf" class="w-full max-w-[140px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50" :class="{ 'border-red-500': errors.endereco_uf }">
             <option value="">Selecione</option>
             <option v-for="uf in ufs" :key="uf" :value="uf">{{ uf }}</option>
           </select>
         </div>
         <div class="space-y-2">
           <label class="block text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400">Cód. Município *</label>
-          <input v-model="form.endereco_codigo_municipio" type="text" placeholder="Código IBGE" class="w-full max-w-[140px] px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" :class="{ 'border-red-500': errors.endereco_codigo_municipio }" />
+          <input v-model="form.endereco_codigo_municipio" type="text" placeholder="Código IBGE" class="w-full max-w-[140px] px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50" :class="{ 'border-red-500': errors.endereco_codigo_municipio }" />
           <p class="text-xs text-gray-400 dark:text-gray-500">Código IBGE do município</p>
         </div>
       </div>
     </div>
 
     <!-- Certificado Digital -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl border border-gray-200 dark:border-gray-800 p-5 sm:p-6 shadow">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5 sm:p-6">
       <div class="flex items-center gap-2 mb-6">
-        <ShieldCheckIcon class="w-6 h-6 text-green-600 dark:text-green-400" />
+        <div class="icon-glass w-8 h-8 rounded-lg flex items-center justify-center">
+          <ShieldCheckIcon class="w-5 h-5 text-emerald-600 dark:text-emerald-400 relative z-10 stroke-2" />
+        </div>
         <h3 class="text-lg font-bold text-gray-900 dark:text-white">Certificado Digital</h3>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-2">
           <label class="block text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400">Arquivo do Certificado (.pfx ou .p12) *</label>
-          <div @dragover.prevent="dragOver = true" @dragleave.prevent="dragOver = false" @drop.prevent="handleFileDrop" :class="['relative border-2 border-dashed rounded-xl p-6 text-center transition duration-200 cursor-pointer', dragOver ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-gray-300 dark:border-gray-700 hover:border-blue-500/50']">
+          <div @dragover.prevent="dragOver = true" @dragleave.prevent="dragOver = false" @drop.prevent="handleFileDrop" :class="['relative border-2 border-dashed rounded-xl p-6 text-center transition duration-200 cursor-pointer glass-card-light dark:glass-card', dragOver ? 'border-cyan-500 bg-cyan-500/10' : 'border-white/20 hover:border-cyan-500/50']">
             <input type="file" accept=".pfx,.p12" @change="handleFileSelect" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
             <div v-if="!form.certificado">
               <DocumentArrowUpIcon class="w-12 h-12 mx-auto text-gray-400 dark:text-gray-600 mb-3" />
@@ -235,7 +241,7 @@
         <div class="space-y-2">
           <label class="block text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400">Senha do Certificado *</label>
           <div class="relative">
-            <input v-model="form.senha" :type="showPassword ? 'text' : 'password'" placeholder="Digite a senha do certificado" class="w-full px-3 py-2 pr-12 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" :class="{ 'border-red-500': errors.senha }" />
+            <input v-model="form.senha" :type="showPassword ? 'text' : 'password'" placeholder="Digite a senha do certificado" class="w-full px-3 py-2 pr-12 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50" :class="{ 'border-red-500': errors.senha }" />
             <button type="button" @click="showPassword = !showPassword" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
               <EyeIcon v-if="!showPassword" class="w-5 h-5" />
               <EyeSlashIcon v-else class="w-5 h-5" />
@@ -248,8 +254,8 @@
     </div>
 
     <!-- Botões de ação -->
-    <div class="flex justify-end gap-4 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-      <button type="button" @click="$emit('cancel')" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 transition duration-200 hover:bg-gray-50 dark:hover:bg-gray-800">
+    <div class="flex justify-end gap-4 mt-8 pt-6 border-t border-white/10">
+      <button type="button" @click="$emit('cancel')" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 glass-card-light dark:glass-card border border-white/10 transition duration-200 hover:bg-white/10 dark:hover:bg-white/10">
         Cancelar
       </button>
       <button type="submit" :disabled="isLoading" class="btn-gradient inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold disabled:opacity-45 disabled:cursor-not-allowed">

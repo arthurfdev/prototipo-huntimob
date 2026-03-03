@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-full overflow-x-hidden">
+  <div class="w-full">
     <!-- Header -->
     <header class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between mb-6">
       <div>
@@ -26,7 +26,7 @@
         <!-- Botão de configuração -->
         <NuxtLink
           to="/fiscal/certificado"
-          class="inline-flex items-center gap-2 rounded-xl border border-gray-300 dark:border-gray-700 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 transition duration-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+          class="inline-flex items-center gap-2 rounded-xl glass-card-light dark:glass-card border border-white/10 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 transition duration-200 hover:bg-white/10 dark:hover:bg-white/10"
         >
           <Cog6ToothIcon class="h-5 w-5" />
           Configuração
@@ -44,7 +44,7 @@
     </header>
 
     <!-- Filtros -->
-    <div class="glass-card-light dark:glass-card rounded-xl shadow p-4 sm:p-6 mb-6">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <!-- Tipo -->
         <div class="space-y-2">
@@ -54,7 +54,7 @@
           <select
             v-model="filtros.tipo"
             @change="loadNotas"
-            class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="">Todos</option>
             <option value="NFSe">NFS-e</option>
@@ -69,7 +69,7 @@
           <select
             v-model="filtros.status"
             @change="loadNotas"
-            class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="">Todos</option>
             <option value="autorizada">Autorizada</option>
@@ -92,17 +92,17 @@
     </div>
 
     <!-- Loading -->
-    <div v-if="loading" class="glass-card-light dark:glass-card rounded-xl shadow p-12 text-center">
-      <div class="animate-spin h-8 w-8 border-2 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+    <div v-if="loading" class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-12 text-center">
+      <div class="animate-spin h-8 w-8 border-2 border-cyan-500 border-t-transparent rounded-full mx-auto mb-4"></div>
       <p class="text-sm text-gray-500 dark:text-gray-400">Carregando notas...</p>
     </div>
 
     <!-- Lista vazia -->
     <div
       v-else-if="notas.length === 0"
-      class="glass-card-light dark:glass-card rounded-xl shadow p-12 text-center"
+      class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-12 text-center"
     >
-      <DocumentTextIcon class="h-16 w-16 mx-auto text-gray-400 dark:text-gray-600 mb-4" />
+      <DocumentTextIcon class="h-16 w-16 mx-auto text-gray-400 dark:text-gray-600 mb-4 stroke-2" />
       <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
         Nenhuma nota fiscal encontrada
       </h3>
@@ -133,7 +133,7 @@
       <button
         @click="loadMore"
         :disabled="loadingMore"
-        class="px-6 py-2 text-sm font-semibold rounded-xl border border-gray-300 dark:border-gray-700 text-blue-500 dark:text-blue-400 bg-blue-500/10 hover:bg-blue-500/20 transition duration-200 disabled:opacity-45 disabled:cursor-not-allowed"
+        class="px-6 py-2 text-sm font-semibold rounded-xl glass-card-light dark:glass-card border border-white/10 text-cyan-500 dark:text-cyan-400 hover:bg-white/10 dark:hover:bg-white/10 transition duration-200 disabled:opacity-45 disabled:cursor-not-allowed"
       >
         <span v-if="loadingMore">Carregando...</span>
         <span v-else>Carregar mais</span>
@@ -171,13 +171,13 @@
               v-model="justificativaCancelamento"
               rows="3"
               placeholder="Informe o motivo do cancelamento..."
-              class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
+              class="w-full px-3 py-2 rounded-xl glass-card-light dark:glass-card border border-white/10 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500/50 resize-none"
             ></textarea>
           </div>
           <div class="flex justify-end gap-3">
             <button
               @click="showCancelModal = false"
-              class="px-4 py-2 text-sm font-semibold rounded-xl border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-200"
+              class="px-4 py-2 text-sm font-semibold rounded-xl glass-card-light dark:glass-card border border-white/10 text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-white/10 transition duration-200"
             >
               Cancelar
             </button>
