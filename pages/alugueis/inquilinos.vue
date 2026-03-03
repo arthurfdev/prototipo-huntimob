@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-full overflow-x-hidden">
+  <div class="w-full">
     <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
       <div>
         <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Inquilinos</h1>
@@ -10,29 +10,29 @@
         @click="openCreateModal" 
         class="btn-gradient px-4 py-2 flex items-center space-x-2"
       >
-        <UserPlusIcon class="h-5 w-5" />
+        <UserPlusIcon class="h-4 w-4 stroke-2" />
         <span>Novo Inquilino</span>
       </button>
     </div>
 
     <!-- Filtros -->
-    <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow p-4 sm:p-6 mb-6 border border-white/10">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buscar</label>
+          <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Buscar</label>
           <input
             v-model="filters.search"
             type="text"
             placeholder="Nome, CPF ou Email..."
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-brand-navy-dark dark:text-white"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             @input="handleSearch"
           />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Status</label>
+          <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Status</label>
           <select
             v-model="filters.status"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-brand-navy-dark dark:text-white"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             @change="handleSearch"
           >
             <option value="">Todos</option>
@@ -43,20 +43,20 @@
           </select>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Imóvel</label>
+          <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Imóvel</label>
           <input
             v-model="filters.imovel"
             type="text"
             placeholder="Código do imóvel..."
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-brand-navy-dark dark:text-white"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             @input="handleSearch"
           />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Período</label>
+          <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Período</label>
           <select
             v-model="filters.periodo"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-brand-navy-dark dark:text-white"
+            class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             @change="handleSearch"
           >
             <option value="">Todos</option>
@@ -69,10 +69,10 @@
     </div>
 
     <!-- Tabela -->
-    <div class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow overflow-hidden border border-white/10">
       <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead class="bg-gray-50 dark:bg-gray-800">
+        <table class="min-w-full divide-y divide-white/10">
+          <thead class="bg-white/5 backdrop-blur-sm">
             <tr>
               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 Inquilino
@@ -97,17 +97,17 @@
               </th>
             </tr>
           </thead>
-          <tbody class="bg-white dark:bg-brand-navy divide-y divide-gray-200 dark:divide-gray-700">
-            <tr v-if="loading" class="bg-white dark:bg-brand-navy">
+          <tbody class="divide-y divide-white/10">
+            <tr v-if="loading">
               <td colspan="7" class="px-6 py-12 text-center">
                 <div class="flex justify-center">
-                  <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                  <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-500 border-t-transparent"></div>
                 </div>
               </td>
             </tr>
-            <tr v-else-if="paginatedInquilinos.length === 0" class="bg-white dark:bg-brand-navy">
+            <tr v-else-if="paginatedInquilinos.length === 0">
               <td colspan="7" class="px-6 py-12 text-center">
-                <UserGroupIcon class="h-12 w-12 mx-auto text-gray-300 dark:text-gray-600 mb-3" />
+                <UserGroupIcon class="h-12 w-12 mx-auto text-gray-300 dark:text-gray-600 mb-3 stroke-2" />
                 <p class="text-gray-500 dark:text-gray-400">Nenhum inquilino encontrado</p>
               </td>
             </tr>
@@ -115,7 +115,7 @@
               v-else
               v-for="inquilino in paginatedInquilinos"
               :key="inquilino.id"
-              class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+              class="hover:bg-white/5 transition-colors"
             >
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
@@ -160,17 +160,17 @@
                 <div class="flex items-center justify-end gap-2">
                   <button
                     @click="openEditModal(inquilino)"
-                    class="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 p-2 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                    class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
                     title="Editar"
                   >
-                    <PencilIcon class="h-5 w-5" />
+                    <PencilIcon class="h-4 w-4 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
                   </button>
                   <button
                     @click="handleDelete(inquilino.id)"
-                    class="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 p-2 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                    class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
                     title="Excluir"
                   >
-                    <TrashIcon class="h-5 w-5" />
+                    <TrashIcon class="h-4 w-4 text-red-500 dark:text-red-400 relative z-10 stroke-2" />
                   </button>
                 </div>
               </td>
@@ -180,25 +180,25 @@
       </div>
 
       <!-- Paginação -->
-      <div class="bg-white dark:bg-brand-navy px-4 py-3 border-t border-gray-200 dark:border-gray-700 sm:px-6">
+      <div class="glass-card-light dark:glass-card px-4 py-3 border-t border-white/10 sm:px-6">
         <div class="flex items-center justify-between">
-          <div class="text-sm text-gray-700 dark:text-gray-300">
+          <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">
             Mostrando <span class="font-medium">{{ startIndex + 1 }}</span> até 
             <span class="font-medium">{{ endIndex }}</span> de 
             <span class="font-medium">{{ totalItems }}</span> resultados
           </div>
-          <div class="flex space-x-2">
+          <div class="flex gap-2">
             <button
               @click="currentPage--"
               :disabled="currentPage === 1"
-              class="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-brand-navy-dark hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="glass-card-light dark:glass-card px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 border border-white/10 rounded-md hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
             >
               Anterior
             </button>
             <button
               @click="currentPage++"
               :disabled="currentPage >= totalPages"
-              class="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-brand-navy-dark hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="glass-card-light dark:glass-card px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 border border-white/10 rounded-md hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
             >
               Próximo
             </button>
@@ -224,7 +224,7 @@
               v-model="form.nome"
               type="text"
               required
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+              class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             />
           </div>
           <div>
@@ -235,7 +235,7 @@
               v-model="form.cpf"
               type="text"
               required
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+              class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               placeholder="000.000.000-00"
               @input="formatCPF"
             />
@@ -247,7 +247,7 @@
             <input
               v-model="form.rg"
               type="text"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+              class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               placeholder="00.000.000-0"
             />
           </div>
@@ -259,7 +259,7 @@
               v-model="form.telefone"
               type="text"
               required
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+              class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               placeholder="(00) 00000-0000"
               @input="formatPhone"
             />
@@ -272,7 +272,7 @@
               v-model="form.email"
               type="email"
               required
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+              class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             />
           </div>
           <div>
@@ -282,7 +282,7 @@
             <input
               v-model="form.data_nascimento"
               type="date"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+              class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             />
           </div>
         </div>
@@ -296,7 +296,7 @@
               </label>
               <select
                 v-model="form.imovel_id"
-                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               >
                 <option value="">Selecione um imóvel...</option>
                 <option 
@@ -317,7 +317,7 @@
                 type="number"
                 step="0.01"
                 required
-                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
                 placeholder="0,00"
               />
             </div>
@@ -329,7 +329,7 @@
                 v-model="form.data_inicio"
                 type="date"
                 required
-                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               />
             </div>
             <div>
@@ -340,7 +340,7 @@
                 v-model="form.vencimento"
                 type="date"
                 required
-                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               />
             </div>
             <div>
@@ -350,7 +350,7 @@
               <input
                 v-model.number="form.prazo_meses"
                 type="number"
-                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
                 placeholder="12"
               />
             </div>
@@ -360,7 +360,7 @@
               </label>
               <select
                 v-model="form.status"
-                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               >
                 <option value="Ativo">Ativo</option>
                 <option value="Inativo">Inativo</option>
@@ -385,7 +385,7 @@
         <div class="flex justify-end space-x-3">
           <button
             @click="showModal = false"
-            class="px-4 py-2 text-gray-700 dark:text-gray-300 bg-white dark:bg-brand-navy-dark border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
+            class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 glass-card-light dark:glass-card border border-white/10 rounded-lg hover:bg-white/10 transition-colors"
           >
             Cancelar
           </button>

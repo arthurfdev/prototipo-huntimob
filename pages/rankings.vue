@@ -1,71 +1,51 @@
 <template>
-  <div class="w-full max-w-full overflow-x-hidden">
-    <div class="mb-8">
+  <div class="w-full">
+    <div class="mb-6">
       <div class="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h1 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <TrophyIcon class="h-7 w-7 text-amber-500" />
-            Ranking de Vendas
-          </h1>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-            Competição de Equipes e Corretores
-          </p>
+          <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Ranking de Vendas</h1>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Competição de Equipes e Corretores</p>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="flex gap-3">
+          <button
+            v-for="tab in tabs"
+            :key="tab.id"
+            @click="currentTab = tab.id"
+            :class="[
+              'px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 flex items-center gap-2',
+              currentTab === tab.id
+                ? 'btn-gradient shadow-lg scale-105'
+                : 'glass-card-light dark:glass-card border border-white/10 hover:bg-white/10'
+            ]"
+          >
+            <component :is="tab.icon === 'TrophyIcon' ? TrophyIcon : UserGroupIcon" class="h-5 w-5 stroke-2" />
+            {{ tab.name }}
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Tabs -->
-    <div class="mb-6 border-b border-gray-200 dark:border-gray-800">
-      <nav class="-mb-px flex space-x-4">
-        <button
-          v-for="tab in tabs"
-          :key="tab.id"
-          @click="currentTab = tab.id"
-          :class="[
-            'px-6 py-3 border-b-2 font-medium text-sm transition-colors flex items-center gap-2',
-            currentTab === tab.id
-              ? 'border-blue-500 text-blue-600 dark:text-blue-400'
-              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300'
-          ]"
-        >
-          <component :is="tab.icon === 'TrophyIcon' ? TrophyIcon : UserGroupIcon" class="h-5 w-5 stroke-2" />
-          {{ tab.name }}
-        </button>
-      </nav>
-    </div>
-
     <!-- Loading State -->
     <div v-if="loading" class="flex items-center justify-center min-h-[400px]">
-      <div class="text-center">
-        <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500 mx-auto mb-4"></div>
+      <div class="text-center glass-card-light dark:glass-card rounded-xl p-8 border border-white/10">
+        <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-cyan-500 border-t-transparent mx-auto mb-4"></div>
         <p class="text-gray-500 dark:text-gray-400">Carregando ranking...</p>
       </div>
     </div>
 
     <!-- Content -->
-    <div v-else>
-      <!-- Top 3 Pódio -->
-      <div class="mb-12">
-        <div class="text-center mb-8">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent flex items-center justify-center gap-3">
-            <TrophyIcon class="h-8 w-8 text-amber-500" />
-            TOP 3
-            <TrophyIcon class="h-8 w-8 text-amber-500" />
-          </h2>
-          <p class="text-gray-500 dark:text-gray-400 text-sm">Os melhores desempenhos do período</p>
-        </div>
-        
-        <div class="flex items-end justify-center space-x-4 max-w-6xl mx-auto flex-wrap gap-6">
+    <div v-else class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+      <!-- Painel Esquerdo - Top 3 -->
+      <div class="lg:col-span-3 space-y-6">
+        <!-- Top 3 Pódio -->
+        <div>
+          <div class="flex items-end justify-center gap-4 flex-wrap">
           <!-- 2º Lugar -->
-          <div v-if="currentTab === 'equipes' && rankingEquipes.length > 1" class="flex-1 min-w-[280px] max-w-xs">
-            <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden">
-              <div class="text-center mb-4">
-                <div class="w-20 h-20 mx-auto bg-gradient-to-br from-slate-400 to-slate-600 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
-                  2
-                </div>
-              </div>
-              
-              <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-slate-400 shadow-xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
+          <div v-if="currentTab === 'equipes' && rankingEquipes.length > 1" class="flex flex-col items-center" style="width: 280px;">
+            <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden hover:shadow-2xl transition-all duration-300 mb-2">
+              <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-slate-400/50 shadow-xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
                 <img
                   :src="rankingEquipes[1].photo_url || '/images/placeholder-avatar.png'"
                   :alt="rankingEquipes[1].equipe_nome"
@@ -78,29 +58,29 @@
               <h3 class="text-xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingEquipes[1].equipe_nome }}</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">Gerente: {{ rankingEquipes[1].gerente_nome }}</p>
               
-              <div class="glass-card-light dark:glass-card rounded-xl p-3 border border-white/10">
+              <div class="glass-card-light dark:glass-card rounded-xl p-4 border border-white/10">
                 <div class="text-center">
                   <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ formatMoney(rankingEquipes[1].vgv_total) }}</p>
-                  <p class="text-xs text-gray-600 dark:text-gray-400 font-medium">{{ rankingEquipes[1].total_propostas }} propostas</p>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingEquipes[1].total_propostas }} vendas</p>
                 </div>
+              </div>
+            </div>
+            <!-- Pódio 2º lugar -->
+            <div class="glass-card-light dark:glass-card rounded-t-2xl border border-white/10 w-full" style="height: 80px;">
+              <div class="h-full flex items-center justify-center">
+                <span class="text-2xl font-bold text-gray-700 dark:text-gray-300">2º</span>
               </div>
             </div>
           </div>
 
           <!-- 1º Lugar -->
-          <div v-if="currentTab === 'equipes' && rankingEquipes.length > 0" class="flex-1 min-w-[320px] max-w-sm transform scale-105 z-10">
-            <div class="glass-card-light dark:glass-card rounded-3xl p-8 shadow-2xl border-2 border-blue-400/50 relative overflow-hidden">
+          <div v-if="currentTab === 'equipes' && rankingEquipes.length > 0" class="flex flex-col items-center transform scale-105 z-10" style="width: 320px;">
+            <div class="glass-card-light dark:glass-card rounded-3xl p-8 shadow-2xl border-2 border-cyan-400/50 relative overflow-hidden hover:shadow-cyan-500/20 transition-all duration-300 mb-2">
               <!-- Efeito de brilho animado -->
-              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent animate-shimmer"></div>
               
               <div class="relative z-10">
-                <div class="text-center mb-4">
-                  <div class="icon-glass w-24 h-24 mx-auto rounded-full flex items-center justify-center shadow-2xl">
-                    <StarIcon class="h-12 w-12 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
-                  </div>
-                </div>
-                
-                <div class="w-44 h-44 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-gray-200 transform hover:scale-105 transition-transform duration-300">
+                <div class="w-44 h-44 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-cyan-400/50 shadow-2xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
                   <img
                     :src="rankingEquipes[0].photo_url || '/images/placeholder-avatar.png'"
                     :alt="rankingEquipes[0].equipe_nome"
@@ -110,29 +90,29 @@
                   />
                 </div>
                 
-                <h3 class="text-2xl font-bold text-center mb-2 text-white drop-shadow-lg">{{ rankingEquipes[0].equipe_nome }}</h3>
-                <p class="text-sm text-blue-100 text-center mb-4 font-medium">Gerente: {{ rankingEquipes[0].gerente_nome }}</p>
+                <h3 class="text-2xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingEquipes[0].equipe_nome }}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">Gerente: {{ rankingEquipes[0].gerente_nome }}</p>
                 
                 <div class="glass-card-light dark:glass-card rounded-xl p-4 border border-white/10">
                   <div class="text-center">
-                    <p class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{{ formatMoney(rankingEquipes[0].vgv_total) }}</p>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingEquipes[0].total_propostas }} propostas</p>
+                    <p class="text-3xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">{{ formatMoney(rankingEquipes[0].vgv_total) }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingEquipes[0].total_propostas }} vendas</p>
                   </div>
                 </div>
+              </div>
+            </div>
+            <!-- Pódio 1º lugar -->
+            <div class="glass-card-light dark:glass-card rounded-t-2xl border-2 border-cyan-400/50 w-full" style="height: 120px;">
+              <div class="h-full flex items-center justify-center">
+                <span class="text-3xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">1º</span>
               </div>
             </div>
           </div>
 
           <!-- 3º Lugar -->
-          <div v-if="currentTab === 'equipes' && rankingEquipes.length > 2" class="flex-1 min-w-[280px] max-w-xs">
-            <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden">
-              <div class="text-center mb-4">
-                <div class="w-20 h-20 mx-auto bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
-                  3
-                </div>
-              </div>
-              
-              <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-amber-400 shadow-xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
+          <div v-if="currentTab === 'equipes' && rankingEquipes.length > 2" class="flex flex-col items-center" style="width: 280px;">
+            <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden hover:shadow-2xl transition-all duration-300 mb-2">
+              <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-amber-400/50 shadow-xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
                 <img
                   :src="rankingEquipes[2].photo_url || '/images/placeholder-avatar.png'"
                   :alt="rankingEquipes[2].equipe_nome"
@@ -145,11 +125,17 @@
               <h3 class="text-xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingEquipes[2].equipe_nome }}</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">Gerente: {{ rankingEquipes[2].gerente_nome }}</p>
               
-              <div class="glass-card-light dark:glass-card rounded-xl p-3 border border-white/10">
+              <div class="glass-card-light dark:glass-card rounded-xl p-4 border border-white/10">
                 <div class="text-center">
                   <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ formatMoney(rankingEquipes[2].vgv_total) }}</p>
-                  <p class="text-xs text-gray-600 dark:text-gray-400 font-medium">{{ rankingEquipes[2].total_propostas }} propostas</p>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingEquipes[2].total_propostas }} vendas</p>
                 </div>
+              </div>
+            </div>
+            <!-- Pódio 3º lugar -->
+            <div class="glass-card-light dark:glass-card rounded-t-2xl border border-white/10 w-full" style="height: 60px;">
+              <div class="h-full flex items-center justify-center">
+                <span class="text-xl font-bold text-gray-700 dark:text-gray-300">3º</span>
               </div>
             </div>
           </div>
@@ -157,15 +143,9 @@
           <!-- Ranking de Corretores - Top 3 -->
           <template v-if="currentTab === 'corretores'">
             <!-- 2º Lugar -->
-            <div v-if="rankingCorretores.length > 1" class="flex-1 min-w-[280px] max-w-xs">
-              <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden">
-                <div class="text-center mb-4">
-                  <div class="w-20 h-20 mx-auto bg-gradient-to-br from-slate-400 to-slate-600 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
-                    2
-                  </div>
-                </div>
-                
-                <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-slate-400 shadow-xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
+            <div v-if="rankingCorretores.length > 1" class="flex flex-col items-center" style="width: 280px;">
+              <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden hover:shadow-2xl transition-all duration-300 mb-2">
+                <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-slate-400/50 shadow-xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
                   <img
                     :src="rankingCorretores[1].photo_url || '/images/placeholder-avatar.png'"
                     :alt="rankingCorretores[1].nome"
@@ -178,29 +158,29 @@
                 <h3 class="text-xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingCorretores[1].nome }}</h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">{{ rankingCorretores[1].funcao }}</p>
                 
-                <div class="glass-card-light dark:glass-card rounded-xl p-3 border border-white/10">
+                <div class="glass-card-light dark:glass-card rounded-xl p-4 border border-white/10">
                   <div class="text-center">
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ formatMoney(rankingCorretores[1].vgv_total) }}</p>
-                    <p class="text-xs text-gray-600 dark:text-gray-400 font-medium">{{ rankingCorretores[1].total_propostas }} propostas</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingCorretores[1].total_propostas }} vendas</p>
                   </div>
+                </div>
+              </div>
+              <!-- Pódio 2º lugar -->
+              <div class="glass-card-light dark:glass-card rounded-t-2xl border border-white/10 w-full" style="height: 80px;">
+                <div class="h-full flex items-center justify-center">
+                  <span class="text-2xl font-bold text-gray-700 dark:text-gray-300">2º</span>
                 </div>
               </div>
             </div>
 
             <!-- 1º Lugar -->
-            <div v-if="rankingCorretores.length > 0" class="flex-1 min-w-[320px] max-w-sm transform scale-105 z-10">
-              <div class="glass-card-light dark:glass-card rounded-3xl p-8 shadow-2xl border-2 border-blue-400/50 relative overflow-hidden">
+            <div v-if="rankingCorretores.length > 0" class="flex flex-col items-center transform scale-105 z-10" style="width: 320px;">
+              <div class="glass-card-light dark:glass-card rounded-3xl p-8 shadow-2xl border-2 border-cyan-400/50 relative overflow-hidden hover:shadow-cyan-500/20 transition-all duration-300 mb-2">
                 <!-- Efeito de brilho animado -->
-                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent animate-shimmer"></div>
                 
                 <div class="relative z-10">
-                  <div class="text-center mb-4">
-                    <div class="icon-glass w-24 h-24 mx-auto rounded-full flex items-center justify-center shadow-2xl">
-                      <StarIcon class="h-12 w-12 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
-                    </div>
-                  </div>
-                  
-                  <div class="w-44 h-44 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-gray-200 transform hover:scale-105 transition-transform duration-300">
+                  <div class="w-44 h-44 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-cyan-400/50 shadow-2xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
                     <img
                       :src="rankingCorretores[0].photo_url || '/images/placeholder-avatar.png'"
                       :alt="rankingCorretores[0].nome"
@@ -210,29 +190,29 @@
                     />
                   </div>
                   
-                  <h3 class="text-2xl font-bold text-center mb-2 text-white drop-shadow-lg">{{ rankingCorretores[0].nome }}</h3>
-                  <p class="text-sm text-blue-100 text-center mb-4 font-medium">{{ rankingCorretores[0].funcao }}</p>
+                  <h3 class="text-2xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingCorretores[0].nome }}</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">{{ rankingCorretores[0].funcao }}</p>
                   
                   <div class="glass-card-light dark:glass-card rounded-xl p-4 border border-white/10">
                     <div class="text-center">
-                      <p class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{{ formatMoney(rankingCorretores[0].vgv_total) }}</p>
-                      <p class="text-sm text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingCorretores[0].total_propostas }} propostas</p>
+                      <p class="text-3xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">{{ formatMoney(rankingCorretores[0].vgv_total) }}</p>
+                      <p class="text-sm text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingCorretores[0].total_propostas }} vendas</p>
                     </div>
                   </div>
+                </div>
+              </div>
+              <!-- Pódio 1º lugar -->
+              <div class="glass-card-light dark:glass-card rounded-t-2xl border-2 border-cyan-400/50 w-full" style="height: 120px;">
+                <div class="h-full flex items-center justify-center">
+                  <span class="text-3xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">1º</span>
                 </div>
               </div>
             </div>
 
             <!-- 3º Lugar -->
-            <div v-if="rankingCorretores.length > 2" class="flex-1 min-w-[280px] max-w-xs">
-              <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden">
-                <div class="text-center mb-4">
-                  <div class="w-20 h-20 mx-auto bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
-                    3
-                  </div>
-                </div>
-                
-                <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-amber-400 shadow-xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
+            <div v-if="rankingCorretores.length > 2" class="flex flex-col items-center" style="width: 280px;">
+              <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden hover:shadow-2xl transition-all duration-300 mb-2">
+                <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-amber-400/50 shadow-xl bg-gray-200 dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
                   <img
                     :src="rankingCorretores[2].photo_url || '/images/placeholder-avatar.png'"
                     :alt="rankingCorretores[2].nome"
@@ -245,59 +225,59 @@
                 <h3 class="text-xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingCorretores[2].nome }}</h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">{{ rankingCorretores[2].funcao }}</p>
                 
-                <div class="glass-card-light dark:glass-card rounded-xl p-3 border border-white/10">
+                <div class="glass-card-light dark:glass-card rounded-xl p-4 border border-white/10">
                   <div class="text-center">
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ formatMoney(rankingCorretores[2].vgv_total) }}</p>
-                    <p class="text-xs text-gray-600 dark:text-gray-400 font-medium">{{ rankingCorretores[2].total_propostas }} propostas</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingCorretores[2].total_propostas }} vendas</p>
                   </div>
+                </div>
+              </div>
+              <!-- Pódio 3º lugar -->
+              <div class="glass-card-light dark:glass-card rounded-t-2xl border border-white/10 w-full" style="height: 60px;">
+                <div class="h-full flex items-center justify-center">
+                  <span class="text-xl font-bold text-gray-700 dark:text-gray-300">3º</span>
                 </div>
               </div>
             </div>
           </template>
+          </div>
         </div>
       </div>
 
-      <!-- Lista Completa -->
-      <div class="glass-card-light dark:glass-card rounded-2xl shadow-lg p-6 sm:p-8">
-        <div class="mb-6 pb-4 border-b border-gray-200 dark:border-gray-800">
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-            <TrophyIcon class="h-7 w-7 mr-3 text-blue-500" />
-            Ranking Completo
-          </h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 ml-10">Todas as posições do ranking</p>
-        </div>
-
+      <!-- Painel Direito - Lista Completa -->
+      <div class="lg:col-span-2">
+        <div class="glass-card-light dark:glass-card rounded-xl shadow-lg p-6 border border-white/10 sticky top-6 max-h-[calc(100vh-8rem)] overflow-y-auto">
         <div class="space-y-3">
           <div
             v-for="(item, index) in (currentTab === 'equipes' ? rankingEquipes : rankingCorretores)"
             :key="item.id"
             :class="[
-              'flex items-center p-4 sm:p-5 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02]',
-              'glass-card-light dark:glass-card border border-white/10 hover:border-emerald-500/50 dark:hover:border-emerald-500/50',
-              index === 0 ? 'border-blue-400/50' : '',
+              'flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-white/5',
+              'glass-card-light dark:glass-card border border-white/10',
+              index === 0 ? 'border-cyan-400/50' : '',
               index === 1 ? 'border-slate-400/50' : '',
               index === 2 ? 'border-amber-400/50' : ''
             ]"
           >
             <!-- Posição -->
-            <div class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center font-bold text-lg sm:text-xl mr-4 shadow-md"
+            <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center font-bold text-base mr-3"
               :class="{
-                'bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-blue-300 dark:shadow-blue-900': index === 0,
-                'bg-gradient-to-br from-slate-400 to-slate-600 text-white shadow-slate-300 dark:shadow-slate-700': index === 1,
-                'bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-amber-300 dark:shadow-amber-700': index === 2,
-                'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300': index > 2
+                'icon-glass': index < 3,
+                'glass-card-light dark:glass-card border border-white/10 text-gray-700 dark:text-gray-300': index >= 3
               }"
             >
-              {{ index + 1 }}
+              <TrophyIcon v-if="index === 0" class="w-5 h-5 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
+              <TrophyIcon v-else-if="index === 1" class="w-5 h-5 text-gray-400 dark:text-gray-500 relative z-10 stroke-2" />
+              <span v-else :class="index < 3 ? 'relative z-10 text-white' : ''">{{ index + 1 }}</span>
             </div>
 
             <!-- Foto -->
-            <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border-2 mr-4 bg-gray-200 dark:bg-gray-700 shadow-md transform transition-transform duration-300 hover:scale-110"
+            <div class="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden border-2 mr-3 bg-gray-200 dark:bg-gray-700"
               :class="{
-                'border-blue-400 shadow-blue-200 dark:shadow-blue-900': index === 0,
-                'border-slate-400 shadow-slate-200 dark:shadow-slate-700': index === 1,
-                'border-amber-400 shadow-amber-200 dark:shadow-amber-700': index === 2,
-                'border-gray-300 dark:border-gray-600': index > 2
+                'border-cyan-400/50': index === 0,
+                'border-slate-400/50': index === 1,
+                'border-amber-400/50': index === 2,
+                'border-white/10': index > 2
               }"
             >
               <img
@@ -312,33 +292,22 @@
 
             <!-- Info -->
             <div class="flex-1 min-w-0">
-              <h4 class="text-lg font-bold text-gray-900 dark:text-white truncate">
+              <h4 class="text-sm font-bold text-gray-900 dark:text-white truncate">
                 {{ currentTab === 'equipes' ? item.equipe_nome : item.nome }}
               </h4>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                {{ currentTab === 'equipes' ? `Gerente: ${item.gerente_nome}` : item.funcao }}
-              </p>
-            </div>
-
-            <!-- Estatísticas -->
-            <div class="flex-shrink-0 text-right mr-4">
-              <p class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{{ formatMoney(item.vgv_total) }}</p>
-              <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">{{ item.total_propostas }} propostas</p>
-            </div>
-
-            <!-- Medalha -->
-            <div v-if="index < 3" class="flex-shrink-0 icon-glass p-2 rounded-lg">
-              <TrophyIcon class="w-6 h-6 sm:w-8 sm:h-8 relative z-10 stroke-2" :class="{
-                'text-blue-500 dark:text-blue-400': index === 0,
-                'text-slate-400 dark:text-slate-500': index === 1,
-                'text-amber-500 dark:text-amber-400': index === 2
-              }" />
+              <div class="text-xs text-gray-500 dark:text-gray-400 space-y-0.5">
+                <p>Metas: {{ item.meta || 20 }} Vendas: {{ item.vendas || item.total_propostas }}</p>
+                <p>Faltam: {{ Math.max(0, (item.meta || 20) - (item.vendas || item.total_propostas)) }}</p>
+                <p class="font-semibold text-cyan-500 dark:text-cyan-400">{{ Math.round(((item.vendas || item.total_propostas) / (item.meta || 20)) * 100) }}%</p>
+              </div>
             </div>
           </div>
 
-          <div v-if="(currentTab === 'equipes' ? rankingEquipes : rankingCorretores).length === 0" class="text-center py-12">
-            <p class="text-gray-500 dark:text-gray-400">Nenhum registro encontrado</p>
+          <div v-if="(currentTab === 'equipes' ? rankingEquipes : rankingCorretores).length === 0" class="text-center py-12 glass-card-light dark:glass-card rounded-xl p-8 border border-white/10">
+            <TrophyIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4 stroke-2" />
+            <p class="text-gray-500 dark:text-gray-400 font-medium">Nenhum registro encontrado</p>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -347,8 +316,7 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
-import { TrophyIcon } from '@heroicons/vue/24/outline'
-import { UserGroupIcon, StarIcon } from '@heroicons/vue/24/outline'
+import { TrophyIcon, UserGroupIcon, StarIcon } from '@heroicons/vue/24/outline'
 
 const formatMoney = (value) => {
   if (!value) return 'R$ 0,00'
@@ -385,9 +353,14 @@ const carregarRankingEquipes = async () => {
     
     // Mock data com imagens reais
     rankingEquipes.value = [
-      { id: 1, equipe_nome: 'Equipe Lion', gerente_nome: 'João Silva', vgv_total: 2500000, total_propostas: 15, photo_url: '/images/equipes/equipe_lion.avif' },
-      { id: 2, equipe_nome: 'Equipe Shark', gerente_nome: 'Maria Santos', vgv_total: 1800000, total_propostas: 12, photo_url: '/images/equipes/equipe_shark.avif' },
-      { id: 3, equipe_nome: 'Equipe Elite', gerente_nome: 'Pedro Oliveira', vgv_total: 1500000, total_propostas: 10, photo_url: '/images/equipes/Gemini_Generated_Image_oyb3kboyb3kboyb3.png' },
+      { id: 1, equipe_nome: 'Equipe Lion', gerente_nome: 'João Silva', vgv_total: 2500000, total_propostas: 15, meta: 20, vendas: 15, photo_url: '/images/equipes/equipe_lion.avif' },
+      { id: 2, equipe_nome: 'Equipe Shark', gerente_nome: 'Maria Santos', vgv_total: 1800000, total_propostas: 12, meta: 20, vendas: 12, photo_url: '/images/equipes/equipe_shark.avif' },
+      { id: 3, equipe_nome: 'Equipe Elite', gerente_nome: 'Pedro Oliveira', vgv_total: 1500000, total_propostas: 10, meta: 20, vendas: 10, photo_url: '/images/equipes/Gemini_Generated_Image_oyb3kboyb3kboyb3.png' },
+      { id: 4, equipe_nome: 'Equipe Alpha', gerente_nome: 'Ana Costa', vgv_total: 1200000, total_propostas: 8, meta: 20, vendas: 8, photo_url: '/images/equipes/equipe_lion.avif' },
+      { id: 5, equipe_nome: 'Equipe Beta', gerente_nome: 'Carlos Mendes', vgv_total: 1000000, total_propostas: 7, meta: 20, vendas: 7, photo_url: '/images/equipes/equipe_shark.avif' },
+      { id: 6, equipe_nome: 'Equipe Gamma', gerente_nome: 'Fernanda Lima', vgv_total: 900000, total_propostas: 6, meta: 20, vendas: 6, photo_url: '/images/equipes/Gemini_Generated_Image_oyb3kboyb3kboyb3.png' },
+      { id: 7, equipe_nome: 'Equipe Delta', gerente_nome: 'Lucas Almeida', vgv_total: 800000, total_propostas: 5, meta: 20, vendas: 5, photo_url: '/images/equipes/equipe_lion.avif' },
+      { id: 8, equipe_nome: 'Equipe Omega', gerente_nome: 'Juliana Rocha', vgv_total: 700000, total_propostas: 4, meta: 20, vendas: 4, photo_url: '/images/equipes/equipe_shark.avif' },
     ]
   } catch (error) {
     console.error('Erro ao carregar ranking de equipes:', error)
@@ -406,9 +379,12 @@ const carregarRankingCorretores = async () => {
     
     // Mock data com imagens reais
     rankingCorretores.value = [
-      { id: 1, nome: 'Arthur', funcao: 'Corretor', vgv_total: 1200000, total_propostas: 8, photo_url: '/images/corretores/corretor_arthur.jpg' },
-      { id: 2, nome: 'Beet', funcao: 'Corretor', vgv_total: 950000, total_propostas: 6, photo_url: '/images/corretores/corretor_beet.png' },
-      { id: 3, nome: 'Eduardo', funcao: 'Corretor', vgv_total: 800000, total_propostas: 5, photo_url: '/images/corretores/corretor_eduardo.png' },
+      { id: 1, nome: 'Arthur', funcao: 'Corretor', vgv_total: 1200000, total_propostas: 8, meta: 20, vendas: 8, photo_url: '/images/corretores/corretor_arthur.jpg' },
+      { id: 2, nome: 'Beet', funcao: 'Corretor', vgv_total: 950000, total_propostas: 6, meta: 20, vendas: 6, photo_url: '/images/corretores/corretor_beet.png' },
+      { id: 3, nome: 'Eduardo', funcao: 'Corretor', vgv_total: 800000, total_propostas: 5, meta: 20, vendas: 5, photo_url: '/images/corretores/corretor_eduardo.png' },
+      { id: 4, nome: 'Thaísso Necamurra', funcao: 'Corretor', vgv_total: 700000, total_propostas: 4, meta: 20, vendas: 10, photo_url: '/images/corretores/corretor_arthur.jpg' },
+      { id: 5, nome: 'Maria Silva', funcao: 'Corretor', vgv_total: 600000, total_propostas: 3, meta: 20, vendas: 3, photo_url: '/images/corretores/corretor_beet.png' },
+      { id: 6, nome: 'Pedro Santos', funcao: 'Corretor', vgv_total: 500000, total_propostas: 2, meta: 20, vendas: 2, photo_url: '/images/corretores/corretor_eduardo.png' },
     ]
   } catch (error) {
     console.error('Erro ao carregar ranking de corretores:', error)
