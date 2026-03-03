@@ -12,9 +12,9 @@
       </div>
       <NuxtLink
         to="/gestao/relatorios"
-        class="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold border border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-200"
+        class="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold glass-card-light dark:glass-card border border-white/10 text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-white/10 transition duration-200"
       >
-        <ArrowLeftIcon class="h-4 w-4" />
+        <ArrowLeftIcon class="h-4 w-4 stroke-2" />
         Voltar
       </NuxtLink>
     </div>
@@ -22,7 +22,7 @@
     <!-- Conteúdo -->
     <div class="flex-1 overflow-y-auto p-4 md:p-6 space-y-6 bg-gray-50 dark:bg-gray-900">
       <!-- Card de Filtros -->
-      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-4 md:p-5">
+      <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-4 md:p-5">
         <h2 class="text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400 mb-4">
           Filtros
         </h2>
@@ -42,7 +42,7 @@
               v-model="filtros[filtro.key]"
               type="date"
               :required="filtro.required"
-              class="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy-dark px-3 py-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full rounded-xl glass-card-light dark:glass-card border border-white/10 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             />
 
             <input
@@ -51,7 +51,7 @@
               type="text"
               :placeholder="filtro.placeholder || 'Digite...'"
               :required="filtro.required"
-              class="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy-dark px-3 py-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full rounded-xl glass-card-light dark:glass-card border border-white/10 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             />
 
             <div v-else-if="filtro.type === 'boolean'" class="flex items-center pt-2">
@@ -62,7 +62,7 @@
                   type="checkbox"
                   :true-value="true"
                   :false-value="null"
-                  class="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer"
+                  class="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-cyan-600 focus:ring-cyan-500 focus:ring-offset-0 cursor-pointer"
                 />
                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Sim</span>
               </label>
@@ -72,7 +72,7 @@
               v-else-if="filtro.type === 'select' && filtro.options"
               v-model="filtros[filtro.key]"
               :required="filtro.required"
-              class="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy-dark px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full rounded-xl glass-card-light dark:glass-card border border-white/10 px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             >
               <option value="">Selecione...</option>
               <option
@@ -88,7 +88,7 @@
               v-else-if="filtro.type === 'select' && filtro.store"
               v-model="filtros[filtro.key]"
               :required="filtro.required"
-              class="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy-dark px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full rounded-xl glass-card-light dark:glass-card border border-white/10 px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             >
               <option value="">Selecione...</option>
               <option
@@ -108,15 +108,15 @@
             :disabled="isLoading || !podeGerar"
             class="btn-gradient inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold disabled:opacity-45 disabled:cursor-not-allowed"
           >
-            <ArrowPathIcon v-if="isLoading" class="h-4 w-4 animate-spin" />
-            <DocumentArrowDownIcon v-else class="h-4 w-4" />
+            <ArrowPathIcon v-if="isLoading" class="h-4 w-4 animate-spin stroke-2" />
+            <DocumentArrowDownIcon v-else class="h-4 w-4 stroke-2" />
             <span>{{ isLoading ? 'Gerando...' : 'Gerar Relatório' }}</span>
           </button>
         </div>
       </div>
 
       <!-- Tabela de Resultados -->
-      <div v-if="dadosRelatorio.length > 0" class="glass-card-light dark:glass-card rounded-xl shadow-sm overflow-hidden flex-1 min-h-0 flex flex-col">
+      <div v-if="dadosRelatorio.length > 0" class="glass-card-light dark:glass-card rounded-xl border border-white/10 overflow-hidden flex-1 min-h-0 flex flex-col">
         <RelatorioTabela
           :colunas="colunasFormatadas"
           :dados="dadosRelatorio"
@@ -133,8 +133,8 @@
       </div>
 
       <!-- Estado vazio -->
-      <div v-if="!isLoading && hasSearched && dadosRelatorio.length === 0 && !erro" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-16 text-center">
-        <DocumentChartBarIcon class="h-16 w-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+      <div v-if="!isLoading && hasSearched && dadosRelatorio.length === 0 && !erro" class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-16 text-center">
+        <DocumentChartBarIcon class="h-16 w-16 text-gray-300 dark:text-gray-600 mx-auto mb-4 stroke-2" />
         <p class="text-base font-bold text-gray-900 dark:text-white">Nenhum registro encontrado</p>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Ajuste os filtros e gere novamente</p>
       </div>
@@ -151,16 +151,16 @@
       <div class="flex gap-2">
         <button
           @click="exportarCSV"
-          class="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold border border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-200"
+          class="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold glass-card-light dark:glass-card border border-white/10 text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-white/10 transition duration-200"
         >
-          <ArrowDownTrayIcon class="h-4 w-4" />
+          <ArrowDownTrayIcon class="h-4 w-4 stroke-2" />
           CSV
         </button>
         <button
           @click="exportarPDF"
           class="btn-gradient inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold"
         >
-          <DocumentArrowDownIcon class="h-4 w-4" />
+          <DocumentArrowDownIcon class="h-4 w-4 stroke-2" />
           PDF
         </button>
       </div>

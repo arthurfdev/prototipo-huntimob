@@ -9,7 +9,7 @@
         @click="openModalNovaMeta"
         class="btn-gradient px-4 py-2 flex items-center gap-2 text-sm font-semibold"
       >
-        <PlusIcon class="w-4 h-4" />
+        <PlusIcon class="w-4 h-4 stroke-2" />
         Nova Meta
       </button>
     </div>
@@ -20,9 +20,9 @@
     </div>
 
     <!-- Lista de Metas -->
-    <div v-else-if="metas.length === 0" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-12">
+    <div v-else-if="metas.length === 0" class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-12">
       <div class="text-center">
-        <ChartBarIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
+        <ChartBarIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4 stroke-2" />
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhuma meta encontrada</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400">
           Crie uma nova meta para começar a acompanhar o desempenho da equipe.
@@ -34,7 +34,7 @@
       <div
         v-for="meta in metas"
         :key="meta.id"
-        class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-200"
+        class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5 hover:shadow-lg transition-all duration-200"
       >
         <div class="flex items-start justify-between gap-4">
           <div class="flex-1 min-w-0">
@@ -94,23 +94,23 @@
           <div class="flex items-center gap-2 flex-shrink-0">
             <button
               @click="verProximos(meta)"
-              class="px-3 py-2 text-xs font-medium text-amber-600 dark:text-amber-400 bg-amber-50/80 dark:bg-amber-900/20 hover:bg-amber-100 dark:hover:bg-amber-900/30 rounded-lg transition-colors border border-amber-200/50 dark:border-amber-800/30"
+              class="px-3 py-2 text-xs font-medium text-amber-600 dark:text-amber-400 glass-card-light dark:glass-card border border-amber-200/50 dark:border-amber-800/30 hover:bg-amber-50/50 dark:hover:bg-amber-900/30 rounded-lg transition-colors"
             >
               Ver Próximos
             </button>
             <button
               @click="editarMeta(meta)"
-              class="p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+              class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
               title="Editar"
             >
-              <PencilIcon class="w-4 h-4" />
+              <PencilIcon class="w-4 h-4 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
             </button>
             <button
               @click="deletarMeta(meta)"
-              class="p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+              class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
               title="Excluir"
             >
-              <TrashIcon class="w-4 h-4" />
+              <TrashIcon class="w-4 h-4 text-red-500 dark:text-red-400 relative z-10 stroke-2" />
             </button>
           </div>
         </div>
@@ -124,7 +124,7 @@
       @click="showModalNovaMeta = false"
     >
       <div
-        class="relative glass-card-light dark:glass-card rounded-xl shadow-xl w-full max-w-2xl"
+        class="relative glass-card-light dark:glass-card border border-white/10 rounded-xl shadow-xl w-full max-w-2xl"
         @click.stop
       >
         <div class="p-6">
@@ -134,9 +134,9 @@
             </h3>
             <button
               @click="fecharModalNovaMeta"
-              class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
             >
-              <XMarkIcon class="w-5 h-5" />
+              <XMarkIcon class="w-5 h-5 stroke-2" />
             </button>
           </div>
 
@@ -147,7 +147,7 @@
                 v-model="formMeta.nome"
                 type="text"
                 placeholder="Ex: Meta de Vendas Mensal"
-                class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               />
             </div>
 
@@ -155,7 +155,7 @@
               <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">Tipo</label>
               <select
                 v-model="formMeta.tipo"
-                class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               >
                 <option value="corretor">Corretor</option>
                 <option value="gerente">Gerente</option>
@@ -169,7 +169,7 @@
                 v-model="formMeta.descricao"
                 rows="3"
                 placeholder="Descreva a meta..."
-                class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 resize-none"
               ></textarea>
             </div>
 
@@ -179,14 +179,14 @@
                 v-model="formMeta.valor_meta"
                 type="text"
                 placeholder="Ex: 3 vendas ou R$ 1.500.000"
-                class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                class="w-full px-3 py-2 text-sm glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
               />
             </div>
 
-            <div class="flex justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex justify-end gap-3 pt-4 border-t border-white/10">
               <button
                 @click="fecharModalNovaMeta"
-                class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 glass-card-light dark:glass-card border border-white/10 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
               >
                 Cancelar
               </button>
@@ -195,7 +195,7 @@
                 :disabled="!formMeta.nome || !formMeta.valor_meta"
                 class="btn-gradient px-4 py-2 flex items-center gap-2 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <CheckIcon class="w-4 h-4" />
+                <CheckIcon class="w-4 h-4 stroke-2" />
                 {{ metaEditando ? 'Atualizar' : 'Criar' }}
               </button>
             </div>
@@ -211,7 +211,7 @@
       @click="showModalProximos = false"
     >
       <div
-        class="relative glass-card-light dark:glass-card rounded-xl shadow-xl w-full max-w-3xl"
+        class="relative glass-card-light dark:glass-card border border-white/10 rounded-xl shadow-xl w-full max-w-3xl"
         @click.stop
       >
         <div class="p-6">
@@ -224,9 +224,9 @@
             </div>
             <button
               @click="showModalProximos = false"
-              class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
             >
-              <XMarkIcon class="w-5 h-5" />
+              <XMarkIcon class="w-5 h-5 stroke-2" />
             </button>
           </div>
 
@@ -238,7 +238,7 @@
             <div
               v-for="colaborador in colaboradoresProximos"
               :key="colaborador.id"
-              class="bg-gray-50/50 dark:bg-gray-900/30 rounded-lg p-4 border border-gray-200/50 dark:border-gray-800/50"
+              class="glass-card-light dark:glass-card rounded-lg p-4 border border-white/10"
             >
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3 flex-1 min-w-0">
@@ -265,7 +265,7 @@
                   </div>
                 </div>
               </div>
-              <div class="mt-3 pt-3 border-t border-gray-200/50 dark:border-gray-800/50">
+              <div class="mt-3 pt-3 border-t border-white/10">
                 <p class="text-xs text-gray-600 dark:text-gray-400">{{ colaborador.descricao }}</p>
               </div>
             </div>

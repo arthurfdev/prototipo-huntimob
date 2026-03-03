@@ -4,8 +4,8 @@
       <RelatorioGerador :tipo="tipo" />
     </div>
     <div v-else class="min-h-[calc(100vh-8rem)] flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-4">
-      <div class="glass-card-light dark:glass-card rounded-2xl shadow-sm p-8 text-center max-w-md">
-        <ExclamationCircleIcon class="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+      <div class="glass-card-light dark:glass-card rounded-2xl border border-white/10 p-8 text-center max-w-md">
+        <ExclamationCircleIcon class="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4 stroke-2" />
         <h2 class="text-lg font-bold text-gray-900 dark:text-white">Relatório não encontrado</h2>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
           O tipo de relatório solicitado não existe ou não está disponível.

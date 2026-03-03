@@ -8,9 +8,9 @@
       
       <button
         @click="carregarLeadsLivres"
-        class="btn-gradient px-4 py-2 flex items-center space-x-2"
+        class="btn-gradient px-4 py-2 text-sm font-semibold flex items-center gap-2"
       >
-        <ArrowPathIcon class="h-5 w-5" />
+        <ArrowPathIcon class="h-4 w-4 stroke-2" />
         <span>Atualizar</span>
       </button>
     </div>
@@ -25,7 +25,7 @@
       <div
         v-for="lead in leadsLivres"
         :key="lead.id"
-        class="glass-card-light dark:glass-card p-6 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer"
+        class="glass-card-light dark:glass-card border border-white/10 p-6 rounded-xl hover:shadow-lg transition-all cursor-pointer"
         @click="selecionarLead(lead)"
       >
         <div class="flex justify-between items-start mb-4">
@@ -35,30 +35,30 @@
           </span>
         </div>
         
-        <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <div class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
           <div class="flex items-center">
-            <PhoneIcon class="w-4 h-4 mr-2" />
+            <PhoneIcon class="w-4 h-4 mr-2 stroke-2" />
             {{ lead.telefone }}
           </div>
           <div v-if="lead.email" class="flex items-center">
-            <EnvelopeIcon class="w-4 h-4 mr-2" />
+            <EnvelopeIcon class="w-4 h-4 mr-2 stroke-2" />
             {{ lead.email }}
           </div>
           <div v-if="lead.faixa_renda" class="flex items-center">
-            <CurrencyDollarIcon class="w-4 h-4 mr-2" />
+            <CurrencyDollarIcon class="w-4 h-4 mr-2 stroke-2" />
             {{ lead.faixa_renda }}
           </div>
           <div v-if="lead.objetivo" class="flex items-center">
             <span class="inline-block w-3 h-3 rounded-full mr-2" :class="getObjectiveColor(lead.objetivo)"></span>
             {{ lead.objetivo }}
           </div>
-          <div v-if="lead.data_cadastro" class="flex items-center text-gray-500 dark:text-gray-500">
-            <CalendarIcon class="w-4 h-4 mr-2" />
+          <div v-if="lead.data_cadastro" class="flex items-center text-gray-500 dark:text-gray-400">
+            <CalendarIcon class="w-4 h-4 mr-2 stroke-2" />
             {{ formatarData(lead.data_cadastro) }}
           </div>
         </div>
 
-        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div class="mt-4 pt-4 border-t border-white/10">
           <button
             @click.stop="atribuirLead(lead)"
             class="btn-gradient w-full py-2 px-4 text-sm font-medium"
@@ -71,7 +71,7 @@
 
     <!-- Estado vazio -->
     <div v-if="!loading && leadsLivres.length === 0" class="text-center py-12">
-      <UserGroupIcon class="mx-auto h-12 w-12 text-gray-400" />
+      <UserGroupIcon class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 stroke-2" />
       <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">Nenhum lead livre</h3>
       <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Todos os leads estão atribuídos ou no pipeline.</p>
     </div>
@@ -83,7 +83,7 @@
       @click="closeAtribuicaoModal"
     >
       <div
-        class="relative glass-card-light dark:glass-card p-6 rounded-xl shadow-xl w-full max-w-md"
+        class="relative glass-card-light dark:glass-card border border-white/10 p-6 rounded-xl shadow-xl w-full max-w-md"
         @click.stop
       >
         <div class="mb-4">
@@ -97,7 +97,7 @@
             </label>
             <select
               v-model="colaboradorSelecionado"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             >
               <option value="">Selecione um colaborador</option>
               <option
@@ -116,7 +116,7 @@
             </label>
             <select
               v-model="colunaSelecionada"
-              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             >
               <option value="">Selecione uma coluna</option>
               <option
@@ -129,10 +129,10 @@
             </select>
           </div>
           
-          <div class="flex justify-end space-x-3">
+          <div class="flex justify-end gap-3">
             <button
               @click="closeAtribuicaoModal"
-              class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 glass-card-light dark:glass-card border border-white/10 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
             >
               Cancelar
             </button>

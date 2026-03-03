@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col min-h-0 flex-1">
     <!-- Header do Relatório -->
-    <div v-if="header" class="shrink-0 px-6 md:px-8 py-5 border-b border-gray-200 dark:border-gray-700 space-y-3 bg-white dark:bg-brand-navy">
+    <div v-if="header" class="shrink-0 px-6 md:px-8 py-5 border-b border-white/10 space-y-3 glass-card-light dark:glass-card bg-white/5 dark:bg-white/5 backdrop-blur-sm">
       <h3 class="text-lg font-bold text-gray-900 dark:text-white">{{ header.titulo }}</h3>
       <p v-if="header.subtitulo" class="text-sm text-gray-600 dark:text-gray-400">{{ header.subtitulo }}</p>
       <div v-if="header.periodo" class="text-sm">
@@ -20,7 +20,7 @@
             v-for="(value, key) in header.filtros"
             :key="key"
             v-show="value"
-            class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800"
+            class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium glass-card-light dark:glass-card text-cyan-700 dark:text-cyan-400 border border-cyan-200/50 dark:border-cyan-800/30"
           >
             {{ key }}: {{ value }}
           </li>
@@ -29,15 +29,15 @@
     </div>
 
     <!-- Tabela -->
-    <div class="flex-1 min-h-0 overflow-auto bg-white dark:bg-brand-navy">
+    <div class="flex-1 min-h-0 overflow-auto">
       <table class="min-w-full border-collapse">
-        <thead class="sticky top-0 z-10 bg-gray-50 dark:bg-brand-navy-dark">
+        <thead class="sticky top-0 z-10 glass-card-light dark:glass-card bg-white/5 dark:bg-white/5 backdrop-blur-sm">
           <tr>
             <th
               v-for="coluna in colunas"
               :key="coluna.key"
               :class="[
-                'px-6 md:px-8 py-4 text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700',
+                'px-6 md:px-8 py-4 text-[11px] font-bold tracking-[0.06em] uppercase text-gray-500 dark:text-gray-400 border-b border-white/10',
                 coluna.align === 'right' ? 'text-right' : coluna.align === 'center' ? 'text-center' : 'text-left'
               ]"
             >
@@ -50,9 +50,8 @@
             v-for="(item, index) in dados"
             :key="index"
             :class="[
-              'border-b border-gray-200 dark:border-gray-700 transition-colors duration-200',
-              index % 2 === 0 ? 'bg-white dark:bg-brand-navy' : 'bg-gray-50 dark:bg-brand-navy-dark',
-              'hover:bg-blue-50 dark:hover:bg-blue-900/20'
+              'border-b border-white/10 transition-colors duration-200',
+              'hover:bg-white/5 dark:hover:bg-white/5'
             ]"
           >
             <td
@@ -73,7 +72,7 @@
           </tr>
         </tbody>
         <!-- Totais -->
-        <tfoot v-if="totais && Object.keys(totais).length > 0" class="sticky bottom-0 bg-gray-50 dark:bg-brand-navy-dark border-t-2 border-gray-200 dark:border-gray-700">
+        <tfoot v-if="totais && Object.keys(totais).length > 0" class="sticky bottom-0 glass-card-light dark:glass-card bg-white/5 dark:bg-white/5 backdrop-blur-sm border-t-2 border-white/10">
           <tr>
             <td
               v-for="coluna in colunas"

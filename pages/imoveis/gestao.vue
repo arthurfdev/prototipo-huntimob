@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-full overflow-x-hidden">
+  <div class="w-full">
     <div class="mb-6">
       <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Gestão de Imóveis</h1>
       <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Gerencie lançamentos, captações e visualize métricas importantes</p>

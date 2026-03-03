@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full max-w-full overflow-x-hidden">
+  <div class="w-full">
     <div class="mb-6">
       <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Anúncios</h1>
       <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Gerencie e aprove anúncios de imóveis para publicação</p>
     </div>
 
     <!-- Tabs -->
-    <div class="border-b border-gray-200 dark:border-gray-800 mb-6">
+    <div class="border-b border-white/10 mb-6">
       <nav class="-mb-px flex space-x-8">
         <button
           v-for="tab in tabs"
@@ -14,12 +14,12 @@
           @click="currentTab = tab.id"
           :class="[
             currentTab === tab.id
-              ? 'border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-400'
-              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300',
+              ? 'border-cyan-500 text-cyan-600 dark:text-cyan-400 dark:border-cyan-400'
+              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-white/20',
             'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors'
           ]"
         >
-          <component :is="tab.icon" class="w-4 h-4 inline-block mr-2" />
+          <component :is="tab.icon" class="w-4 h-4 inline-block mr-2 stroke-2" />
           {{ tab.name }}
           <span v-if="tab.id === 'aprovar' && anunciosPendentes.length > 0" class="ml-2 px-2 py-0.5 bg-red-500 text-white text-xs rounded-full">
             {{ anunciosPendentes.length }}
@@ -30,7 +30,7 @@
 
     <!-- Tab Anunciar Imóvel -->
     <div v-if="currentTab === 'anunciar'" class="space-y-6">
-      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
+      <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6">
         <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Anunciar Imóvel</h2>
         
         <!-- Seleção de Imóvel -->
@@ -40,7 +40,7 @@
           </label>
           <select
             v-model="imovelSelecionado"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
           >
             <option value="">Selecione um imóvel...</option>
             <option 
@@ -55,7 +55,7 @@
 
         <!-- Formulário de Anúncio -->
         <div v-if="imovelSelecionado" class="space-y-6">
-          <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+          <div class="border-t border-white/10 pt-6">
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-4">Informações do Anúncio</h3>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -67,7 +67,7 @@
                   v-model="formAnuncio.titulo"
                   type="text"
                   placeholder="Ex: Apartamento 2 quartos no Centro"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                 />
               </div>
               <div>
@@ -78,7 +78,7 @@
                   v-model="formAnuncio.subtitulo"
                   type="text"
                   placeholder="Ex: Com varanda e vaga de garagem"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                 />
               </div>
             </div>
@@ -91,7 +91,7 @@
                 v-model="formAnuncio.descricao"
                 rows="6"
                 placeholder="Descreva o imóvel com detalhes: localização, características, diferenciais..."
-                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
               ></textarea>
             </div>
 
@@ -104,7 +104,7 @@
                   v-model="formAnuncio.valor_venda"
                   type="number"
                   placeholder="0,00"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                 />
               </div>
               <div>
@@ -115,7 +115,7 @@
                   v-model="formAnuncio.valor_aluguel"
                   type="number"
                   placeholder="0,00"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                 />
               </div>
               <div>
@@ -126,7 +126,7 @@
                   v-model="formAnuncio.condominio"
                   type="number"
                   placeholder="0,00"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                 />
               </div>
             </div>
@@ -139,7 +139,7 @@
                 <input
                   v-model="formAnuncio.quartos"
                   type="number"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                 />
               </div>
               <div>
@@ -149,7 +149,7 @@
                 <input
                   v-model="formAnuncio.banheiros"
                   type="number"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                 />
               </div>
               <div>
@@ -159,7 +159,7 @@
                 <input
                   v-model="formAnuncio.vagas"
                   type="number"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                 />
               </div>
               <div>
@@ -169,7 +169,7 @@
                 <input
                   v-model="formAnuncio.area_total"
                   type="number"
-                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white"
+                  class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white"
                 />
               </div>
             </div>
@@ -211,9 +211,9 @@
                     Publica em: OLX, VivaReal e ZAP Imóveis
                   </p>
                 </div>
-                <div class="p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800">
+                <div class="p-3 glass-card-light dark:glass-card rounded-lg border border-white/10">
                   <div class="flex items-center gap-2">
-                    <CheckIcon class="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                    <CheckIcon class="w-5 h-5 text-emerald-600 dark:text-emerald-400 stroke-2" />
                     <span class="text-sm font-medium text-emerald-800 dark:text-emerald-300">Site HuntImob</span>
                     <span class="text-xs text-emerald-600 dark:text-emerald-400 ml-2">(Sempre ativo)</span>
                   </div>
@@ -227,14 +227,14 @@
             <div class="flex justify-end gap-3">
               <button
                 @click="limparFormulario"
-                class="px-4 py-2 text-gray-700 dark:text-gray-300 bg-white dark:bg-brand-navy-dark border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
+                class="px-4 py-2 text-gray-700 dark:text-gray-300 glass-card-light dark:glass-card border border-white/10 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
               >
                 Limpar
               </button>
               <button
                 @click="solicitarAprovacao"
                 :disabled="!podePublicar"
-                class="btn-gradient px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                class="btn-gradient px-4 py-2 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Solicitar Aprovação
               </button>
@@ -246,7 +246,7 @@
 
     <!-- Tab Gerenciar Anúncios -->
     <div v-if="currentTab === 'gerenciar'" class="space-y-6">
-      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
+      <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6">
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-lg font-bold text-gray-900 dark:text-white">Anúncios Publicados</h2>
           <div class="flex items-center gap-3">
@@ -254,11 +254,11 @@
               v-model="filtroAnuncios"
               type="text"
               placeholder="Buscar anúncio..."
-              class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white text-sm"
+              class="px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white text-sm"
             />
             <select
               v-model="filtroPortal"
-              class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white text-sm"
+              class="px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white text-sm"
             >
               <option value="">Todos os portais</option>
               <option value="canal">Canal Pro</option>
@@ -268,7 +268,7 @@
         </div>
 
         <div v-if="anunciosAprovadosFiltrados.length === 0" class="text-center py-12">
-          <DocumentTextIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
+          <DocumentTextIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4 stroke-2" />
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhum anúncio encontrado</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Nenhum anúncio foi publicado ainda
@@ -279,7 +279,7 @@
           <div
             v-for="anuncio in anunciosAprovadosFiltrados"
             :key="anuncio.id"
-            class="glass-card-light dark:glass-card rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group"
+            class="glass-card-light dark:glass-card rounded-xl border border-white/10 overflow-hidden hover:shadow-lg transition-all duration-300 group"
           >
             <!-- Imagem do Imóvel -->
             <div class="relative h-48 bg-gray-200 dark:bg-gray-800 overflow-hidden">
@@ -344,16 +344,16 @@
               </p>
 
               <!-- Ações -->
-              <div class="flex items-center gap-2 pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div class="flex items-center gap-2 pt-4 border-t border-white/10">
                 <button
                   @click="editarAnuncio(anuncio)"
-                  class="flex-1 px-3 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                  class="flex-1 px-3 py-2 text-sm font-medium glass-card-light dark:glass-card border border-white/10 text-cyan-600 dark:text-cyan-400 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors"
                 >
                   Editar
                 </button>
                 <button
                   @click="removerAnuncio(anuncio.id)"
-                  class="flex-1 px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                  class="flex-1 px-3 py-2 text-sm font-medium glass-card-light dark:glass-card border border-white/10 text-red-600 dark:text-red-400 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors"
                 >
                   Remover
                 </button>
@@ -366,7 +366,7 @@
 
     <!-- Tab Aprovar Anúncios -->
     <div v-if="currentTab === 'aprovar'" class="space-y-6">
-      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-6">
+      <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-6">
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-lg font-bold text-gray-900 dark:text-white">Anúncios Pendentes de Aprovação</h2>
           <div class="flex items-center gap-3">
@@ -374,11 +374,11 @@
               v-model="filtroPendentes"
               type="text"
               placeholder="Buscar anúncio..."
-              class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white text-sm"
+              class="px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white text-sm"
             />
             <select
               v-model="filtroCorretor"
-              class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-brand-navy-dark dark:text-white text-sm"
+              class="px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50 text-gray-900 dark:text-white text-sm"
             >
               <option value="">Todos os corretores</option>
               <option 
@@ -393,7 +393,7 @@
         </div>
 
         <div v-if="anunciosPendentesFiltrados.length === 0" class="text-center py-12">
-          <CheckCircleIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
+          <CheckCircleIcon class="h-16 w-16 mx-auto text-gray-300 dark:text-gray-600 mb-4 stroke-2" />
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Nenhum anúncio pendente</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Todos os anúncios foram aprovados ou não há anúncios aguardando aprovação
@@ -404,7 +404,7 @@
           <div
             v-for="anuncio in anunciosPendentesFiltrados"
             :key="anuncio.id"
-            class="glass-card-light dark:glass-card rounded-xl shadow-sm border-2 border-amber-200/50 dark:border-amber-800/50 overflow-hidden hover:shadow-lg transition-all duration-300 group"
+            class="glass-card-light dark:glass-card rounded-xl border border-amber-200/50 dark:border-amber-800/50 overflow-hidden hover:shadow-lg transition-all duration-300 group"
           >
             <!-- Imagem do Imóvel -->
             <div class="relative h-48 bg-gray-200 dark:bg-gray-800 overflow-hidden">
@@ -471,16 +471,16 @@
               </div>
 
               <!-- Ações -->
-              <div class="flex items-center gap-2 pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div class="flex items-center gap-2 pt-4 border-t border-white/10">
                 <button
                   @click="rejeitarAnuncio(anuncio.id)"
-                  class="flex-1 px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                  class="flex-1 px-3 py-2 text-sm font-medium glass-card-light dark:glass-card border border-white/10 text-red-600 dark:text-red-400 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors"
                 >
                   Rejeitar
                 </button>
                 <button
                   @click="aprovarAnuncio(anuncio.id)"
-                  class="flex-1 px-3 py-2 text-sm font-medium text-white bg-green-500 hover:bg-green-600 rounded-lg transition-colors"
+                  class="flex-1 px-3 py-2 text-sm font-medium btn-gradient text-white rounded-lg transition-colors"
                 >
                   Aprovar
                 </button>

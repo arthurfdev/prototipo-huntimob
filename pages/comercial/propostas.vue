@@ -11,23 +11,23 @@
         <!-- Botão Nova Proposta -->
         <button 
           @click="showForm = true" 
-          class="btn-gradient px-4 py-2 flex items-center gap-2"
+          class="btn-gradient px-4 py-2 text-sm font-semibold flex items-center gap-2"
         >
-          <DocumentPlusIcon class="h-5 w-5" />
+          <DocumentPlusIcon class="h-4 w-4 stroke-2" />
           Nova Proposta
         </button>
       </div>
     </div>
 
     <!-- Filtros -->
-    <div v-if="!showForm" class="glass-card-light dark:glass-card rounded-xl shadow-sm p-4 sm:p-6 mb-6">
+    <div v-if="!showForm" class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <!-- Tipo de Filtro -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Filtrar por</label>
           <select
             v-model="filters.tipo"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="cliente">Cliente</option>
             <option value="corretor">Corretor</option>
@@ -43,7 +43,7 @@
             type="text"
             v-model="filters.busca"
             @input="handleSearch"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             :placeholder="`Buscar por ${filters.tipo}...`"
           >
         </div>
@@ -54,7 +54,7 @@
           <select
             v-model="filters.status"
             @change="handleSearch"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="">Todos</option>
             <option value="aguardando aprovação">Aguardando Aprovação</option>

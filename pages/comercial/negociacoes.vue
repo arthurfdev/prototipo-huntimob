@@ -7,15 +7,15 @@
       </div>
       
       <button 
-        class="btn-gradient px-4 py-2 flex items-center space-x-2"
+        class="btn-gradient px-4 py-2 text-sm font-semibold flex items-center gap-2"
       >
-        <PlusIcon class="h-5 w-5" />
+        <PlusIcon class="h-4 w-4 stroke-2" />
         <span>Nova Negociação</span>
       </button>
     </div>
     
     <!-- Filtros -->
-    <div class="glass-card-light dark:glass-card rounded-lg shadow p-4 sm:p-6 mb-6">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
         <!-- Tipo de Filtro -->
         <div>
@@ -23,7 +23,7 @@
           <select
             id="filtro-tipo"
             v-model="filters.tipo"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="cliente">Cliente</option>
             <option value="corretor">Corretor</option>
@@ -39,7 +39,7 @@
             type="text"
             v-model="filters.busca"
             @input="handleSearch"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             :placeholder="`Buscar por ${filters.tipo}...`"
           >
         </div>
@@ -51,7 +51,7 @@
             id="filtro-status"
             v-model="filters.status"
             @change="handleSearch"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="">Todos</option>
             <option value="em andamento">Em Andamento</option>
@@ -67,7 +67,7 @@
             id="filtro-mes"
             v-model="filters.mes" 
             @change="handleSearch"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
           >
             <option value="">Todos</option>
             <option v-for="(mes, index) in mesesDisponiveis" 
@@ -81,7 +81,7 @@
     </div>
 
     <!-- Tabela de Vendas -->
-    <div class="glass-card-light dark:glass-card rounded-lg shadow overflow-hidden">
+    <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 overflow-hidden">
       <div v-if="loading" class="p-4">
         <div class="animate-pulse space-y-4">
           <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
@@ -90,8 +90,8 @@
         </div>
       </div>
 
-      <table v-else class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-        <thead class="bg-gray-50 dark:bg-gray-800">
+      <table v-else class="min-w-full divide-y divide-white/10">
+        <thead class="glass-card-light dark:glass-card bg-white/5 dark:bg-white/5 backdrop-blur-sm">
           <tr>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cliente</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Produto</th>
@@ -101,8 +101,8 @@
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Ações</th>
           </tr>
         </thead>
-        <tbody class="bg-white dark:bg-brand-navy divide-y divide-gray-200 dark:divide-gray-700">
-          <tr v-for="venda in paginatedVendas" :key="venda.id" class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+        <tbody class="divide-y divide-white/10">
+          <tr v-for="venda in paginatedVendas" :key="venda.id" class="hover:bg-white/5 dark:hover:bg-white/5 transition-colors">
             <td class="px-6 py-4">
               <div class="text-sm font-medium text-gray-900 dark:text-white">{{ venda.cliente?.nome }}</div>
             </td>
@@ -125,24 +125,24 @@
               </div>
             </td>
             <td class="px-6 py-4">
-              <div class="text-sm text-gray-900 dark:text-white">{{ venda.observacoes || '-' }}</div>
+              <div class="text-sm text-gray-700 dark:text-gray-300">{{ venda.observacoes || '-' }}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex space-x-2">
+              <div class="flex gap-2">
                 <button 
                   v-if="venda.status_negociacao !== 'Concluída'"
                   @click="editarVenda(venda)"
-                  class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                  class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
                   title="Editar"
                 >
-                  <PencilIcon class="h-5 w-5" />
+                  <PencilIcon class="h-4 w-4 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
                 </button>
                 <button 
                   @click="excluirVenda(venda.id)"
-                  class="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
+                  class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
                   title="Excluir"
                 >
-                  <TrashIcon class="h-5 w-5" />
+                  <TrashIcon class="h-4 w-4 text-red-500 dark:text-red-400 relative z-10 stroke-2" />
                 </button>
               </div>
             </td>
@@ -151,64 +151,28 @@
       </table>
 
       <!-- Paginação -->
-      <div class="flex items-center justify-between border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy px-4 py-3 sm:px-6">
-        <div class="flex flex-1 justify-between sm:hidden">
-          <button
-            @click="currentPage--"
-            :disabled="currentPage === 1"
-            class="relative inline-flex items-center rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50"
-          >
-            Anterior
-          </button>
-          <button
-            @click="currentPage++"
-            :disabled="currentPage >= totalPages"
-            class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-navy-dark px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50"
-          >
-            Próximo
-          </button>
-        </div>
-        <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-          <div>
-            <p class="text-sm text-gray-700 dark:text-gray-300">
-              Mostrando
-              <span class="font-medium">{{ startIndex + 1 }}</span>
-              até
-              <span class="font-medium">{{ endIndex }}</span>
-              de
-              <span class="font-medium">{{ totalItems }}</span>
-              resultados
-            </p>
+      <div class="glass-card-light dark:glass-card bg-white/5 dark:bg-white/5 backdrop-blur-sm px-4 py-3 border-t border-white/10 sm:px-6">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-gray-700 dark:text-gray-300">
+            Mostrando <span class="font-medium">{{ startIndex + 1 }}</span> até 
+            <span class="font-medium">{{ endIndex }}</span> de 
+            <span class="font-medium">{{ totalItems }}</span> resultados
           </div>
-          <div>
-            <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-              <button
-                @click="currentPage--"
-                :disabled="currentPage === 1"
-                class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
-              >
-                Anterior
-              </button>
-              <button
-                v-for="page in displayedPages"
-                :key="page"
-                @click="currentPage = page"
-                :class="[
-                  currentPage === page
-                    ? 'relative z-10 inline-flex items-center bg-blue-500 px-4 py-2 text-sm font-semibold text-white focus:z-20'
-                    : 'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0', 
-                ]"
-              >
-                {{ page }}
-              </button>
-              <button
-                @click="currentPage++"
-                :disabled="currentPage >= totalPages"
-                class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
-              >
-                Próximo
-              </button>
-            </nav>
+          <div class="flex gap-2">
+            <button
+              @click="currentPage--"
+              :disabled="currentPage === 1"
+              class="px-3 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-white/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Anterior
+            </button>
+            <button
+              @click="currentPage++"
+              :disabled="currentPage >= totalPages"
+              class="px-3 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-white/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Próximo
+            </button>
           </div>
         </div>
       </div>

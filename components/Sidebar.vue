@@ -414,7 +414,7 @@ const menuItems = computed(() => {
       icon: ChartBarIcon,
       subItems: [
         { id: 'metas', label: 'Metas', route: '/gestao/metas', icon: ChartBarIcon },
-        { id: 'cadastros', label: 'Cadastros', route: '/gestao/cadastros', icon: RectangleStackIcon },
+        { id: 'cadastros', label: 'Colaboradores', route: '/gestao/cadastros', icon: RectangleStackIcon },
         { id: 'permissoes', label: 'Permissões', route: '/gestao/permissoes', icon: ShieldCheckIcon },
         { id: 'relatorios', label: 'Relatórios', route: '/gestao/relatorios', icon: DocumentChartBarIcon },
         { id: 'balanco-mensal', label: 'Balanço Mensal', route: '/gestao/balanco-mensal', icon: ChartBarIcon },

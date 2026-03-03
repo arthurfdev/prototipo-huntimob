@@ -1,8 +1,8 @@
 <template>
-  <div class="glass-card-light dark:glass-card rounded-xl shadow-sm w-full overflow-hidden">
+  <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 w-full overflow-hidden">
     <div class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
-        <thead class="bg-gray-50 dark:bg-gray-800">
+      <table class="min-w-full divide-y divide-white/10">
+        <thead class="glass-card-light dark:glass-card bg-white/5 dark:bg-white/5 backdrop-blur-sm">
           <tr>
             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cliente</th>
             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Produto</th>
@@ -12,8 +12,8 @@
             <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Ações</th>
           </tr>
         </thead>
-        <tbody class="bg-white dark:bg-brand-navy divide-y divide-gray-200 dark:divide-gray-800">
-          <tr v-for="proposta in propostas" :key="proposta.id" class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+        <tbody class="divide-y divide-white/10">
+          <tr v-for="proposta in propostas" :key="proposta.id" class="hover:bg-white/5 dark:hover:bg-white/5 transition-colors">
             <td class="px-4 sm:px-6 py-4">
               <div class="text-sm font-medium text-gray-900 dark:text-white">{{ proposta.cliente_nome }}</div>
             </td>
@@ -32,25 +32,25 @@
                 {{ formatarStatus(proposta.status) }}
               </span>
             </td>
-            <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
               {{ formatarMoeda(proposta.vgv) }}
             </td>
             <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-              <div class="flex space-x-2">
+              <div class="flex gap-2">
                 <button
                   @click="$emit('edit', proposta)"
-                  class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                  class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
                   title="Editar"
                 >
-                  <PencilIcon class="h-5 w-5" />
+                  <PencilIcon class="h-4 w-4 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
                 </button>
                 <button 
                   v-if="proposta.status !== 'aprovada'"
                   @click="$emit('delete', proposta.id)"
-                  class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300"
+                  class="icon-glass p-2 rounded-lg hover:bg-white/20 transition-colors"
                   title="Excluir"
                 >
-                  <TrashIcon class="h-5 w-5" />
+                  <TrashIcon class="h-4 w-4 text-red-500 dark:text-red-400 relative z-10 stroke-2" />
                 </button>
               </div>
             </td>

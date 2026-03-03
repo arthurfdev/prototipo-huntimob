@@ -15,8 +15,8 @@
         :class="[
           'inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition duration-200',
           !categoriaAtiva
-            ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-sm'
-            : 'border border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+            ? 'btn-gradient text-white shadow-sm'
+            : 'glass-card-light dark:glass-card border border-white/10 text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-white/10'
         ]"
       >
         Todos
@@ -28,11 +28,11 @@
         :class="[
           'inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition duration-200',
           categoriaAtiva === cat.id
-            ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-sm'
-            : 'border border-gray-200 dark:border-gray-700 bg-white dark:bg-brand-navy-dark text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+            ? 'btn-gradient text-white shadow-sm'
+            : 'glass-card-light dark:glass-card border border-white/10 text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-white/10'
         ]"
       >
-        <component :is="cat.icon" class="h-4 w-4" />
+        <component :is="cat.icon" class="h-4 w-4 stroke-2" />
         {{ cat.label }}
       </button>
     </div>
@@ -42,11 +42,11 @@
       <div
         v-for="categoria in categoriasExibidas"
         :key="categoria.id"
-        class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 transition duration-200 hover:shadow-md"
+        class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-5 transition duration-200 hover:shadow-lg"
       >
         <div class="flex items-start gap-3 mb-4">
-          <div class="p-2.5 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center flex-shrink-0">
-            <component :is="categoria.icon" class="h-5 w-5 text-white" />
+          <div class="icon-glass w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0">
+            <component :is="categoria.icon" class="h-5 w-5 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
           <div>
             <h2 class="text-lg font-bold text-gray-900 dark:text-white">
@@ -66,10 +66,10 @@
           >
             <NuxtLink
               :to="`/gestao/relatorios/${tipo}`"
-              class="w-full flex items-center justify-between gap-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-brand-navy-dark px-3 py-2.5 text-left text-sm font-medium text-gray-700 dark:text-gray-300 transition duration-200 hover:border-blue-300 dark:hover:border-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+              class="w-full flex items-center justify-between gap-2 rounded-xl glass-card-light dark:glass-card border border-white/10 px-3 py-2.5 text-left text-sm font-medium text-gray-700 dark:text-gray-300 transition duration-200 hover:bg-white/10 dark:hover:bg-white/10"
             >
               <span>{{ getTituloRelatorio(tipo) }}</span>
-              <DocumentArrowDownIcon class="h-4 w-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 flex-shrink-0" />
+              <DocumentArrowDownIcon class="h-4 w-4 text-gray-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 flex-shrink-0 stroke-2" />
             </NuxtLink>
           </li>
         </ul>
@@ -79,9 +79,9 @@
     <!-- Estado vazio quando filtro não retorna nada -->
     <div
       v-if="categoriasExibidas.length === 0"
-      class="glass-card-light dark:glass-card rounded-xl shadow-sm p-12 text-center"
+      class="glass-card-light dark:glass-card rounded-xl border border-white/10 p-12 text-center"
     >
-      <DocumentChartBarIcon class="h-12 w-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+      <DocumentChartBarIcon class="h-12 w-12 text-gray-300 dark:text-gray-600 mx-auto mb-4 stroke-2" />
       <p class="text-sm font-medium text-gray-500 dark:text-gray-400">
         Nenhuma categoria encontrada
       </p>
