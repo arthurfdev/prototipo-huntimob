@@ -251,12 +251,27 @@ const dashboardData = ref({
   leadsNovosHoje: 12,
   negociacoes: 43,
   negociacoesEmAndamento: 28,
-  receitaMensal: 2450000,
-  metaMensal: 3000000
+  receitaMensal: 39360000, // 82% de 48 milhões
+  metaMensal: 48000000 // 48 milhões
 })
 
-// Formatar valores monetários
+// Formatar valores monetários de forma compacta
 const formatCurrency = (value) => {
+  if (value >= 1000000) {
+    // Para valores >= 1 milhão, usar formato compacto (MM)
+    const milhoes = value / 1000000
+    return `R$ ${milhoes.toFixed(0)}MM`
+  }
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(value)
+}
+
+// Formatar valores monetários completos (para tooltips ou detalhes)
+const formatCurrencyFull = (value) => {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',

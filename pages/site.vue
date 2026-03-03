@@ -30,11 +30,12 @@
 
     <!-- Hero Section -->
     <section 
-      class="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 lg:py-32"
+      class="relative text-white py-20 lg:py-32"
       :style="{
-        backgroundImage: siteStore.content.hero.backgroundImage ? `url(${siteStore.content.hero.backgroundImage})` : 'none',
+        backgroundImage: 'url(/images/imoveis/imovel23.jpg)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }"
     >
       <div class="absolute inset-0 bg-black bg-opacity-40"></div>

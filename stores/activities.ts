@@ -122,11 +122,12 @@ export const useActivitiesStore = defineStore('activities', {
       })
     },
 
-    addPropostaActivity(data: { corretorName: string; leadName: string; valor: string; link?: string }) {
+    addPropostaActivity(data: { corretorName: string; leadName: string; valor: string | number; link?: string }) {
+      const valorFormatado = this.formatCurrencyCompact(data.valor)
       this.addActivity({
         type: 'proposta',
         title: 'Nova Proposta',
-        message: `${data.corretorName} enviou uma proposta de R$ ${data.valor} para ${data.leadName}`,
+        message: `${data.corretorName} enviou uma proposta de ${valorFormatado} para ${data.leadName}`,
         icon: 'DocumentTextIcon',
         color: 'purple',
         link: data.link
@@ -151,15 +152,40 @@ export const useActivitiesStore = defineStore('activities', {
       })
     },
 
-    addComissaoActivity(data: { corretorName: string; valor: string; link?: string }) {
+    addComissaoActivity(data: { corretorName: string; valor: string | number; link?: string }) {
+      const valorFormatado = this.formatCurrencyCompact(data.valor)
       this.addActivity({
         type: 'comissao',
         title: 'Comissão Aprovada',
-        message: `Comissão de R$ ${data.valor} foi aprovada para ${data.corretorName}`,
+        message: `Comissão de ${valorFormatado} foi aprovada para ${data.corretorName}`,
         icon: 'ReceiptPercentIcon',
         color: 'green',
         link: data.link
       })
+    },
+
+    // Função para formatar valores monetários de forma compacta
+    formatCurrencyCompact(value: string | number): string {
+      const num = typeof value === 'string' ? parseFloat(value.replace(/[^\d,.-]/g, '').replace(',', '.')) : value
+      
+      if (isNaN(num)) return String(value)
+      
+      if (num >= 1000000) {
+        // Para valores >= 1 milhão, usar formato compacto (MM)
+        const milhoes = num / 1000000
+        return `R$ ${milhoes.toFixed(0)}MM`
+      } else if (num >= 1000) {
+        // Para valores >= 1 mil, usar formato compacto (K)
+        const mil = num / 1000
+        return `R$ ${mil.toFixed(0)}K`
+      }
+      
+      return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(num)
     }
   }
 })
