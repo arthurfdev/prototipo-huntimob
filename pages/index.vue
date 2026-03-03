@@ -22,84 +22,84 @@
 
     <!-- Cards de Resumo -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 w-full">
-      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 sm:p-6 min-w-0 hover:shadow-lg hover:border-emerald-500/50 transition-all group cursor-pointer">
+      <div class="dashboard-card rounded-3xl p-5 md:p-6 min-w-0 group cursor-pointer">
         <div class="flex items-start justify-between mb-3">
           <div class="flex-1">
-            <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-1">Total de Imóveis</p>
-            <p class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-2">{{ dashboardData.totalImoveis }}</p>
+            <p class="text-xs font-semibold text-[var(--subtle)] uppercase tracking-wider mb-1">Total de Imóveis</p>
+            <p class="text-3xl sm:text-4xl font-bold text-[var(--text)] mt-2">{{ dashboardData.totalImoveis }}</p>
             <div class="flex items-center mt-3 space-x-2">
-              <span class="text-xs text-gray-500 dark:text-slate-400">Disponíveis: {{ dashboardData.imoveisDisponiveis }}</span>
+              <span class="text-xs text-[var(--subtle)]">Disponíveis: {{ dashboardData.imoveisDisponiveis }}</span>
             </div>
           </div>
           <div class="icon-glass p-2.5 rounded-xl">
             <BuildingOfficeIcon class="h-6 w-6 text-cyan-500 dark:text-cyan-400 relative z-10" />
           </div>
         </div>
-        <div class="pt-3 border-t border-white/10">
-          <NuxtLink to="/imoveis/cadastros" class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center">
+        <div class="pt-3 border-t border-[var(--border)]">
+          <NuxtLink to="/imoveis/cadastros" class="text-xs font-medium text-[var(--accent)] hover:opacity-80 flex items-center">
             Ver todos
             <ArrowRightIcon class="h-3 w-3 ml-1 stroke-2" />
           </NuxtLink>
         </div>
       </div>
 
-      <div class="glass-card rounded-xl shadow-sm p-5 sm:p-6 hover:shadow-lg hover:border-emerald-500/50 transition-all group cursor-pointer">
+      <div class="dashboard-card rounded-3xl p-5 md:p-6 group cursor-pointer">
         <div class="flex items-start justify-between mb-3">
           <div class="flex-1">
-            <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-1">Leads Ativos</p>
-            <p class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-2">{{ dashboardData.leadsAtivos }}</p>
+            <p class="text-xs font-semibold text-[var(--subtle)] uppercase tracking-wider mb-1">Leads Ativos</p>
+            <p class="text-3xl sm:text-4xl font-bold text-[var(--text)] mt-2">{{ dashboardData.leadsAtivos }}</p>
             <div class="flex items-center mt-3 space-x-2">
-              <span class="text-xs text-gray-500 dark:text-slate-400">Novos hoje: {{ dashboardData.leadsNovosHoje }}</span>
+              <span class="text-xs text-[var(--subtle)]">Novos hoje: {{ dashboardData.leadsNovosHoje }}</span>
             </div>
           </div>
           <div class="icon-glass p-2.5 rounded-xl">
             <UserPlusIcon class="h-6 w-6 text-emerald-500 dark:text-emerald-400 relative z-10" />
           </div>
         </div>
-        <div class="pt-3 border-t border-white/10">
-          <NuxtLink to="/comercial/crm" class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center">
+        <div class="pt-3 border-t border-[var(--border)]">
+          <NuxtLink to="/comercial/crm" class="text-xs font-medium text-[var(--accent)] hover:opacity-80 flex items-center">
             Ver todos
             <ArrowRightIcon class="h-3 w-3 ml-1 stroke-2" />
           </NuxtLink>
         </div>
       </div>
 
-      <div class="glass-card rounded-xl shadow-sm p-5 sm:p-6 hover:shadow-lg hover:border-cyan-500/50 transition-all group cursor-pointer">
+      <div class="dashboard-card rounded-3xl p-5 md:p-6 group cursor-pointer">
         <div class="flex items-start justify-between mb-3">
           <div class="flex-1">
-            <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-1">Negociações</p>
-            <p class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-2">{{ dashboardData.negociacoes }}</p>
+            <p class="text-xs font-semibold text-[var(--subtle)] uppercase tracking-wider mb-1">Negociações</p>
+            <p class="text-3xl sm:text-4xl font-bold text-[var(--text)] mt-2">{{ dashboardData.negociacoes }}</p>
             <div class="flex items-center mt-3 space-x-2">
-              <span class="text-xs text-gray-500 dark:text-slate-400">Em andamento: {{ dashboardData.negociacoesEmAndamento }}</span>
+              <span class="text-xs text-[var(--subtle)]">Em andamento: {{ dashboardData.negociacoesEmAndamento }}</span>
             </div>
           </div>
           <div class="icon-glass p-2.5 rounded-xl">
             <BriefcaseIcon class="h-6 w-6 text-cyan-500 dark:text-cyan-400 relative z-10" />
           </div>
         </div>
-        <div class="pt-3 border-t border-white/10">
-          <NuxtLink to="/comercial/negociacoes" class="text-xs font-medium text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 flex items-center">
+        <div class="pt-3 border-t border-[var(--border)]">
+          <NuxtLink to="/comercial/negociacoes" class="text-xs font-medium text-[var(--accent)] hover:opacity-80 flex items-center">
             Ver todas
             <ArrowRightIcon class="h-3 w-3 ml-1 stroke-2" />
           </NuxtLink>
         </div>
       </div>
 
-      <div class="glass-card rounded-xl shadow-sm p-5 sm:p-6 hover:shadow-lg hover:border-emerald-500/50 transition-all group cursor-pointer">
+      <div class="dashboard-card rounded-3xl p-5 md:p-6 group cursor-pointer">
         <div class="flex items-start justify-between mb-3">
           <div class="flex-1">
-            <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-1">Receita Mensal</p>
-            <p class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-2">{{ formatCurrency(dashboardData.receitaMensal) }}</p>
+            <p class="text-xs font-semibold text-[var(--subtle)] uppercase tracking-wider mb-1">Receita Mensal</p>
+            <p class="text-3xl sm:text-4xl font-bold text-[var(--text)] mt-2">{{ formatCurrency(dashboardData.receitaMensal) }}</p>
             <div class="flex items-center mt-3 space-x-2">
-              <span class="text-xs text-gray-500 dark:text-slate-400">Meta: {{ formatCurrency(dashboardData.metaMensal) }} ({{ percentualMeta }}%)</span>
+              <span class="text-xs text-[var(--subtle)]">Meta: {{ formatCurrency(dashboardData.metaMensal) }} ({{ percentualMeta }}%)</span>
             </div>
           </div>
           <div class="icon-glass p-2.5 rounded-xl">
             <CurrencyDollarIcon class="h-6 w-6 text-emerald-500 dark:text-emerald-400 relative z-10" />
           </div>
         </div>
-        <div class="pt-3 border-t border-white/10">
-          <NuxtLink to="/financeiro" class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center">
+        <div class="pt-3 border-t border-[var(--border)]">
+          <NuxtLink to="/financeiro" class="text-xs font-medium text-[var(--accent)] hover:opacity-80 flex items-center">
             Ver relatório
             <ArrowRightIcon class="h-3 w-3 ml-1 stroke-2" />
           </NuxtLink>
