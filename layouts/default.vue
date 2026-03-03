@@ -11,9 +11,6 @@
       <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 dark:bg-cyan-500/15 rounded-full blur-3xl"></div>
       <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-teal-500/10 dark:bg-teal-500/15 rounded-full blur-3xl"></div>
     </div>
-    <!-- Header -->
-    <Header />
-    
     <!-- TopBar Mobile -->
     <TopBar />
     
@@ -32,7 +29,7 @@
     >
       <!-- Page Content -->
       <main class="h-screen overflow-y-auto overflow-x-hidden flex-1 min-w-0 transition-all duration-300 relative" style="max-width: 100%;">
-        <div class="w-full h-full flex flex-col px-4 sm:px-6 lg:px-8 pt-20 lg:pt-20 pb-6">
+        <div class="w-full h-full flex flex-col px-4 sm:px-6 lg:px-8 pt-6 pb-6">
           <slot />
         </div>
       </main>
@@ -87,8 +84,6 @@
 import { onMounted, watch } from 'vue'
 import { useAppStore } from '../stores/app'
 import { useActivitiesStore } from '../stores/activities'
-import { BellIcon } from '@heroicons/vue/24/outline'
-import Header from '../components/Header.vue'
 import TopBar from '../components/TopBar.vue'
 import Sidebar from '../components/Sidebar.vue'
 import ActivityFeed from '../components/ActivityFeed.vue'

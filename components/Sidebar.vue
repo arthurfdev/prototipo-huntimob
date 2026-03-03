@@ -7,64 +7,132 @@
       appStore.sidebarCollapsed ? 'w-16' : 'w-64'
     ]"
     class="glass-sidebar border-r border-white/10"
-    style="top: 4rem; bottom: 0;"
+    style="top: 0; bottom: 0;"
   >
-    <!-- Sidebar Header -->
-    <div class="flex items-center justify-between px-2 border-b border-white/10" :class="appStore.sidebarCollapsed ? 'h-16' : 'h-auto py-3'">
-      <div v-if="appStore.sidebarCollapsed" class="flex items-center justify-center w-full">
+    <!-- Sidebar Header - Perfil e Notificações -->
+    <div class="px-3 py-4 border-b border-white/10">
+      <div v-if="appStore.sidebarCollapsed" class="flex flex-col items-center space-y-3">
+        <!-- Foto de Perfil -->
+        <button
+          class="relative flex items-center justify-center w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 transition-all hover:ring-2 hover:ring-emerald-400/50 dark:hover:ring-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          title="Perfil"
+        >
+          <img
+            v-if="userPhoto"
+            :src="userPhoto"
+            :alt="userName || 'Usuário'"
+            class="w-full h-full object-cover"
+            @error="handlePhotoError"
+          />
+          <span v-else class="text-white font-semibold text-sm">
+            {{ userInitials }}
+          </span>
+        </button>
+        
+        <!-- Ícone de Notificações -->
+        <button
+          @click="activitiesStore.toggleFeed"
+          class="relative p-2 text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors backdrop-blur-sm"
+          title="Atividades"
+        >
+          <BellIcon class="h-5 w-5 stroke-2" />
+          <!-- Badge de contador -->
+          <span 
+            v-if="activitiesStore.unreadCount > 0"
+            class="absolute -top-1 -right-1 flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-bold text-white bg-gradient-to-r from-red-500 to-red-600 rounded-full shadow-md"
+          >
+            {{ activitiesStore.unreadCount > 9 ? '9+' : activitiesStore.unreadCount }}
+          </span>
+        </button>
+        
+        <!-- Collapse Button - Abaixo das notificações -->
         <button
           @click="appStore.toggleSidebarCollapse"
-          class="p-2 rounded-lg hover:bg-white/10 transition-colors"
+          class="p-2 text-gray-500 dark:text-slate-400 hover:text-gray-700 dark:hover:text-slate-300 hover:bg-white/10 rounded-lg transition-colors"
           title="Expandir sidebar"
         >
-          <ChevronRightIcon class="h-5 w-5 text-gray-600 dark:text-gray-100 stroke-2" />
+          <ChevronRightIcon class="h-4 w-4 stroke-2" />
         </button>
       </div>
       
       <template v-else>
-        <!-- Nome do Cliente e Seletor de Filial -->
-        <div class="flex flex-col space-y-2 min-w-0 flex-1">
-          <div class="flex items-center min-w-0">
-            <div class="flex flex-col min-w-0 flex-1 pl-1">
-              <h2 class="text-md font-semibold text-gray-900 dark:text-white truncate leading-tight">
-                {{ clienteNome }}
+        <div class="flex items-center justify-between mb-4">
+          <!-- Foto de Perfil e Nome -->
+          <div class="flex items-center space-x-3 min-w-0 flex-1">
+            <button
+              class="relative flex items-center justify-center w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 transition-all hover:ring-2 hover:ring-emerald-400/50 dark:hover:ring-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-500 flex-shrink-0"
+              title="Perfil"
+            >
+              <img
+                v-if="userPhoto"
+                :src="userPhoto"
+                :alt="userName || 'Usuário'"
+                class="w-full h-full object-cover"
+                @error="handlePhotoError"
+              />
+              <span v-else class="text-white font-semibold text-sm">
+                {{ userInitials }}
+              </span>
+            </button>
+            <div class="min-w-0 flex-1">
+              <h2 class="text-sm font-semibold text-gray-900 dark:text-white truncate">
+                {{ userName || 'Usuário' }}
               </h2>
+              <p class="text-xs text-gray-500 dark:text-slate-400 truncate">
+                {{ clienteNome }}
+              </p>
             </div>
           </div>
           
-          <!-- Seletor de Filial -->
-          <div class="relative">
-            <select
-              v-model="filialSelecionada"
-              @change="handleFilialChange"
-              class="w-full px-3 py-1.5 text-xs glass-card border border-white/20 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 appearance-none cursor-pointer"
+          <!-- Ícone de Notificações e Collapse -->
+          <div class="flex items-center space-x-1 flex-shrink-0">
+            <button
+              @click="activitiesStore.toggleFeed"
+              class="relative p-2 text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors backdrop-blur-sm"
+              title="Atividades"
             >
-              <option v-for="filial in filiais" :key="filial.id" :value="filial.id">
-                {{ filial.nome }}
-              </option>
-            </select>
-            <ChevronDownIcon class="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 dark:text-slate-400 pointer-events-none stroke-2" />
+              <BellIcon class="h-5 w-5 stroke-2" />
+              <!-- Badge de contador -->
+              <span 
+                v-if="activitiesStore.unreadCount > 0"
+                class="absolute -top-1 -right-1 flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-bold text-white bg-gradient-to-r from-red-500 to-red-600 rounded-full shadow-md"
+              >
+                {{ activitiesStore.unreadCount > 9 ? '9+' : activitiesStore.unreadCount }}
+              </span>
+            </button>
+            
+            <!-- Collapse Button -->
+            <button
+              @click="appStore.toggleSidebarCollapse"
+              class="p-1.5 text-gray-500 dark:text-slate-400 hover:text-gray-700 dark:hover:text-slate-300 hover:bg-white/10 rounded-lg transition-colors"
+              title="Recolher sidebar"
+            >
+              <ChevronLeftIcon class="h-4 w-4 stroke-2" />
+            </button>
           </div>
         </div>
         
-        <!-- Collapse/Close Button -->
-        <div class="flex items-center flex-shrink-0 self-start">
-          <!-- Collapse Button (Desktop) -->
-          <button
-            @click="appStore.toggleSidebarCollapse"
-            class="hidden lg:block p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+        <!-- Seletor de Filial -->
+        <div class="relative mb-3">
+          <select
+            v-model="filialSelecionada"
+            @change="handleFilialChange"
+            class="w-full px-3 py-1.5 text-xs glass-card border border-white/20 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 appearance-none cursor-pointer"
           >
-            <ChevronLeftIcon class="h-5 w-5 text-gray-600 dark:text-slate-300 stroke-2" />
-          </button>
-          
-          <!-- Close Button (Mobile) -->
-          <button
-            @click="closeSidebar"
-            class="lg:hidden p-1.5 rounded-lg hover:bg-white/10 transition-colors"
-          >
-            <XMarkIcon class="h-5 w-5 text-gray-600 dark:text-slate-300 stroke-2" />
-          </button>
+            <option v-for="filial in filiais" :key="filial.id" :value="filial.id">
+              {{ filial.nome }}
+            </option>
+          </select>
+          <ChevronDownIcon class="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 dark:text-slate-400 pointer-events-none stroke-2" />
         </div>
+        
+        <!-- Close Button (Mobile) -->
+        <button
+          @click="closeSidebar"
+          class="lg:hidden p-1.5 rounded-lg hover:bg-white/10 transition-colors ml-auto"
+        >
+          <XMarkIcon class="h-5 w-5 text-gray-600 dark:text-slate-300 stroke-2" />
+        </button>
       </template>
     </div>
 
@@ -206,6 +274,7 @@
         <ArrowLeftEndOnRectangleIcon class="h-5 w-5 flex-shrink-0 stroke-2" :class="appStore.sidebarCollapsed ? '' : 'mr-3'" />
         <span v-if="!appStore.sidebarCollapsed">Sair</span>
       </button>
+      
     </div>
   </div>
 
@@ -222,6 +291,7 @@ import { computed, onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAppStore } from '../stores/app'
 import { useClienteStore } from '../stores/cliente'
+import { useActivitiesStore } from '../stores/activities'
 import { 
   HomeIcon,
   MoonIcon, 
@@ -231,6 +301,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronDownIcon,
+  BellIcon,
   // Automação
   CpuChipIcon,
   UserGroupIcon,
@@ -272,7 +343,26 @@ import {
 
 const appStore = useAppStore()
 const clienteStore = useClienteStore()
+const activitiesStore = useActivitiesStore()
 const route = useRoute()
+
+// Dados do usuário
+const userPhoto = ref('/images/corretores/corretor_arthur.jpg')
+const userName = ref('Arthur')
+
+// Iniciais do usuário para fallback
+const userInitials = computed(() => {
+  if (!userName.value) return 'U'
+  const names = userName.value.trim().split(' ')
+  if (names.length >= 2) {
+    return (names[0][0] + names[names.length - 1][0]).toUpperCase()
+  }
+  return userName.value[0].toUpperCase()
+})
+
+const handlePhotoError = (event) => {
+  userPhoto.value = null
+}
 
 // Dados do cliente e filial
 const clienteNome = computed(() => clienteStore.clienteNome)
