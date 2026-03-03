@@ -13,7 +13,7 @@
       <button
         v-if="!flowFormVisible"
         @click="novo"
-        class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 rounded-xl transition-colors shadow-lg hover:shadow-xl"
+        class="btn-gradient flex items-center gap-2 px-4 py-2 text-sm font-medium"
       >
         <PlusIcon class="h-4 w-4" />
         Novo Flow
@@ -34,7 +34,7 @@
         </p>
         <button
           @click="novo"
-          class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 rounded-xl transition-colors shadow-lg hover:shadow-xl"
+          class="btn-gradient flex items-center gap-2 px-4 py-2 text-sm font-medium"
         >
           <PlusIcon class="h-4 w-4" />
           Novo Flow
@@ -69,29 +69,29 @@
             </span>
             <span class="text-xs">entry: {{ f.config?.entry_point || '—' }}</span>
           </div>
-          <div class="flex items-center gap-2 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <div class="flex items-center gap-2 pt-4 border-t border-white/10">
             <button
               @click.stop="editarFlow(f)"
-              class="flex-1 px-3 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 text-center"
+              class="btn-gradient flex-1 px-3 py-2 text-sm font-medium text-center"
             >
               Editar
             </button>
             <button
               @click.stop="toggleFlowActive(f)"
               :class="[
-                'flex-1 px-3 py-2 text-sm font-medium rounded-lg',
+                'flex-1 px-3 py-2 text-sm font-medium rounded-full transition-all',
                 f.active
-                  ? 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 hover:bg-orange-100 dark:hover:bg-orange-900/30'
-                  : 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30'
+                  ? 'text-amber-600 dark:text-amber-400 bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 dark:border-amber-500/40 hover:bg-amber-500/20 dark:hover:bg-amber-500/30'
+                  : 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/40 hover:bg-emerald-500/20 dark:hover:bg-emerald-500/30'
               ]"
             >
               {{ f.active ? 'Desativar' : 'Ativar' }}
             </button>
             <button
               @click.stop="deletarFlow(f)"
-              class="px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30"
+              class="px-3 py-2 text-sm font-medium text-red-500 dark:text-red-400 bg-red-500/10 dark:bg-red-500/20 border border-red-500/30 dark:border-red-500/40 rounded-full hover:bg-red-500/20 dark:hover:bg-red-500/30 transition-all"
             >
-              <TrashIcon class="h-4 w-4" />
+              <TrashIcon class="h-4 w-4 stroke-2" />
             </button>
           </div>
         </div>

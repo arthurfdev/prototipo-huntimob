@@ -116,7 +116,7 @@
         <button
           @click="onSubmit"
           :disabled="!isFormValid || isLoading"
-          class="inline-flex items-center justify-center rounded-xl px-3 py-1.5 text-xs font-semibold text-white bg-blue-500 hover:bg-blue-600 transition duration-200 disabled:opacity-45 disabled:cursor-not-allowed"
+          class="btn-gradient inline-flex items-center justify-center px-3 py-1.5 text-xs font-semibold disabled:opacity-45 disabled:cursor-not-allowed"
         >
           <span v-if="isLoading">Adicionando...</span>
           <span v-else>Adicionar ao Pipeline</span>

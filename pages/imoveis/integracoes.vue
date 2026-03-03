@@ -57,7 +57,7 @@
                 'px-4 py-2 rounded-lg text-sm font-medium transition-colors',
                 canalProConectado 
                   ? 'bg-red-500 hover:bg-red-600 text-white' 
-                  : 'bg-blue-500 hover:bg-blue-600 text-white'
+                  : 'btn-gradient'
               ]"
             >
               {{ canalProConectado ? 'Desconectar' : 'Conectar' }}

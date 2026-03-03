@@ -240,7 +240,7 @@
             <div class="flex justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-800">
               <button
                 @click="baixarRecibo(reciboSelecionado)"
-                class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg transition-all duration-200 flex items-center gap-2 text-sm font-semibold shadow-sm hover:shadow-md"
+                class="btn-gradient px-4 py-2 flex items-center gap-2 text-sm font-semibold"
               >
                 <ArrowDownTrayIcon class="w-4 h-4" />
                 Baixar PDF

@@ -252,7 +252,7 @@
       <button type="button" @click="$emit('cancel')" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 transition duration-200 hover:bg-gray-50 dark:hover:bg-gray-800">
         Cancelar
       </button>
-      <button type="submit" :disabled="isLoading" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-500 hover:bg-blue-600 transition duration-200 disabled:opacity-45 disabled:cursor-not-allowed">
+      <button type="submit" :disabled="isLoading" class="btn-gradient inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold disabled:opacity-45 disabled:cursor-not-allowed">
         <ArrowPathIcon v-if="isLoading" class="w-5 h-5 animate-spin" />
         {{ isLoading ? 'Salvando...' : 'Salvar Configuração' }}
       </button>

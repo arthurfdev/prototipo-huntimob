@@ -106,7 +106,7 @@
           <button
             @click="gerarRelatorio"
             :disabled="isLoading || !podeGerar"
-            class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition duration-200 disabled:opacity-45 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
+            class="btn-gradient inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold disabled:opacity-45 disabled:cursor-not-allowed"
           >
             <ArrowPathIcon v-if="isLoading" class="h-4 w-4 animate-spin" />
             <DocumentArrowDownIcon v-else class="h-4 w-4" />
@@ -158,7 +158,7 @@
         </button>
         <button
           @click="exportarPDF"
-          class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition duration-200 shadow-sm hover:shadow-md"
+          class="btn-gradient inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold"
         >
           <DocumentArrowDownIcon class="h-4 w-4" />
           PDF

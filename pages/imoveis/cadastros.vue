@@ -31,7 +31,7 @@
         
         <button 
           @click="openCreateImovel" 
-          class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-sm transition-colors flex items-center space-x-2"
+          class="btn-gradient px-4 py-2 flex items-center space-x-2"
         >
           <BuildingOfficeIcon class="h-5 w-5" />
           <span>Novo Lançamento</span>
@@ -156,7 +156,7 @@
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Captações Venda</h2>
         <button 
           @click="openCreateCaptacao" 
-          class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-sm transition-colors flex items-center space-x-2"
+          class="btn-gradient px-4 py-2 flex items-center space-x-2"
         >
           <BuildingOfficeIcon class="h-5 w-5" />
           <span>Nova Captação</span>
@@ -263,7 +263,7 @@
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Captações Aluguel</h2>
         <button 
           @click="openCreateCaptacao" 
-          class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-sm transition-colors flex items-center space-x-2"
+          class="btn-gradient px-4 py-2 flex items-center space-x-2"
         >
           <BuildingOfficeIcon class="h-5 w-5" />
           <span>Nova Captação</span>
@@ -496,7 +496,7 @@
           </button>
           <button
             @click="handleSubmitImovel"
-            class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            class="btn-gradient px-4 py-2"
           >
             Salvar
           </button>
@@ -605,7 +605,7 @@
           </button>
           <button
             @click="handleSubmitCaptacao"
-            class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            class="btn-gradient px-4 py-2"
           >
             Salvar
           </button>

@@ -114,7 +114,7 @@
               <h2 class="text-lg font-bold text-gray-900 dark:text-white">Resumo do Financiamento</h2>
               <button
                 @click="gerarPDF"
-                class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors flex items-center gap-2"
+                class="btn-gradient px-4 py-2 flex items-center gap-2"
               >
                 <DocumentArrowDownIcon class="w-5 h-5" />
                 Baixar PDF

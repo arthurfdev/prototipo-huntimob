@@ -50,7 +50,7 @@
         <button
           @click="salvarConfiguracao"
           :disabled="salvando"
-          class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg transition-all duration-200 flex items-center gap-2 text-sm font-semibold shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+          class="btn-gradient px-4 py-2 flex items-center gap-2 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <CheckIcon v-if="!salvando" class="w-4 h-4" />
           <div v-else class="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>

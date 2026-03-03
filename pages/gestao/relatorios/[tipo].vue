@@ -12,7 +12,7 @@
         </p>
         <NuxtLink
           to="/gestao/relatorios"
-          class="mt-6 inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold bg-gradient-to-r from-blue-500 to-blue-600 text-white transition duration-200 hover:from-blue-600 hover:to-blue-700 shadow-sm hover:shadow-md"
+          class="btn-gradient mt-6 inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold"
         >
           Voltar aos Relatórios
         </NuxtLink>

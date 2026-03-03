@@ -282,7 +282,7 @@
               </button>
             </div>
           </div>
-          <button @click="adicionarProponente" type="button" class="mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors">
+          <button @click="adicionarProponente" type="button" class="btn-gradient mt-2 px-4 py-2">
             Adicionar Proponente
           </button>
         </div>
@@ -441,7 +441,7 @@
             <button 
               type="button" 
               @click="adicionarParcela" 
-              class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+              class="btn-gradient px-4 py-2"
             >
               Adicionar Parcela
             </button>
@@ -489,7 +489,7 @@
               v-if="!isFaturada"
               @click="adicionarColunaPeriodo" 
               type="button" 
-              class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white border border-blue-500 rounded-lg transition-colors flex items-center text-sm font-medium"
+              class="btn-gradient px-3 py-1.5 flex items-center text-sm font-medium"
             >
               <PlusIcon class="h-4 w-4 mr-1" />
               Adicionar Período
@@ -609,7 +609,7 @@
             <button 
               type="button" 
               @click="adicionarComissionamento" 
-              class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+              class="btn-gradient px-4 py-2"
             >
               Adicionar Comissionamento
             </button>
@@ -680,7 +680,7 @@
         <div class="flex justify-end gap-4 mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
           <button
             type="submit"
-            class="px-6 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 flex items-center"
+            class="btn-gradient px-6 py-2.5 flex items-center"
           >
             <CheckIcon class="h-5 w-5 mr-2" />
             Salvar Proposta

@@ -138,7 +138,7 @@
               </button>
               <button
                 @click="handleSave"
-                class="flex-1 px-5 py-2.5 text-sm font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg shadow-sm"
+                class="btn-gradient flex-1 px-5 py-2.5 text-sm font-semibold"
               >
                 Salvar
               </button>

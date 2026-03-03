@@ -7,7 +7,7 @@
       </div>
       <button
         @click="openModalNovaMeta"
-        class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg transition-all duration-200 flex items-center gap-2 text-sm font-semibold shadow-sm hover:shadow-md"
+        class="btn-gradient px-4 py-2 flex items-center gap-2 text-sm font-semibold"
       >
         <PlusIcon class="w-4 h-4" />
         Nova Meta
@@ -41,14 +41,14 @@
             <div class="flex items-center gap-3 mb-3">
               <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
                 <ChartBarIcon 
-                  :class="[
+                :class="[
                     'w-5 h-5 relative z-10 stroke-2',
-                    meta.tipo === 'corretor' 
+                  meta.tipo === 'corretor' 
                       ? 'text-cyan-500 dark:text-cyan-400'
-                      : meta.tipo === 'gerente'
+                    : meta.tipo === 'gerente'
                       ? 'text-cyan-500 dark:text-cyan-400'
                       : 'text-emerald-500 dark:text-emerald-400'
-                  ]"
+                ]"
                 />
               </div>
               <div class="flex-1 min-w-0">
@@ -193,7 +193,7 @@
               <button
                 @click="salvarMeta"
                 :disabled="!formMeta.nome || !formMeta.valor_meta"
-                class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg transition-all duration-200 flex items-center gap-2 text-sm font-semibold shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                class="btn-gradient px-4 py-2 flex items-center gap-2 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <CheckIcon class="w-4 h-4" />
                 {{ metaEditando ? 'Atualizar' : 'Criar' }}

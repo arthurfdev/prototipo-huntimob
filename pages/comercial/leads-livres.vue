@@ -8,7 +8,7 @@
       
       <button
         @click="carregarLeadsLivres"
-        class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-sm transition-colors flex items-center space-x-2"
+        class="btn-gradient px-4 py-2 flex items-center space-x-2"
       >
         <ArrowPathIcon class="h-5 w-5" />
         <span>Atualizar</span>
@@ -61,7 +61,7 @@
         <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
           <button
             @click.stop="atribuirLead(lead)"
-            class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors text-sm font-medium"
+            class="btn-gradient w-full py-2 px-4 text-sm font-medium"
           >
             Atribuir Lead
           </button>
@@ -139,7 +139,7 @@
             <button
               @click="confirmarAtribuicao"
               :disabled="!colaboradorSelecionado || !colunaSelecionada"
-              class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+              class="btn-gradient px-4 py-2 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Atribuir
             </button>

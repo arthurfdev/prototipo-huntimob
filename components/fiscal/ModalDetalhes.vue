@@ -213,7 +213,7 @@
                     v-if="nota?.status === 'processando'"
                     @click="$emit('refresh', nota)"
                     class="inline-flex items-center px-4 py-2 text-sm font-medium text-white 
-                           bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors"
+                           btn-gradient"
                   >
                     <ArrowPathIcon class="h-5 w-5 mr-2" />
                     Atualizar Status

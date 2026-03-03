@@ -1,47 +1,63 @@
 <template>
   <div class="flex flex-col h-full">
-    <!-- Header com nome e ativo -->
-    <div class="flex items-center justify-between mb-3 pb-3 border-b border-gray-200 dark:border-gray-700 shrink-0">
-      <div class="flex items-center gap-3 flex-1">
+    <!-- Header com nome, ativo e botões -->
+    <div class="flex items-center justify-between mb-4 pb-4 border-b border-white/10 shrink-0">
+      <div class="flex items-center gap-4 flex-1">
         <button
           @click="$emit('cancel')"
-          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors"
+          class="p-2 rounded-lg hover:bg-white/10 text-gray-600 dark:text-gray-300 transition-colors"
         >
-          <ArrowLeftIcon class="h-5 w-5" />
+          <ArrowLeftIcon class="h-5 w-5 stroke-2" />
         </button>
-        <div class="flex-1">
+        <div class="flex items-center gap-2 flex-1">
           <input
             v-model="name"
             type="text"
-            placeholder="Nome do Flow (ex: Agendamento, Resgate inativo)"
-            class="w-full px-4 py-2 bg-white dark:bg-brand-navy-dark border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-semibold text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Nome do Flow (ex: Agendamento)"
+            class="flex-1 px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-base font-semibold text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             :disabled="isLoading"
           />
         </div>
       </div>
-      <label class="flex items-center gap-2 cursor-pointer ml-4">
-        <input
-          v-model="active"
-          type="checkbox"
-          class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      <div class="flex items-center gap-4 pl-4">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input
+            v-model="active"
+            type="checkbox"
+            class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+            :disabled="isLoading"
+          />
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Ativo</span>
+        </label>
+        <button
+          @click="handleSubmit"
+          :disabled="isLoading || !name || nodes.length === 0 || !entryPointId"
+          class="btn-gradient px-4 py-2 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {{ isLoading ? 'Salvando...' : 'Salvar' }}
+        </button>
+        <button
+          @click="$emit('cancel')"
           :disabled="isLoading"
-        />
-        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Ativo</span>
-      </label>
+          class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 glass-card-light dark:glass-card border border-white/10 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-colors disabled:opacity-50"
+        >
+          Cancelar
+        </button>
+      </div>
     </div>
 
     <!-- Editor Visual -->
-    <div class="flex-1 flex min-h-0 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden" style="height: calc(100vh - 250px); min-height: 600px;">
+    <div class="flex-1 flex min-h-0 glass-card-light dark:glass-card rounded-xl overflow-hidden" style="height: calc(100vh - 250px); min-height: 600px;">
       <!-- Sidebar -->
-      <div class="w-72 bg-white dark:bg-brand-navy border-r border-gray-200 dark:border-gray-700 overflow-y-auto p-4 shrink-0">
+      <div class="w-72 glass-card-light dark:glass-card border-r border-white/10 overflow-y-auto p-4 shrink-0">
         <!-- Paleta de Nós -->
         <NodePalette @drag-start="handlePaletteDragStart" />
 
-        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <div class="mt-6 pt-6 border-t border-white/10">
           <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Entry Point</h4>
           <select
             v-model="entryPointId"
-            class="w-full px-2 py-1.5 bg-white dark:bg-brand-navy-dark border border-gray-300 dark:border-gray-700 rounded text-xs text-gray-900 dark:text-white"
+            class="w-full px-2 py-1.5 glass-card-light dark:glass-card border border-white/10 rounded text-xs text-gray-900 dark:text-white"
             :disabled="isLoading || nodes.length === 0"
           >
             <option value="">Selecione o nó inicial</option>
@@ -54,17 +70,17 @@
           </p>
         </div>
 
-        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div class="mt-4 pt-4 border-t border-white/10">
           <div class="flex items-center justify-between mb-2">
             <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Contexto</h4>
             <button
               @click="adicionarCampoContext"
               type="button"
-              class="p-1 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded"
+              class="p-1 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-500/10 dark:hover:bg-cyan-500/20 rounded transition-colors"
               :disabled="isLoading"
               title="Adicionar campo"
             >
-              <PlusIcon class="h-4 w-4" />
+              <PlusIcon class="h-4 w-4 stroke-2" />
             </button>
           </div>
           
@@ -78,24 +94,24 @@
                 v-model="field.key"
                 type="text"
                 placeholder="Chave (ex: base_url)"
-                class="flex-1 px-2 py-1.5 text-xs bg-white dark:bg-brand-navy-dark border border-gray-300 dark:border-gray-700 rounded text-gray-900 dark:text-white placeholder-gray-400"
+                class="flex-1 px-2 py-1.5 text-xs glass-card-light dark:glass-card border border-white/10 rounded text-gray-900 dark:text-white placeholder-gray-400"
                 :disabled="isLoading"
               />
               <button
                 @click="removerCampoContext(idx)"
                 type="button"
-                class="p-1.5 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded"
+                class="p-1.5 text-red-500 hover:bg-red-500/10 dark:hover:bg-red-500/20 rounded transition-colors"
                 :disabled="isLoading"
                 title="Remover campo"
               >
-                <TrashIcon class="h-4 w-4" />
+                <TrashIcon class="h-4 w-4 stroke-2" />
               </button>
             </div>
             <input
               v-model="field.value"
               type="text"
               placeholder="Valor (ex: https://api.exemplo.com)"
-              class="w-full px-2 py-1.5 text-xs bg-white dark:bg-brand-navy-dark border border-gray-300 dark:border-gray-700 rounded text-gray-900 dark:text-white placeholder-gray-400"
+              class="w-full px-2 py-1.5 text-xs glass-card-light dark:glass-card border border-white/10 rounded text-gray-900 dark:text-white placeholder-gray-400"
               :disabled="isLoading"
             />
           </div>
@@ -103,7 +119,7 @@
       </div>
 
       <!-- Canvas Vue Flow -->
-      <div class="flex-1 relative bg-gray-50 dark:bg-gray-900" @drop="onDrop" @dragover.prevent @dragenter.prevent>
+      <div class="flex-1 relative bg-slate-900 dark:bg-slate-950" @drop="onDrop" @dragover.prevent @dragenter.prevent>
         <ClientOnly>
           <VueFlow
             v-model="nodes"
@@ -119,8 +135,8 @@
             @connect="onConnect"
             @pane-ready="onPaneReady"
           >
-            <Background pattern-color="#94a3b8" :gap="16" />
-            <Controls />
+            <Background pattern-color="rgba(148, 163, 184, 0.2)" :gap="20" />
+            <Controls class="bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg" />
           </VueFlow>
           <template #fallback>
             <div class="w-full h-full flex items-center justify-center">
@@ -131,23 +147,6 @@
       </div>
     </div>
 
-    <!-- Botões de ação -->
-    <div class="flex gap-3 mt-3 pt-3 border-t border-gray-200 dark:border-gray-700 shrink-0">
-      <button
-        @click="handleSubmit"
-        :disabled="isLoading || !name || nodes.length === 0 || !entryPointId"
-        class="px-6 py-3 text-base font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-md"
-      >
-        {{ isLoading ? 'Salvando...' : 'Salvar Fluxo' }}
-      </button>
-      <button
-        @click="$emit('cancel')"
-        :disabled="isLoading"
-        class="px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-brand-navy-dark border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-brand-navy transition-colors disabled:opacity-50"
-      >
-        Cancelar
-      </button>
-    </div>
 
     <!-- Modal de edição de nó -->
     <ModalEditarNoFlow

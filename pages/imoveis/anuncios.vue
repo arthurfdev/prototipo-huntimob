@@ -234,7 +234,7 @@
               <button
                 @click="solicitarAprovacao"
                 :disabled="!podePublicar"
-                class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                class="btn-gradient px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Solicitar Aprovação
               </button>

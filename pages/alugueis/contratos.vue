@@ -8,7 +8,7 @@
       
       <button 
         @click="openCreateModal" 
-        class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-sm transition-colors flex items-center space-x-2"
+        class="btn-gradient px-4 py-2 flex items-center space-x-2"
       >
         <DocumentPlusIcon class="h-5 w-5" />
         <span>Novo Contrato</span>
@@ -488,7 +488,7 @@
           </button>
           <button
             @click="handleSubmit"
-            class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            class="btn-gradient px-4 py-2"
           >
             Salvar
           </button>
@@ -603,7 +603,7 @@
         <div class="flex justify-end">
           <button
             @click="showViewModal = false"
-            class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            class="btn-gradient px-4 py-2"
           >
             Fechar
           </button>

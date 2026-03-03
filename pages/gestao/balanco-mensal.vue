@@ -10,31 +10,38 @@
       <div 
         v-for="(card, index) in ['Entradas', 'Saídas', 'Saldo']" 
         :key="index" 
-        class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-5 sm:p-6 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow"
+        class="glass-card-light dark:glass-card rounded-xl shadow-sm p-5 sm:p-6 border border-white/10 hover:shadow-lg hover:border-emerald-500/50 transition-all"
       >
         <div v-if="loading" class="animate-pulse">
           <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
           <div class="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
         </div>
         <template v-else>
-          <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Total de {{ card }}</h3>
-          <p class="text-3xl sm:text-4xl font-bold mt-2" :class="getCardColor(card, index)">
-            {{ getCardValue(card, index) }}
-          </p>
-          <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">{{ index === 2 ? 'Resultado do período' : 'Mês atual' }}</p>
+          <div class="flex items-start justify-between mb-3">
+            <div class="flex-1">
+              <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Total de {{ card }}</h3>
+              <p class="text-3xl sm:text-4xl font-bold mt-2" :class="getCardColor(card, index)">
+                {{ getCardValue(card, index) }}
+              </p>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">{{ index === 2 ? 'Resultado do período' : 'Mês atual' }}</p>
+            </div>
+            <div class="icon-glass p-2.5 rounded-xl flex-shrink-0">
+              <component :is="getCardIcon(card, index)" class="h-6 w-6 relative z-10 stroke-2" :class="getCardIconColor(card, index)" />
+            </div>
+          </div>
         </template>
       </div>
     </div>
 
     <!-- Filtros -->
-    <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm p-4 sm:p-6 mb-6 border border-gray-100 dark:border-gray-800">
+    <div class="glass-card-light dark:glass-card rounded-xl shadow-sm p-4 sm:p-6 mb-6 border border-white/10">
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <div class="flex items-center gap-2">
           <label for="mesAtual" class="text-sm font-medium text-gray-700 dark:text-gray-300">Período:</label>
           <select 
             id="mesAtual"
             v-model="mesAtual"
-            class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="px-4 py-2 glass-card-light dark:glass-card border border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500/50"
             @change="buscarDados"
           >
             <option v-for="mes in mesesDisponiveis" :key="mes.valor" :value="mes.valor">
@@ -44,9 +51,9 @@
         </div>
         <button 
           @click="buscarDados" 
-          class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-sm transition-colors flex items-center gap-2"
+          class="btn-gradient px-4 py-2 text-sm font-semibold flex items-center gap-2"
         >
-          <ArrowPathIcon class="h-5 w-5" />
+          <ArrowPathIcon class="h-5 w-5 stroke-2" />
           Atualizar
         </button>
       </div>
@@ -54,7 +61,7 @@
 
     <!-- Loading state para as tabelas -->
     <div v-if="loading" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div v-for="i in 2" :key="i" class="bg-white dark:bg-brand-navy rounded-xl shadow-sm animate-pulse">
+      <div v-for="i in 2" :key="i" class="glass-card-light dark:glass-card rounded-xl shadow-sm animate-pulse border border-white/10">
         <div class="h-16 bg-gray-100 dark:bg-gray-800 rounded-t-xl"></div>
         <div class="p-4">
           <div v-for="j in 4" :key="j" class="h-8 bg-gray-200 dark:bg-gray-700 rounded my-2"></div>
@@ -65,21 +72,21 @@
     <!-- Tabelas -->
     <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Tabela de Entradas -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
-        <div class="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-800 bg-gradient-to-r from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-800/20">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm border border-white/10 overflow-hidden">
+        <div class="p-4 sm:p-6 border-b border-white/10 bg-emerald-500/10 dark:bg-emerald-500/20">
           <h2 class="text-xl font-semibold text-emerald-700 dark:text-emerald-400">Entradas</h2>
         </div>
         <div class="overflow-auto max-h-[500px]">
           <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
-            <thead class="bg-gray-50 dark:bg-gray-800 sticky top-0">
+            <thead class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm sticky top-0">
               <tr>
                 <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Data</th>
                 <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Descrição</th>
                 <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Valor</th>
               </tr>
             </thead>
-            <tbody class="bg-white dark:bg-brand-navy divide-y divide-gray-200 dark:divide-gray-800">
-              <tr v-for="entrada in entradas" :key="entrada.proposta_id || entrada.id" class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+            <tbody class="divide-y divide-white/10">
+              <tr v-for="entrada in entradas" :key="entrada.proposta_id || entrada.id" class="hover:bg-white/10 dark:hover:bg-white/5 transition-colors">
                 <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ formatDate(entrada.data) }}</td>
                 <td class="px-4 sm:px-6 py-4 text-sm text-gray-900 dark:text-white">{{ entrada.observacao }}</td>
                 <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-emerald-600 dark:text-emerald-400">
@@ -97,21 +104,21 @@
       </div>
 
       <!-- Tabela de Saídas -->
-      <div class="bg-white dark:bg-brand-navy rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
-        <div class="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-800 bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20">
+      <div class="glass-card-light dark:glass-card rounded-xl shadow-sm border border-white/10 overflow-hidden">
+        <div class="p-4 sm:p-6 border-b border-white/10 bg-red-500/10 dark:bg-red-500/20">
           <h2 class="text-xl font-semibold text-red-700 dark:text-red-400">Saídas</h2>
         </div>
         <div class="overflow-auto max-h-[500px]">
-          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
-            <thead class="bg-gray-50 dark:bg-gray-800 sticky top-0">
+          <table class="min-w-full divide-y divide-white/10">
+            <thead class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm sticky top-0">
               <tr>
                 <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Data</th>
                 <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Descrição</th>
                 <th class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Valor</th>
               </tr>
             </thead>
-            <tbody class="bg-white dark:bg-brand-navy divide-y divide-gray-200 dark:divide-gray-800">
-              <tr v-for="saida in saidas" :key="saida.id" class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+            <tbody class="divide-y divide-white/10">
+              <tr v-for="saida in saidas" :key="saida.id" class="hover:bg-white/10 dark:hover:bg-white/5 transition-colors">
                 <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ formatDate(saida.data) }}</td>
                 <td class="px-4 sm:px-6 py-4 text-sm text-gray-900 dark:text-white">{{ saida.observacao }}</td>
                 <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600 dark:text-red-400">
@@ -134,7 +141,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { ArrowPathIcon } from '@heroicons/vue/24/outline'
+import { ArrowPathIcon, ArrowTrendingUpIcon, ArrowTrendingDownIcon, CurrencyDollarIcon } from '@heroicons/vue/24/outline'
 
 const mesAtual = ref(new Date().toISOString().slice(0, 7))
 
@@ -234,6 +241,18 @@ const getCardValue = (card, index) => {
   if (index === 0) return formatCurrency(totalEntradas.value)
   if (index === 1) return formatCurrency(totalSaidas.value)
   return formatCurrency(saldoMes.value)
+}
+
+const getCardIcon = (card, index) => {
+  if (index === 0) return ArrowTrendingUpIcon
+  if (index === 1) return ArrowTrendingDownIcon
+  return CurrencyDollarIcon
+}
+
+const getCardIconColor = (card, index) => {
+  if (index === 0) return 'text-emerald-500 dark:text-emerald-400'
+  if (index === 1) return 'text-red-500 dark:text-red-400'
+  return saldoMes.value >= 0 ? 'text-emerald-500 dark:text-emerald-400' : 'text-red-500 dark:text-red-400'
 }
 
 onMounted(() => {

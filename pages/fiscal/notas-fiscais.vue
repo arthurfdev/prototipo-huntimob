@@ -35,7 +35,7 @@
         <!-- Botão de emitir -->
         <NuxtLink
           to="/fiscal/notas-fiscais/emitir"
-          class="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white bg-blue-500 hover:bg-blue-600 transition duration-200 shadow-lg hover:shadow-xl"
+          class="btn-gradient inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold"
         >
           <PlusIcon class="h-5 w-5" />
           Emitir Nota
@@ -111,7 +111,7 @@
       </p>
       <NuxtLink
         to="/fiscal/notas-fiscais/emitir"
-        class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white bg-blue-500 hover:bg-blue-600 transition duration-200 shadow-lg hover:shadow-xl"
+        class="btn-gradient inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold"
       >
         <PlusIcon class="h-5 w-5" />
         Emitir Primeira Nota

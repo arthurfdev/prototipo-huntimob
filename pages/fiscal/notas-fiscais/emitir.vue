@@ -59,7 +59,7 @@
       </p>
       <NuxtLink
         to="/fiscal/certificado"
-        class="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white bg-blue-500 hover:bg-blue-600 transition duration-200 shadow-lg hover:shadow-xl"
+        class="btn-gradient inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold"
       >
         <Cog6ToothIcon class="w-5 h-5" />
         Configurar Certificado

@@ -7,7 +7,7 @@
       </div>
       
       <button 
-        class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-sm transition-colors flex items-center space-x-2"
+        class="btn-gradient px-4 py-2 flex items-center space-x-2"
       >
         <PlusIcon class="h-5 w-5" />
         <span>Nova Negociação</span>
