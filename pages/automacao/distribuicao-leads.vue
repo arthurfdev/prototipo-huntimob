@@ -14,26 +14,21 @@
           :key="metodo.id"
           @click="metodoSelecionado = metodo.id"
           :class="[
-            'p-4 rounded-lg border-2 transition-all duration-200 text-left',
+            'p-4 rounded-lg transition-all duration-200 text-left',
             metodoSelecionado === metodo.id
-              ? 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20 shadow-md'
-              : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
+              ? 'bg-blue-50/50 dark:bg-blue-900/20 shadow-md border-2 border-blue-500'
+              : 'bg-white/5 dark:bg-white/5 hover:bg-white/10 dark:hover:bg-white/10 border-2 border-transparent'
           ]"
         >
           <div class="flex items-start gap-3">
-            <div
-              :class="[
-                'w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0',
-                metodoSelecionado === metodo.id
-                  ? 'bg-blue-500'
-                  : 'bg-gray-100 dark:bg-gray-800'
-              ]"
-            >
+            <div class="icon-glass w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
               <component
                 :is="metodo.icon"
                 :class="[
-                  'w-5 h-5',
-                  metodoSelecionado === metodo.id ? 'text-white' : 'text-gray-600 dark:text-gray-400'
+                  'w-5 h-5 relative z-10 stroke-2',
+                  metodoSelecionado === metodo.id 
+                    ? 'text-cyan-500 dark:text-cyan-400' 
+                    : 'text-gray-600 dark:text-gray-400'
                 ]"
               />
             </div>
@@ -487,6 +482,236 @@ const carregarColaboradores = async () => {
         na_imobiliaria: false,
         taxa_conversao: 75.0,
         tempo_resposta_medio: 10
+      },
+      { 
+        id: 8, 
+        nome: 'Patricia Souza', 
+        email: 'patricia@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 87.3,
+        tempo_resposta_medio: 4
+      },
+      { 
+        id: 9, 
+        nome: 'Ricardo Martins', 
+        email: 'ricardo@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: false,
+        taxa_conversao: 82.1,
+        tempo_resposta_medio: 7
+      },
+      { 
+        id: 10, 
+        nome: 'Camila Ferreira', 
+        email: 'camila@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 91.5,
+        tempo_resposta_medio: 3
+      },
+      { 
+        id: 11, 
+        nome: 'Lucas Rodrigues', 
+        email: 'lucas@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: false,
+        taxa_conversao: 79.8,
+        tempo_resposta_medio: 6
+      },
+      { 
+        id: 12, 
+        nome: 'Beatriz Almeida', 
+        email: 'beatriz@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 88.9,
+        tempo_resposta_medio: 5
+      },
+      { 
+        id: 13, 
+        nome: 'Gabriel Pereira', 
+        email: 'gabriel@email.com', 
+        status: 'inativo', 
+        receber_lead: false,
+        na_imobiliaria: false,
+        taxa_conversao: 0,
+        tempo_resposta_medio: null
+      },
+      { 
+        id: 14, 
+        nome: 'Isabela Rocha', 
+        email: 'isabela@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: false,
+        taxa_conversao: 84.2,
+        tempo_resposta_medio: 5
+      },
+      { 
+        id: 15, 
+        nome: 'Thiago Barbosa', 
+        email: 'thiago@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 90.7,
+        tempo_resposta_medio: 4
+      },
+      { 
+        id: 16, 
+        nome: 'Larissa Gomes', 
+        email: 'larissa@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: false,
+        taxa_conversao: 81.4,
+        tempo_resposta_medio: 8
+      },
+      { 
+        id: 17, 
+        nome: 'Rafael Dias', 
+        email: 'rafael@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 86.6,
+        tempo_resposta_medio: 4
+      },
+      { 
+        id: 18, 
+        nome: 'Vanessa Monteiro', 
+        email: 'vanessa@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: false,
+        taxa_conversao: 83.9,
+        tempo_resposta_medio: 6
+      },
+      { 
+        id: 19, 
+        nome: 'Bruno Carvalho', 
+        email: 'bruno@email.com', 
+        status: 'ativo', 
+        receber_lead: false,
+        na_imobiliaria: false,
+        taxa_conversao: 77.5,
+        tempo_resposta_medio: 9
+      },
+      { 
+        id: 20, 
+        nome: 'Amanda Ribeiro', 
+        email: 'amanda@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 89.3,
+        tempo_resposta_medio: 3
+      },
+      { 
+        id: 21, 
+        nome: 'Diego Nascimento', 
+        email: 'diego@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: false,
+        taxa_conversao: 80.7,
+        tempo_resposta_medio: 7
+      },
+      { 
+        id: 22, 
+        nome: 'Juliana Araujo', 
+        email: 'juliana@email.com', 
+        status: 'inativo', 
+        receber_lead: false,
+        na_imobiliaria: false,
+        taxa_conversao: 0,
+        tempo_resposta_medio: null
+      },
+      { 
+        id: 23, 
+        nome: 'Marcelo Cunha', 
+        email: 'marcelo@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 85.8,
+        tempo_resposta_medio: 5
+      },
+      { 
+        id: 24, 
+        nome: 'Renata Lopes', 
+        email: 'renata@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: false,
+        taxa_conversao: 82.6,
+        tempo_resposta_medio: 6
+      },
+      { 
+        id: 25, 
+        nome: 'Felipe Teixeira', 
+        email: 'felipe@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 88.1,
+        tempo_resposta_medio: 4
+      },
+      { 
+        id: 26, 
+        nome: 'Tatiana Moreira', 
+        email: 'tatiana@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: false,
+        taxa_conversao: 79.3,
+        tempo_resposta_medio: 8
+      },
+      { 
+        id: 27, 
+        nome: 'Andre Cardoso', 
+        email: 'andre@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 87.7,
+        tempo_resposta_medio: 4
+      },
+      { 
+        id: 28, 
+        nome: 'Cristina Machado', 
+        email: 'cristina@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: false,
+        taxa_conversao: 84.5,
+        tempo_resposta_medio: 6
+      },
+      { 
+        id: 29, 
+        nome: 'Rodrigo Fonseca', 
+        email: 'rodrigo@email.com', 
+        status: 'ativo', 
+        receber_lead: false,
+        na_imobiliaria: false,
+        taxa_conversao: 76.2,
+        tempo_resposta_medio: 11
+      },
+      { 
+        id: 30, 
+        nome: 'Sabrina Correia', 
+        email: 'sabrina@email.com', 
+        status: 'ativo', 
+        receber_lead: true,
+        na_imobiliaria: true,
+        taxa_conversao: 92.8,
+        tempo_resposta_medio: 2
       },
     ].map(colaborador => ({
       ...colaborador,
