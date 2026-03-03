@@ -45,54 +45,64 @@
         <div
           v-for="f in flows"
           :key="f.id"
-          class="glass-card-light dark:glass-card rounded-2xl p-6 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+          class="glass-card-light dark:glass-card rounded-3xl p-6 sm:p-7 border border-white/10 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-emerald-500/50 relative overflow-hidden"
         >
-          <div class="flex items-start justify-between mb-4">
-            <div class="flex-1">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-500">
-                {{ f.name }}
-              </h3>
+          <!-- overlay de brilho suave -->
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-emerald-500/5 opacity-80"></div>
+
+          <div class="relative z-10 flex flex-col h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex-1 min-w-0">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1 truncate">
+                  {{ f.name }}
+                </h3>
+              </div>
+              <span
+                :class="[
+                  'px-3 py-1 rounded-full text-[11px] font-bold glass-card-light dark:glass-card border',
+                  f.active
+                    ? 'border-emerald-400/60 text-emerald-400 bg-emerald-500/5'
+                    : 'border-gray-400/40 text-gray-400 bg-gray-500/5'
+                ]"
+              >
+                {{ f.active ? 'Ativo' : 'Inativo' }}
+              </span>
             </div>
-            <span
-              :class="[
-                'px-2.5 py-1 rounded-full text-[11px] font-bold',
-                f.active ? 'bg-green-500/20 text-green-600 dark:text-green-400' : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
-              ]"
-            >
-              {{ f.active ? 'Ativo' : 'Inativo' }}
-            </span>
-          </div>
-          <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-            <span class="flex items-center gap-1">
-              <CircleStackIcon class="h-4 w-4" />
-              {{ f.config?.nodes?.length ?? '—' }} nós
-            </span>
-            <span class="text-xs">entry: {{ f.config?.entry_point || '—' }}</span>
-          </div>
-          <div class="flex items-center gap-2 pt-4 border-t border-white/10">
-            <button
-              @click.stop="editarFlow(f)"
-              class="btn-gradient flex-1 px-3 py-2 text-sm font-medium text-center"
-            >
-              Editar
-            </button>
-            <button
-              @click.stop="toggleFlowActive(f)"
-              :class="[
-                'flex-1 px-3 py-2 text-sm font-medium rounded-full transition-all',
-                f.active
-                  ? 'text-amber-600 dark:text-amber-400 bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 dark:border-amber-500/40 hover:bg-amber-500/20 dark:hover:bg-amber-500/30'
-                  : 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/40 hover:bg-emerald-500/20 dark:hover:bg-emerald-500/30'
-              ]"
-            >
-              {{ f.active ? 'Desativar' : 'Ativar' }}
-            </button>
-            <button
-              @click.stop="deletarFlow(f)"
-              class="px-3 py-2 text-sm font-medium text-red-500 dark:text-red-400 bg-red-500/10 dark:bg-red-500/20 border border-red-500/30 dark:border-red-500/40 rounded-full hover:bg-red-500/20 dark:hover:bg-red-500/30 transition-all"
-            >
-              <TrashIcon class="h-4 w-4 stroke-2" />
-            </button>
+
+            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+              <span class="flex items-center gap-1">
+                <CircleStackIcon class="h-4 w-4" />
+                {{ f.config?.nodes?.length ?? '—' }} nós
+              </span>
+              <span class="text-xs opacity-80">entry: {{ f.config?.entry_point || '—' }}</span>
+            </div>
+
+            <div class="mt-auto flex items-center gap-2 pt-4 border-t border-white/10">
+              <button
+                @click.stop="editarFlow(f)"
+                class="btn-gradient flex-1 px-3 py-2 text-sm font-semibold text-center"
+              >
+                Editar
+              </button>
+              <button
+                @click.stop="toggleFlowActive(f)"
+                :class="[
+                  'flex-1 px-3 py-2 text-sm font-semibold rounded-full transition-all glass-card-light dark:glass-card border',
+                  f.active
+                    ? 'border-amber-400/60 text-amber-400 hover:bg-amber-500/10'
+                    : 'border-emerald-400/60 text-emerald-400 hover:bg-emerald-500/10'
+                ]"
+              >
+                {{ f.active ? 'Desativar' : 'Ativar' }}
+              </button>
+              <button
+                @click.stop="deletarFlow(f)"
+                class="icon-glass px-3 py-2 rounded-full flex items-center justify-center text-red-400 hover:scale-105 transition-transform"
+                title="Excluir fluxo"
+              >
+                <TrashIcon class="h-4 w-4 stroke-2 relative z-10" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

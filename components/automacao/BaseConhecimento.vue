@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white dark:bg-brand-navy rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800/50 mb-6 overflow-hidden">
+  <div class="glass-card-light dark:glass-card rounded-2xl shadow-sm border border-white/10 mb-6 overflow-hidden">
     <!-- Header sutil -->
-    <div class="px-6 py-4 border-b border-gray-100 dark:border-gray-800/50 bg-gray-50/50 dark:bg-gray-900/30">
+    <div class="px-6 py-4 border-b border-white/10 bg-white/5 dark:bg-white/5 backdrop-blur-sm">
       <div class="flex items-center justify-between gap-3">
         <div>
           <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Base de Conhecimento</h2>
@@ -27,9 +27,9 @@
       </div>
 
       <div v-else-if="conhecimentos.length === 0" class="text-center py-10">
-        <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-xl p-6 border border-gray-200/50 dark:border-gray-800/50">
-          <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl flex items-center justify-center">
-            <DocumentTextIcon class="w-8 h-8 text-blue-500 dark:text-blue-400" />
+        <div class="glass-card-light dark:glass-card rounded-xl p-6 border border-white/10">
+          <div class="icon-glass w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center">
+            <DocumentTextIcon class="w-8 h-8 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
           <h4 class="text-sm font-semibold text-gray-800 dark:text-white mb-1">Nenhum conhecimento adicionado ainda</h4>
           <p class="text-xs text-gray-500 dark:text-gray-400">Adicione informações sobre imóveis, lançamentos, captações ou sobre a imobiliária.</p>
@@ -40,7 +40,7 @@
         <div 
           v-for="(conhecimento, index) in conhecimentos" 
           :key="conhecimento.id || index"
-          class="group bg-gray-50/50 dark:bg-gray-900/30 rounded-lg p-4 border border-gray-200/50 dark:border-gray-800/50 hover:border-blue-300/50 dark:hover:border-blue-700/50 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-200"
+          class="group glass-card-light dark:glass-card rounded-lg p-4 border border-white/10 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all duration-200"
         >
           <div class="flex items-start justify-between gap-3">
             <div class="flex-1 min-w-0">
@@ -78,7 +78,7 @@
       <!-- Paginação -->
       <div
         v-if="conhecimentos.length > 0 && paginacao.total_paginas > 1"
-        class="flex items-center justify-between pt-4 mt-4 border-t border-gray-200/50 dark:border-gray-800/50"
+        class="flex items-center justify-between pt-4 mt-4 border-t border-white/10"
       >
         <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">
           Página {{ paginacao.pagina }} de {{ paginacao.total_paginas }} ({{ total }} conhecimento{{ total !== 1 ? 's' : '' }})
@@ -87,14 +87,14 @@
           <button
             @click="irPagina(paginacao.pagina - 1)"
             :disabled="paginacao.pagina <= 1 || isLoading"
-            class="px-2.5 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            class="px-2.5 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 glass-card-light dark:glass-card border border-white/10 rounded-md hover:bg-white/10 dark:hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
             Anterior
           </button>
           <button
             @click="irPagina(paginacao.pagina + 1)"
             :disabled="paginacao.pagina >= paginacao.total_paginas || isLoading"
-            class="px-2.5 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            class="px-2.5 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 glass-card-light dark:glass-card border border-white/10 rounded-md hover:bg-white/10 dark:hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
             Próxima
           </button>
@@ -102,7 +102,7 @@
       </div>
 
       <!-- Formulário para Adicionar Conhecimento -->
-      <div class="mt-6 pt-6 border-t border-gray-200/50 dark:border-gray-800/50">
+      <div class="mt-6 pt-6 border-t border-white/10">
         <ConhecimentoIAForm
           :is-loading="isLoading"
           @saved="loadConhecimentos"

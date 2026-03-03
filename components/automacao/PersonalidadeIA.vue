@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white dark:bg-brand-navy rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800/50 mb-6 overflow-hidden">
+  <div class="glass-card-light dark:glass-card rounded-2xl shadow-sm border border-white/10 mb-6 overflow-hidden">
     <!-- Header sutil -->
-    <div class="px-6 py-4 border-b border-gray-100 dark:border-gray-800/50 bg-gray-50/50 dark:bg-gray-900/30">
+    <div class="px-6 py-4 border-b border-white/10 bg-white/5 dark:bg-white/5 backdrop-blur-sm">
       <div>
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Personalidade da IA</h2>
         <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Configure como o assistente deve se comportar</p>
@@ -22,9 +22,9 @@
               :disabled="carregando"
               rows="6"
               placeholder="Ex: Seja sempre educada, use linguagem profissional mas amigável, foque em ajudar o cliente a encontrar o imóvel ideal..."
-              class="w-full px-4 py-3 border border-gray-200 dark:border-gray-700/50 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 resize-none disabled:opacity-50 transition-all duration-200 bg-gray-50/50 dark:bg-gray-900/30 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm leading-relaxed"
+              class="w-full px-4 py-3 glass-card-light dark:glass-card border border-white/10 rounded-lg focus:ring-2 focus:ring-cyan-500/40 focus:border-cyan-500/70 resize-none disabled:opacity-50 transition-all duration-200 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm leading-relaxed"
             ></textarea>
-            <div v-if="carregando" class="absolute inset-0 flex items-center justify-center bg-white/90 dark:bg-brand-navy/90 backdrop-blur-sm rounded-lg">
+            <div v-if="carregando" class="absolute inset-0 flex items-center justify-center bg-black/40 dark:bg-black/50 backdrop-blur-sm rounded-lg">
               <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
                 <div class="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent"></div>
                 <span class="text-xs font-medium">Carregando...</span>
@@ -37,7 +37,7 @@
           <button
             @click="salvarPersonalidade"
             :disabled="salvando || carregando"
-            class="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg transition-all duration-200 flex items-center gap-2 text-sm font-semibold shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+            class="btn-gradient px-5 py-2.5 flex items-center gap-2 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <div v-if="salvando" class="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
             <CheckIcon v-else class="w-4 h-4" />

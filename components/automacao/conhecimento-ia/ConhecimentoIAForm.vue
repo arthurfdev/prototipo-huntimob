@@ -1,20 +1,20 @@
 <template>
-  <div class="rounded-lg border border-gray-200/50 dark:border-gray-800/50 bg-gray-50/30 dark:bg-gray-900/30 overflow-hidden">
-    <div class="px-4 py-3 border-b border-gray-200/50 dark:border-gray-800/50 bg-white/50 dark:bg-gray-900/50">
+  <div class="glass-card-light dark:glass-card rounded-xl border border-white/10 overflow-hidden">
+    <div class="px-4 py-3 border-b border-white/10 bg-white/5 dark:bg-white/5 backdrop-blur-sm">
       <h3 class="text-xs font-semibold text-gray-900 dark:text-white uppercase tracking-wide">Adicionar conhecimento</h3>
       <p class="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">
         Esses dados alimentam o contexto da IA para conversar com o cliente sobre imóveis.
       </p>
     </div>
     <div class="p-4">
-      <div class="flex gap-1 mb-4 border-b border-gray-200/50 dark:border-gray-800/50 overflow-x-auto -mx-4 px-4">
+      <div class="flex gap-1 mb-4 border-b border-white/10 overflow-x-auto -mx-4 px-4">
         <button
           v-for="tab in tabs"
           :key="tab.id"
           :class="[
-            'px-2.5 py-1.5 text-xs font-medium border-b-2 transition-colors whitespace-nowrap',
+            'px-2.5 py-1.5 text-xs font-medium border-b-2 transition-colors whitespace-nowrap rounded-t-md',
             aba === tab.id
-              ? 'border-blue-500 text-blue-600 dark:text-blue-400 font-semibold'
+              ? 'border-cyan-500 text-cyan-500 dark:text-cyan-400 font-semibold'
               : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
           ]"
           @click="aba = tab.id"

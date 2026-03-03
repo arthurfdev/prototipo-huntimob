@@ -1,7 +1,7 @@
 <template>
-  <div class="glass-card-light dark:glass-card rounded-2xl shadow-sm mb-6 overflow-hidden">
+  <div class="glass-card-light dark:glass-card rounded-2xl shadow-sm mb-6 overflow-hidden border border-white/10">
     <!-- Header sutil -->
-    <div class="px-6 py-4 border-b border-gray-100 dark:border-gray-800/50 bg-gray-50/50 dark:bg-gray-900/30">
+    <div class="px-6 py-4 border-b border-white/10 bg-white/5 dark:bg-white/5 backdrop-blur-sm">
       <div>
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Conexão WhatsApp</h2>
         <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Conecte seu número do WhatsApp Business para ativar o assistente</p>
@@ -13,9 +13,9 @@
 
       <!-- Estado inicial - Botão para gerar QR Code -->
       <div v-if="!qrCodeData && !loading && !isConnected" class="text-center">
-        <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-lg p-6 mb-4 border border-gray-200/50 dark:border-gray-800/50">
-          <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl flex items-center justify-center">
-            <ChatBubbleLeftRightIcon class="w-8 h-8 text-blue-500 dark:text-blue-400" />
+        <div class="glass-card-light dark:glass-card rounded-lg p-6 mb-4 border border-white/10">
+          <div class="icon-glass w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center">
+            <ChatBubbleLeftRightIcon class="w-8 h-8 text-cyan-500 dark:text-cyan-400 relative z-10 stroke-2" />
           </div>
           <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1.5">Conectar WhatsApp</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mb-5">
@@ -34,7 +34,7 @@
 
       <!-- Loading state -->
       <div v-if="loading" class="text-center">
-        <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-lg p-6 mb-4 border border-gray-200/50 dark:border-gray-800/50">
+        <div class="glass-card-light dark:glass-card rounded-lg p-6 mb-4 border border-white/10">
           <div class="w-64 h-64 mx-auto glass-card-light dark:glass-card p-6 rounded-lg shadow-sm mb-4 flex items-center justify-center">
             <div class="text-center">
               <div class="relative mb-6">
@@ -64,11 +64,11 @@
 
       <!-- QR Code Area -->
       <div v-if="qrCodeData && !isConnected" class="text-center">
-        <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-lg p-4 mb-4 border border-gray-200/50 dark:border-gray-800/50">
+        <div class="glass-card-light dark:glass-card rounded-lg p-4 mb-4 border border-white/10">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
             <!-- Instruções à esquerda -->
             <div class="order-2 lg:order-1">
-              <div class="glass-card-light dark:glass-card rounded-lg p-4">
+              <div class="glass-card-light dark:glass-card rounded-lg p-4 border border-white/10">
                 <h4 class="text-sm font-semibold text-gray-800 dark:text-white mb-4 text-center lg:text-left">Como conectar:</h4>
                 <div class="space-y-3">
                   <div class="flex items-center space-x-2.5">
@@ -94,8 +94,8 @@
             <!-- QR Code à direita -->
             <div class="order-1 lg:order-2 flex justify-center">
               <div class="relative">
-                <div class="w-56 h-56 bg-gradient-to-br from-white to-blue-50 dark:from-brand-navy-dark dark:to-blue-900/20 p-1 rounded-lg shadow-sm flex items-center justify-center">
-                  <div class="glass-card-light dark:glass-card rounded-lg p-2">
+                <div class="w-56 h-56 glass-card-light dark:glass-card p-1 rounded-lg shadow-sm flex items-center justify-center border border-white/10">
+                  <div class="glass-card-light dark:glass-card rounded-lg p-2 border border-white/10">
                     <img 
                       :src="qrCodeImageSrc"
                       alt="QR Code WhatsApp"
@@ -111,7 +111,7 @@
         <div class="flex justify-center space-x-2">
           <button 
             @click="generateQRCode"
-            class="px-4 py-2 text-blue-600 dark:text-blue-400 border border-blue-500/50 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-200 text-xs flex items-center font-medium"
+            class="btn-gradient px-4 py-2 text-xs font-semibold flex items-center"
           >
             <ArrowPathIcon class="w-3.5 h-3.5 mr-1.5" />
             Gerar Novo QR Code
@@ -119,7 +119,7 @@
           
           <button 
             @click="resetQRCode"
-            class="px-4 py-2 text-gray-600 dark:text-gray-400 border border-gray-300/50 dark:border-gray-700/50 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 text-xs font-medium"
+            class="px-4 py-2 text-xs font-medium text-gray-600 dark:text-gray-400 glass-card-light dark:glass-card border border-white/10 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-200"
           >
             Cancelar
           </button>
@@ -128,7 +128,7 @@
 
       <!-- Estado Conectado -->
       <div v-if="isConnected" class="text-center">
-        <div class="bg-blue-50/50 dark:bg-blue-900/20 rounded-lg p-5 mb-4 shadow-sm border border-blue-200/50 dark:border-blue-800/30">
+        <div class="glass-card-light dark:glass-card rounded-lg p-5 mb-4 shadow-sm border border-white/10">
           <div class="icon-glass w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center shadow-sm">
             <CheckCircleIcon class="w-6 h-6 text-emerald-500 dark:text-emerald-400 relative z-10 stroke-2" />
           </div>

@@ -159,8 +159,10 @@ const filtros = reactive({})
 // Mock data
 const mockColunas = [
   { id: '1', nome: 'Novos Leads', cor: '#3B82F6', ordem: 1, regra_distribuicao: 'manual', manter_associacao_ao_mover: false, acoes_disponiveis: ['whatsapp', 'observacao', 'lembrete'], _count: { cards: 2 } },
-  { id: '2', nome: 'Em Negociação', cor: '#F59E0B', ordem: 2, regra_distribuicao: 'roleta', manter_associacao_ao_mover: true, acoes_disponiveis: ['whatsapp', 'observacao'], _count: { cards: 1 } },
-  { id: '3', nome: 'Finalizado', cor: '#10B981', ordem: 3, regra_distribuicao: 'manual', manter_associacao_ao_mover: false, acoes_disponiveis: ['observacao'], _count: { cards: 0 } },
+  { id: '2', nome: 'Em Negociação', cor: '#60A5FA', ordem: 2, regra_distribuicao: 'roleta', manter_associacao_ao_mover: true, acoes_disponiveis: ['whatsapp', 'observacao'], _count: { cards: 1 } },
+  { id: '4', nome: 'Em Visita', cor: '#FB5CF6', ordem: 3, regra_distribuicao: 'manual', manter_associacao_ao_mover: false, acoes_disponiveis: ['whatsapp', 'observacao', 'lembrete'], _count: { cards: 2 } },
+  { id: '5', nome: 'Aguardando Aprovação', cor: '#EAB308', ordem: 4, regra_distribuicao: 'manual', manter_associacao_ao_mover: false, acoes_disponiveis: ['whatsapp', 'observacao'], _count: { cards: 3 } },
+  { id: '3', nome: 'Finalizado', cor: '#10B981', ordem: 5, regra_distribuicao: 'manual', manter_associacao_ao_mover: false, acoes_disponiveis: ['observacao'], _count: { cards: 2 } },
 ]
 
 const mockCards = [
@@ -187,6 +189,62 @@ const mockCards = [
     coluna_id: '2',
     responsavel: { id: '2', nome: 'Carlos Souza', foto_url: null },
     ultimo_movimento_em: new Date(Date.now() - 7200000).toISOString()
+  },
+  { 
+    id: '4', 
+    cliente: { id: '4', nome: 'Roberto Mendes', telefone: '11666666666', email: 'roberto@email.com', foto_url: null }, 
+    coluna: mockColunas[2], 
+    coluna_id: '4',
+    responsavel: { id: '1', nome: 'Maria Santos', foto_url: null },
+    ultimo_movimento_em: new Date(Date.now() - 1800000).toISOString()
+  },
+  { 
+    id: '5', 
+    cliente: { id: '5', nome: 'Fernanda Lima', telefone: '11555555555', email: 'fernanda@email.com', foto_url: null }, 
+    coluna: mockColunas[2], 
+    coluna_id: '4',
+    responsavel: { id: '3', nome: 'Ana Paula', foto_url: null },
+    ultimo_movimento_em: new Date(Date.now() - 5400000).toISOString()
+  },
+  { 
+    id: '6', 
+    cliente: { id: '6', nome: 'Lucas Almeida', telefone: '11444444444', email: 'lucas@email.com', foto_url: null }, 
+    coluna: mockColunas[3], 
+    coluna_id: '5',
+    responsavel: { id: '1', nome: 'Maria Santos', foto_url: null },
+    ultimo_movimento_em: new Date(Date.now() - 10800000).toISOString()
+  },
+  { 
+    id: '7', 
+    cliente: { id: '7', nome: 'Juliana Rocha', telefone: '11333333333', email: 'juliana@email.com', foto_url: null }, 
+    coluna: mockColunas[3], 
+    coluna_id: '5',
+    responsavel: { id: '2', nome: 'Carlos Souza', foto_url: null },
+    ultimo_movimento_em: new Date(Date.now() - 14400000).toISOString()
+  },
+  { 
+    id: '8', 
+    cliente: { id: '8', nome: 'Marcos Pereira', telefone: '11222222222', email: 'marcos@email.com', foto_url: null }, 
+    coluna: mockColunas[3], 
+    coluna_id: '5',
+    responsavel: { id: '3', nome: 'Ana Paula', foto_url: null },
+    ultimo_movimento_em: new Date(Date.now() - 18000000).toISOString()
+  },
+  { 
+    id: '9', 
+    cliente: { id: '9', nome: 'Patricia Souza', telefone: '11111111111', email: 'patricia@email.com', foto_url: null }, 
+    coluna: mockColunas[4], 
+    coluna_id: '3',
+    responsavel: { id: '1', nome: 'Maria Santos', foto_url: null },
+    ultimo_movimento_em: new Date(Date.now() - 86400000).toISOString()
+  },
+  { 
+    id: '10', 
+    cliente: { id: '10', nome: 'Ricardo Ferreira', telefone: '11000000000', email: 'ricardo@email.com', foto_url: null }, 
+    coluna: mockColunas[4], 
+    coluna_id: '3',
+    responsavel: { id: '2', nome: 'Carlos Souza', foto_url: null },
+    ultimo_movimento_em: new Date(Date.now() - 172800000).toISOString()
   },
 ]
 
