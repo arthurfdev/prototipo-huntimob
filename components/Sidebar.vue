@@ -417,7 +417,8 @@ const menuItems = computed(() => {
         { id: 'cadastros', label: 'Cadastros', route: '/gestao/cadastros', icon: RectangleStackIcon },
         { id: 'permissoes', label: 'Permissões', route: '/gestao/permissoes', icon: ShieldCheckIcon },
         { id: 'relatorios', label: 'Relatórios', route: '/gestao/relatorios', icon: DocumentChartBarIcon },
-        { id: 'balanco-mensal', label: 'Balanço Mensal', route: '/gestao/balanco-mensal', icon: ChartBarIcon }
+        { id: 'balanco-mensal', label: 'Balanço Mensal', route: '/gestao/balanco-mensal', icon: ChartBarIcon },
+        { id: 'participacao-lucros', label: 'Participação dos Lucros', route: '/gestao/participacao-lucros', icon: CurrencyDollarIcon }
       ]
     },
     {

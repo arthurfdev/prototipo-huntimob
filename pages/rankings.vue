@@ -3,8 +3,9 @@
     <div class="mb-8">
       <div class="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-            Ranking de Vendas 🏆
+          <h1 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <TrophyIcon class="h-7 w-7 text-amber-500" />
+            Ranking de Vendas
           </h1>
           <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
             Competição de Equipes e Corretores
@@ -21,12 +22,13 @@
           :key="tab.id"
           @click="currentTab = tab.id"
           :class="[
-            'px-6 py-3 border-b-2 font-medium text-sm transition-colors',
+            'px-6 py-3 border-b-2 font-medium text-sm transition-colors flex items-center gap-2',
             currentTab === tab.id
               ? 'border-blue-500 text-blue-600 dark:text-blue-400'
               : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300'
           ]"
         >
+          <component :is="tab.icon === 'TrophyIcon' ? TrophyIcon : UserGroupIcon" class="h-5 w-5 stroke-2" />
           {{ tab.name }}
         </button>
       </nav>
@@ -45,8 +47,10 @@
       <!-- Top 3 Pódio -->
       <div class="mb-12">
         <div class="text-center mb-8">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">
-            🏆 TOP 3 🏆
+          <h2 class="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent flex items-center justify-center gap-3">
+            <TrophyIcon class="h-8 w-8 text-amber-500" />
+            TOP 3
+            <TrophyIcon class="h-8 w-8 text-amber-500" />
           </h2>
           <p class="text-gray-500 dark:text-gray-400 text-sm">Os melhores desempenhos do período</p>
         </div>
@@ -54,7 +58,7 @@
         <div class="flex items-end justify-center space-x-4 max-w-6xl mx-auto flex-wrap gap-6">
           <!-- 2º Lugar -->
           <div v-if="currentTab === 'equipes' && rankingEquipes.length > 1" class="flex-1 min-w-[280px] max-w-xs">
-            <div class="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-3xl p-6 shadow-xl border-2 border-slate-300 dark:border-slate-700 relative overflow-hidden">
+            <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden">
               <div class="text-center mb-4">
                 <div class="w-20 h-20 mx-auto bg-gradient-to-br from-slate-400 to-slate-600 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
                   2
@@ -74,7 +78,7 @@
               <h3 class="text-xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingEquipes[1].equipe_nome }}</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">Gerente: {{ rankingEquipes[1].gerente_nome }}</p>
               
-              <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-3 shadow-lg">
+              <div class="glass-card-light dark:glass-card rounded-xl p-3 border border-white/10">
                 <div class="text-center">
                   <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ formatMoney(rankingEquipes[1].vgv_total) }}</p>
                   <p class="text-xs text-gray-600 dark:text-gray-400 font-medium">{{ rankingEquipes[1].total_propostas }} propostas</p>
@@ -85,14 +89,14 @@
 
           <!-- 1º Lugar -->
           <div v-if="currentTab === 'equipes' && rankingEquipes.length > 0" class="flex-1 min-w-[320px] max-w-sm transform scale-105 z-10">
-            <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-8 shadow-2xl border-4 border-blue-400 relative overflow-hidden">
+            <div class="glass-card-light dark:glass-card rounded-3xl p-8 shadow-2xl border-2 border-blue-400/50 relative overflow-hidden">
               <!-- Efeito de brilho animado -->
               <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
               
               <div class="relative z-10">
                 <div class="text-center mb-4">
-                  <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center text-4xl font-bold text-blue-600 shadow-2xl animate-bounce">
-                    👑
+                  <div class="icon-glass w-24 h-24 mx-auto rounded-full flex items-center justify-center shadow-2xl">
+                    <StarIcon class="h-12 w-12 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
                   </div>
                 </div>
                 
@@ -109,10 +113,10 @@
                 <h3 class="text-2xl font-bold text-center mb-2 text-white drop-shadow-lg">{{ rankingEquipes[0].equipe_nome }}</h3>
                 <p class="text-sm text-blue-100 text-center mb-4 font-medium">Gerente: {{ rankingEquipes[0].gerente_nome }}</p>
                 
-                <div class="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl">
+                <div class="glass-card-light dark:glass-card rounded-xl p-4 border border-white/10">
                   <div class="text-center">
                     <p class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{{ formatMoney(rankingEquipes[0].vgv_total) }}</p>
-                    <p class="text-sm text-gray-600 font-medium mt-1">{{ rankingEquipes[0].total_propostas }} propostas</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingEquipes[0].total_propostas }} propostas</p>
                   </div>
                 </div>
               </div>
@@ -121,7 +125,7 @@
 
           <!-- 3º Lugar -->
           <div v-if="currentTab === 'equipes' && rankingEquipes.length > 2" class="flex-1 min-w-[280px] max-w-xs">
-            <div class="bg-gradient-to-br from-amber-50 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 rounded-3xl p-6 shadow-xl border-2 border-amber-300 dark:border-amber-700 relative overflow-hidden">
+            <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden">
               <div class="text-center mb-4">
                 <div class="w-20 h-20 mx-auto bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
                   3
@@ -141,7 +145,7 @@
               <h3 class="text-xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingEquipes[2].equipe_nome }}</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">Gerente: {{ rankingEquipes[2].gerente_nome }}</p>
               
-              <div class="bg-white/80 dark:bg-amber-900/50 backdrop-blur-sm rounded-xl p-3 shadow-lg">
+              <div class="glass-card-light dark:glass-card rounded-xl p-3 border border-white/10">
                 <div class="text-center">
                   <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ formatMoney(rankingEquipes[2].vgv_total) }}</p>
                   <p class="text-xs text-gray-600 dark:text-gray-400 font-medium">{{ rankingEquipes[2].total_propostas }} propostas</p>
@@ -154,7 +158,7 @@
           <template v-if="currentTab === 'corretores'">
             <!-- 2º Lugar -->
             <div v-if="rankingCorretores.length > 1" class="flex-1 min-w-[280px] max-w-xs">
-              <div class="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-3xl p-6 shadow-xl border-2 border-slate-300 dark:border-slate-700 relative overflow-hidden">
+              <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden">
                 <div class="text-center mb-4">
                   <div class="w-20 h-20 mx-auto bg-gradient-to-br from-slate-400 to-slate-600 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
                     2
@@ -174,7 +178,7 @@
                 <h3 class="text-xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingCorretores[1].nome }}</h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">{{ rankingCorretores[1].funcao }}</p>
                 
-                <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-3 shadow-lg">
+                <div class="glass-card-light dark:glass-card rounded-xl p-3 border border-white/10">
                   <div class="text-center">
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ formatMoney(rankingCorretores[1].vgv_total) }}</p>
                     <p class="text-xs text-gray-600 dark:text-gray-400 font-medium">{{ rankingCorretores[1].total_propostas }} propostas</p>
@@ -185,14 +189,14 @@
 
             <!-- 1º Lugar -->
             <div v-if="rankingCorretores.length > 0" class="flex-1 min-w-[320px] max-w-sm transform scale-105 z-10">
-              <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-8 shadow-2xl border-4 border-blue-400 relative overflow-hidden">
+              <div class="glass-card-light dark:glass-card rounded-3xl p-8 shadow-2xl border-2 border-blue-400/50 relative overflow-hidden">
                 <!-- Efeito de brilho animado -->
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
                 
                 <div class="relative z-10">
                   <div class="text-center mb-4">
-                    <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center text-4xl font-bold text-blue-600 shadow-2xl animate-bounce">
-                      👑
+                    <div class="icon-glass w-24 h-24 mx-auto rounded-full flex items-center justify-center shadow-2xl">
+                      <StarIcon class="h-12 w-12 text-amber-500 dark:text-amber-400 relative z-10 stroke-2" />
                     </div>
                   </div>
                   
@@ -209,10 +213,10 @@
                   <h3 class="text-2xl font-bold text-center mb-2 text-white drop-shadow-lg">{{ rankingCorretores[0].nome }}</h3>
                   <p class="text-sm text-blue-100 text-center mb-4 font-medium">{{ rankingCorretores[0].funcao }}</p>
                   
-                  <div class="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl">
+                  <div class="glass-card-light dark:glass-card rounded-xl p-4 border border-white/10">
                     <div class="text-center">
                       <p class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{{ formatMoney(rankingCorretores[0].vgv_total) }}</p>
-                      <p class="text-sm text-gray-600 font-medium mt-1">{{ rankingCorretores[0].total_propostas }} propostas</p>
+                      <p class="text-sm text-gray-600 dark:text-gray-400 font-medium mt-1">{{ rankingCorretores[0].total_propostas }} propostas</p>
                     </div>
                   </div>
                 </div>
@@ -221,7 +225,7 @@
 
             <!-- 3º Lugar -->
             <div v-if="rankingCorretores.length > 2" class="flex-1 min-w-[280px] max-w-xs">
-              <div class="bg-gradient-to-br from-amber-50 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 rounded-3xl p-6 shadow-xl border-2 border-amber-300 dark:border-amber-700 relative overflow-hidden">
+              <div class="glass-card-light dark:glass-card rounded-3xl p-6 shadow-xl border border-white/10 relative overflow-hidden">
                 <div class="text-center mb-4">
                   <div class="w-20 h-20 mx-auto bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
                     3
@@ -241,7 +245,7 @@
                 <h3 class="text-xl font-bold text-center mb-2 text-gray-900 dark:text-white">{{ rankingCorretores[2].nome }}</h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400 text-center mb-4 font-medium">{{ rankingCorretores[2].funcao }}</p>
                 
-                <div class="bg-white/80 dark:bg-amber-900/50 backdrop-blur-sm rounded-xl p-3 shadow-lg">
+                <div class="glass-card-light dark:glass-card rounded-xl p-3 border border-white/10">
                   <div class="text-center">
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ formatMoney(rankingCorretores[2].vgv_total) }}</p>
                     <p class="text-xs text-gray-600 dark:text-gray-400 font-medium">{{ rankingCorretores[2].total_propostas }} propostas</p>
@@ -269,12 +273,10 @@
             :key="item.id"
             :class="[
               'flex items-center p-4 sm:p-5 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02]',
-              index < 3 
-                ? 'bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 border-2 shadow-md' 
-                : 'glass-card-light dark:glass-card hover:border-emerald-500/50 dark:hover:border-emerald-500/50',
-              index === 0 ? 'border-blue-400 shadow-blue-200 dark:shadow-blue-900/50' : '',
-              index === 1 ? 'border-slate-400 shadow-slate-200 dark:shadow-slate-700' : '',
-              index === 2 ? 'border-amber-400 shadow-amber-200 dark:shadow-amber-700' : ''
+              'glass-card-light dark:glass-card border border-white/10 hover:border-emerald-500/50 dark:hover:border-emerald-500/50',
+              index === 0 ? 'border-blue-400/50' : '',
+              index === 1 ? 'border-slate-400/50' : '',
+              index === 2 ? 'border-amber-400/50' : ''
             ]"
           >
             <!-- Posição -->
@@ -325,11 +327,11 @@
             </div>
 
             <!-- Medalha -->
-            <div v-if="index < 3" class="flex-shrink-0">
-              <TrophyIcon class="w-8 h-8 sm:w-10 sm:h-10" :class="{
-                'text-blue-500': index === 0,
-                'text-slate-400': index === 1,
-                'text-amber-500': index === 2
+            <div v-if="index < 3" class="flex-shrink-0 icon-glass p-2 rounded-lg">
+              <TrophyIcon class="w-6 h-6 sm:w-8 sm:h-8 relative z-10 stroke-2" :class="{
+                'text-blue-500 dark:text-blue-400': index === 0,
+                'text-slate-400 dark:text-slate-500': index === 1,
+                'text-amber-500 dark:text-amber-400': index === 2
               }" />
             </div>
           </div>
@@ -345,7 +347,8 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
-import { TrophyIcon } from '@heroicons/vue/24/solid'
+import { TrophyIcon } from '@heroicons/vue/24/outline'
+import { UserGroupIcon, StarIcon } from '@heroicons/vue/24/outline'
 
 const formatMoney = (value) => {
   if (!value) return 'R$ 0,00'
@@ -359,8 +362,8 @@ const rankingEquipes = ref([])
 const rankingCorretores = ref([])
 
 const tabs = [
-  { id: 'equipes', name: '🏆 Equipes' },
-  { id: 'corretores', name: '👥 Corretores' }
+  { id: 'equipes', name: 'Equipes', icon: 'TrophyIcon' },
+  { id: 'corretores', name: 'Corretores', icon: 'UserGroupIcon' }
 ]
 
 const handleImageError = (event) => {
