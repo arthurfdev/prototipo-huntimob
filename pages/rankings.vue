@@ -2,7 +2,7 @@
   <div class="w-full">
     <div class="mb-6">
       <div class="flex items-center justify-between flex-wrap gap-4">
-        <div>
+        <div class="flex flex-col gap-2 mb-12">
           <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Ranking de Vendas</h1>
           <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Competição de Equipes e Corretores</p>
         </div>
