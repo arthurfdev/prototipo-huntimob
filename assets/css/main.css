@@ -556,8 +556,35 @@
     appearance: none;
   }
   
-  select.dark {
+  /* Select no modo escuro - ícone mais claro */
+  .dark select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%9ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  }
+  
+  /* Options no modo claro - background branco e texto escuro */
+  select option {
+    background-color: white;
+    color: #111827;
+  }
+  
+  /* Options no modo escuro - background neutro escuro e texto claro */
+  .dark select option {
+    background-color: #1f2937;
+    color: #ffffff;
+  }
+  
+  /* Garantir que selects com classes glass também tenham options legíveis */
+  .dark select.glass-card option,
+  .dark select.dark\:glass-card option,
+  .dark select[class*="glass-card"] option,
+  .dark select[class*="bg-brand-navy-dark"] option {
+    background-color: #1f2937;
+    color: #ffffff;
+  }
+  
+  /* Garantir que selects com bg-brand-navy-dark no modo escuro tenham texto legível */
+  .dark select[class*="bg-brand-navy-dark"] {
+    color: #ffffff;
   }
   
   /* Classes utilitárias para inputs e selects padronizados */

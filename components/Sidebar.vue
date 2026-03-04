@@ -117,7 +117,7 @@
           <select
             v-model="filialSelecionada"
             @change="handleFilialChange"
-            class="w-full px-3 py-1.5 text-xs glass-card border border-white/20 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 appearance-none cursor-pointer"
+            class="w-full px-3 py-1.5 text-xs glass-card-light dark:glass-card border border-white/20 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 appearance-none cursor-pointer"
           >
             <option v-for="filial in filiais" :key="filial.id" :value="filial.id">
               {{ filial.nome }}

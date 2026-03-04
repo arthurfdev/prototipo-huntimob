@@ -35,7 +35,7 @@
           <select 
             v-model="selectedSaleId" 
             @change="loadSaleData"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 glass-card-light dark:glass-card border border-white/10 dark:border-white/10 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">Selecione uma venda</option>
             <option v-for="venda in vendas" :key="venda.id" :value="venda.id">
@@ -378,7 +378,7 @@
                   <input v-model="parcela.numero_parcelas" type="number" min="1" class="w-full px-2 py-1 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white">
                 </td>
                 <td class="border border-gray-300 dark:border-gray-700 p-2">
-                  <select v-model="parcela.periodicidade" class="w-full px-2 py-1 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white">
+                  <select v-model="parcela.periodicidade" class="w-full px-2 py-1 glass-card-light dark:glass-card border border-white/10 rounded text-gray-900 dark:text-white">
                     <option value="">Selecione</option>
                     <option value="SINAL">SINAL</option>
                     <option value="ÚNICA">ÚNICA</option>
@@ -413,7 +413,7 @@
                   >
                 </td>
                 <td class="border border-gray-300 dark:border-gray-700 p-2">
-                  <select v-model="parcela.atualizacao_monetaria" class="w-full px-2 py-1 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-brand-navy-dark text-gray-900 dark:text-white">
+                  <select v-model="parcela.atualizacao_monetaria" class="w-full px-2 py-1 glass-card-light dark:glass-card border border-white/10 rounded text-gray-900 dark:text-white">
                     <option value="Fixa e irreajustável">Fixa e irreajustável</option>
                     <option value="Reajustável">Reajustável</option>
                   </select>
